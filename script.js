@@ -58,39 +58,40 @@ const numberObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 numberEls.forEach(el => numberObs.observe(el));
-// 네이버 지도 초기화
-function initNaverMaps() {
-  // 광장점 (서울시 광진구 구의강변로106)
-  var gwangjangPos = new naver.maps.LatLng(37.5399, 127.0948);
-  var mapGwangjang = new naver.maps.Map('map-gwangjang', {
-    center: gwangjangPos,
+// 네이버 지도 초기화 (Geocoding 방식)
+function makeMapByAddress(mapId, address, title) {
+  var map = new naver.maps.Map(mapId, {
     zoom: 16,
     zoomControl: true,
     zoomControlOptions: {
       position: naver.maps.Position.TOP_RIGHT
     }
-  });
-  new naver.maps.Marker({
-    position: gwangjangPos,
-    map: mapGwangjang,
-    title: '유베이스 광장점'
   });
 
-  // 강동점 (서울시 강동구 양재대로 1464)
-  var gangdongPos = new naver.maps.LatLng(37.5365, 127.1398);
-  var mapGangdong = new naver.maps.Map('map-gangdong', {
-    center: gangdongPos,
-    zoom: 16,
-    zoomControl: true,
-    zoomControlOptions: {
-      position: naver.maps.Position.TOP_RIGHT
+  naver.maps.Service.geocode({ query: address }, function(status, response) {
+    if (status !== naver.maps.Service.Status.OK) {
+      console.error('Geocode failed:', address, status);
+      return;
     }
+
+    var item = response.v2.addresses && response.v2.addresses[0];
+    if (!item) {
+      console.error('No geocode result:', address, response);
+      return;
+    }
+
+    var pos = new naver.maps.LatLng(Number(item.y), Number(item.x));
+    map.setCenter(pos);
+
+    new naver.maps.Marker({ position: pos, map: map, title: title });
   });
-  new naver.maps.Marker({
-    position: gangdongPos,
-    map: mapGangdong,
-    title: '유베이스 강동점'
-  });
+
+  return map;
+}
+
+function initNaverMaps() {
+  makeMapByAddress('map-gwangjang', '서울시 광진구 구의강변로106 삼성쉐르빌', '유베이스 광장점');
+  makeMapByAddress('map-gangdong', '서울시 강동구 양재대로 1464 남경빌딩', '유베이스 강동점');
 }
 
 if (document.readyState === 'complete') {
