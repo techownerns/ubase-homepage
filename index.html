@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유베이스 | 수험생 전문 관리형 독서실</title>
+  <meta name="description" content="공부습관을 100% 달라지게 만드는 환경. 안면인식 출결, 휴대폰 제출 검사, 25분 순찰 시스템으로 철저하게 관리합니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L32 10V26L18 34L4 26V10L18 2Z" fill="#2D3A7B"/>
+          <path d="M18 8L26 12.5V21.5L18 26L10 21.5V12.5L18 8Z" fill="#3B6DF5"/>
+          <path d="M18 14L22 16.5V21.5L18 24L14 21.5V16.5L18 14Z" fill="white"/>
+        </svg>
+        <span>UBASE</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#system">관리시스템</a></li>
+        <li><a href="#mentoring">멘토링</a></li>
+        <li><a href="#facility">시설</a></li>
+        <li><a href="#timetable">시간표</a></li>
+        <li><a href="#reviews">후기</a></li>
+        <li><a href="#location">오시는 길</a></li>
+        <li><a href="#contact" class="nav-cta">상담 신청</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline id="heroVideo" style="display:none;">
+        <source src="" type="video/mp4">
+      </video>
+      <div class="hero-fallback" id="heroFallback"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">2026 수험생 전문 관리형 독서실</div>
+      <h1>공부습관을 100%<br>달라지게 만드는 <em>환경</em></h1>
+      <p class="hero-desc">의지보다 환경이 중요합니다. 안면인식 출결, 25분 순찰, 휴대폰 제출 검사까지.<br>유베이스가 끝까지 관리합니다.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">무료 상담 신청</a>
+        <a href="#system" class="btn btn-outline">관리 시스템 알아보기</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      SCROLL
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-label">ABOUT UBASE</div>
+          <h2 class="section-title">혼자서 공부하는 법을<br>가장 잘 아는 사람들</h2>
+          <p class="about-philosophy">
+            유베이스는 <strong>공부를 꾸준히 잘 하기 위해선 의지나 자제력보다 환경이 더욱 중요하다</strong>고 믿습니다.
+            학습에 방해되는 요소들을 사전에 차단하여 꾸준히 학습을 이어나갈 수 있는 환경을 제공합니다.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">관리 누락 방지율</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">25분</div>
+              <div class="stat-label">순찰 주기</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">0%</div>
+              <div class="stat-label">출결 누락율</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">365일</div>
+              <div class="stat-label">연중무휴 운영</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='480' fill='%23E4E8F1'%3E%3Crect width='600' height='480'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%238E95A9'%3E시설 사진%3C/text%3E%3C/svg%3E" alt="유베이스 시설" class="about-img-main" id="aboutImg">
+          <div class="about-float-card">
+            <p class="float-title">독학관리시스템의 새로운 변화</p>
+            <p>IT 시스템으로 이중 점검하여 사람의 실수까지 보완하는 체계적 관리</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT SYSTEM -->
+  <section class="section section-alt" id="system">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">MANAGEMENT SYSTEM</div>
+        <h2 class="section-title">빈틈없는 6가지 관리 시스템</h2>
+        <p class="section-desc">출결부터 학습태도, 환경까지. 사람과 시스템이 함께 관리합니다.</p>
+      </div>
+      <div class="mgmt-grid">
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <h3>출결 및 학습시간 관리</h3>
+          <p>안면인식 턴게이트로 입실·퇴실·외출·복귀를 1분 단위로 기록합니다.</p>
+          <ul>
+            <li>의무학습 교시제 운영</li>
+            <li>학부모 계정 실시간 연동</li>
+            <li>무단 부재 학생 즉시 연락</li>
+          </ul>
+        </div>
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>학습 집중도 관리</h3>
+          <p>매 교시 휴대폰 제출 검사, WIFI 방화벽으로 SNS 완벽 차단합니다.</p>
+          <ul>
+            <li>휴대폰 필수 제출</li>
+            <li>카카오톡·유튜브 차단</li>
+            <li>학부모 승인 방화벽 해제</li>
+          </ul>
+        </div>
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>생활 관리</h3>
+          <p>사감이 25분마다 순찰하며 졸음, 소음, 학습방해 요소를 사전 차단합니다.</p>
+          <ul>
+            <li>지각생 교시 중 입실 제한</li>
+            <li>수면 관리 (순찰 시 깨움)</li>
+            <li>독서실 내 친목 제한</li>
+          </ul>
+        </div>
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>엄격한 벌점 제도</h3>
+          <p>벌점 누적 시 단계별 조치로 학습 규율을 유지합니다.</p>
+          <ul>
+            <li>20점: 일요일 의무등원</li>
+            <li>30점: 학부모 연락</li>
+            <li>40점 이상: 강제 퇴원</li>
+          </ul>
+        </div>
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>학습 동기부여</h3>
+          <p>매주 장학생을 선발하여 수험생활 동안 꾸준히 동기를 부여합니다.</p>
+          <ul>
+            <li>순공시간 최대 / 얼리버드</li>
+            <li>주말 순공 / 익월 할인</li>
+            <li>4개 부문 매주 선발</li>
+          </ul>
+        </div>
+        <div class="mgmt-card reveal">
+          <div class="mgmt-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>학습 환경 관리</h3>
+          <p>매일 새벽 전문 청소, 세스코 공기질 케어, 캡스 보안으로 쾌적함을 유지합니다.</p>
+          <ul>
+            <li>1일 1회 전문업체 청소·소독</li>
+            <li>공기청정기·살균기·에어제닉</li>
+            <li>CCTV 실시간 관제</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENTORING -->
+  <section class="section" id="mentoring">
+    <div class="container">
+      <div class="mentor-grid">
+        <div class="mentor-visual reveal">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='520' fill='%23E4E8F1'%3E%3Crect width='600' height='520'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%238E95A9'%3E멘토링 사진%3C/text%3E%3C/svg%3E" alt="멘토링" id="mentorImg">
+        </div>
+        <div class="reveal">
+          <div class="section-label">MENTORING</div>
+          <h2 class="section-title">수능 백분위 99%<br>검증된 멘토진</h2>
+          <p class="section-desc" style="margin-bottom:32px;">질의전담 멘토는 담당과목 수능 백분위 99%로 철저하게 검증된 실력이 보장됩니다.</p>
+          <div class="mentor-features">
+            <div class="mentor-feature">
+              <div class="mentor-feature-num">01</div>
+              <div>
+                <h4>오프라인 질의응답</h4>
+                <p>학생 1명당 하루 최대 1시간 대면 질의가 가능하며, 원내 상담실에서 진행됩니다.</p>
+              </div>
+            </div>
+            <div class="mentor-feature">
+              <div class="mentor-feature-num">02</div>
+              <div>
+                <h4>사설 모의고사 원내 응시</h4>
+                <p>대성 더 프리미엄 전국 모의고사를 실전과 동일한 수능시간표로 응시할 수 있습니다.</p>
+              </div>
+            </div>
+            <div class="mentor-feature">
+              <div class="mentor-feature-num">03</div>
+              <div>
+                <h4>유베이스 학습 리포트</h4>
+                <p>순찰결과, 순공시간, 출석위반내역, 휴대폰 제출 검사를 데이터로 분석합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITY -->
+  <section class="section section-alt" id="facility">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">FACILITY</div>
+        <h2 class="section-title">완벽한 집중을 위한 공간</h2>
+        <p class="section-desc">높은 층고, 자연 채광, 시디즈 의자. 학습 능률을 최적화하는 사소한 부분까지 고민했습니다.</p>
+      </div>
+      <div class="facility-gallery reveal">
+        <div class="fac-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='480' fill='%23DDE2EF'%3E%3Crect width='600' height='480'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%238E95A9'%3E열람실%3C/text%3E%3C/svg%3E" alt="열람실" id="facImg1"></div>
+        <div class="fac-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240' fill='%23DDE2EF'%3E%3Crect width='300' height='240'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%238E95A9'%3E상담실%3C/text%3E%3C/svg%3E" alt="상담실" id="facImg2"></div>
+        <div class="fac-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240' fill='%23DDE2EF'%3E%3Crect width='300' height='240'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%238E95A9'%3E카페테리아%3C/text%3E%3C/svg%3E" alt="카페테리아" id="facImg3"></div>
+        <div class="fac-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240' fill='%23DDE2EF'%3E%3Crect width='300' height='240'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%238E95A9'%3E휴대폰 보관함%3C/text%3E%3C/svg%3E" alt="휴대폰 보관함" id="facImg4"></div>
+        <div class="fac-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240' fill='%23DDE2EF'%3E%3Crect width='300' height='240'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%238E95A9'%3E턴게이트%3C/text%3E%3C/svg%3E" alt="턴게이트" id="facImg5"></div>
+      </div>
+      <div class="facility-features reveal">
+        <div class="fac-feature">
+          <div class="fac-feature-icon">🪑</div>
+          <h4>시디즈 의자</h4>
+          <p>전 좌석 시디즈 의자 구비</p>
+        </div>
+        <div class="fac-feature">
+          <div class="fac-feature-icon">🌬️</div>
+          <h4>세스코 공기질 케어</h4>
+          <p>공기청정기·살균기·에어제닉</p>
+        </div>
+        <div class="fac-feature">
+          <div class="fac-feature-icon">🖨️</div>
+          <h4>프린터 무료 이용</h4>
+          <p>1일 최대 10장 무료</p>
+        </div>
+        <div class="fac-feature">
+          <div class="fac-feature-icon">🔒</div>
+          <h4>캡스 보안</h4>
+          <p>CCTV 실시간 관제 + 비상출동</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMETABLE -->
+  <section class="section" id="timetable">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">TIMETABLE</div>
+        <h2 class="section-title">교시제로 운영되는 학습시간</h2>
+        <p class="section-desc">규칙적인 생활 습관이 자리잡을 수 있도록 체계적인 시간표를 운영합니다.</p>
+      </div>
+      <div class="timetable-wrap reveal">
+        <div class="timetable">
+          <div class="timetable-header">📋 의무학습 시간표</div>
+          <table>
+            <thead>
+              <tr><th>교시</th><th>시작</th><th>종료</th><th>시간</th><th>비고</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>자율학습</td><td>06:30</td><td>08:00</td><td>90분</td><td>휴대폰 열람실 반입 불가</td></tr>
+              <tr><td>1교시</td><td>08:00</td><td>09:00</td><td>60분</td><td>의무학습 시작, 지각자 불가</td></tr>
+              <tr><td>2교시</td><td>09:20</td><td>10:40</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>3교시</td><td>11:00</td><td>12:10</td><td>70분</td><td>출석체크</td></tr>
+              <tr style="background:var(--accent-light)"><td>점심시간</td><td>12:10</td><td>13:30</td><td>80분</td><td>외출가능, 휴대폰 사용 가능</td></tr>
+              <tr><td>4교시</td><td>13:30</td><td>14:50</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>5교시</td><td>15:10</td><td>16:30</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>6교시</td><td>16:50</td><td>18:00</td><td>70분</td><td>토요일 의무학습 종료</td></tr>
+              <tr style="background:var(--accent-light)"><td>저녁시간</td><td>18:00</td><td>19:10</td><td>70분</td><td>외출가능, 휴대폰 사용 가능</td></tr>
+              <tr><td>7교시</td><td>19:10</td><td>20:30</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>8교시</td><td>20:50</td><td>22:00</td><td>70분</td><td>평일 의무학습 종료</td></tr>
+              <tr><td>자율학습</td><td>22:00</td><td>01:30</td><td>210분</td><td>휴대폰 열람실 반입 불가</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tt-sidebar">
+          <div class="tt-info-card tt-highlight">
+            <h4>시설 운영시간</h4>
+            <p>연중무휴 06:30 ~ 01:30<br>일요일·공휴일도 자율등원으로 이용 가능합니다.</p>
+          </div>
+          <div class="tt-info-card">
+            <h4>의무자습시간</h4>
+            <p>평일: 08:00 ~ 22:00<br>토요일: 08:00 ~ 18:00<br>일요일·공휴일: 자율등원</p>
+          </div>
+          <div class="tt-info-card">
+            <h4>정기일정 등록</h4>
+            <p>단과수강, 학교수업, 과외 등 정기 일정은 매월 1일 재원생 전용 앱으로 등록합니다.</p>
+          </div>
+          <div class="tt-info-card">
+            <h4>사유 제출</h4>
+            <p>갑작스러운 지각·조퇴 시 앱으로 사유를 제출하면 관리자 승인 후 출결에 반영됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS / SCHOLARSHIP -->
+  <section class="section section-alt" id="results">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">SCHOLARSHIP</div>
+        <h2 class="section-title">노력하는 수험생을 위한 장학 제도</h2>
+        <p class="section-desc">매주 학생들의 공부 기록을 분석하여 가장 성실한 학생을 장학생으로 선발합니다.</p>
+      </div>
+      <div class="results-grid reveal">
+        <div class="result-card">
+          <div class="result-icon">⏱️</div>
+          <h3>순공시간 최대</h3>
+          <p>한 주간 가장 많은 순공부시간을 기록한 학생을 선발합니다.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-icon">🌅</div>
+          <h3>얼리버드</h3>
+          <p>가장 일찍 등원하여 하루를 시작한 학생을 선발합니다.</p>
+        </div>
+        <div class="result-card">
+          <div class="result-icon">📚</div>
+          <h3>주말도 열공</h3>
+          <p>주말에도 꾸준히 공부한 학생을 선발하여 장학금을 지급합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">REVIEWS</div>
+        <h2 class="section-title">재원생·학부모 후기</h2>
+        <p class="section-desc">실제 유베이스를 이용하고 계신 분들의 생생한 후기입니다.</p>
+      </div>
+      <div class="reviews-slider reveal">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">시설이 정말 깔끔하고 정숙한 분위기라 공부에만 온전히 집중하기 최고의 환경이에요. 관리형이라 생활 패턴을 딱 잡아주니 나태해질 틈이 없고, 졸음이나 딴짓도 확실히 관리해 주셔서 효율이 확 올라갑니다.</p>
+          <div class="review-author">
+            <div class="review-avatar">한</div>
+            <div>
+              <div class="review-name">한글28</div>
+              <div class="review-date">2026.02.24 방문</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">방학때 공부습관 잡는데 도움이 되고 있어요~ 집에 있으면 잘 집중 못하던 아이가 여기에서는 차분하게 공부한다고 하더라구요^^ 관리도 잘해주시는것 같아 만족하고 있어요!</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-name">학부모님</div>
+              <div class="review-date">2026.01.27 방문</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-quote">"</div>
+          <p class="review-text">겨울방학에 이곳을 선택한 게 정말 잘한 선택이었어요! 강제성이 있어서 빠지지 않고 꾸준히 다니게 되고, 규칙적인 생활 리듬을 유지하며 공부 습관을 잡는데 도움이 됐습니다.</p>
+          <div class="review-author">
+            <div class="review-avatar">1</div>
+            <div>
+              <div class="review-name">1qa****</div>
+              <div class="review-date">2026.02.10 방문</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section section-alt" id="location">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">LOCATION</div>
+        <h2 class="section-title">찾아오시는 길</h2>
+        <p class="section-desc">유베이스는 현재 2개 지점을 운영하고 있습니다.</p>
+      </div>
+      <div class="location-grid reveal">
+        <div class="location-card">
+          <div class="location-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.5!2d127.085!3d37.545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMyJzQyLjAiTiAxMjfCsDA1JzA2LjAiRQ!5e0!3m2!1sko!2skr!4v1" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="location-info">
+            <h3>광장점</h3>
+            <div class="location-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>서울시 광진구 구의강변로106 삼성쉐르빌 2층 212-1호</span>
+            </div>
+            <div class="location-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>02-6072-0833</span>
+            </div>
+          </div>
+        </div>
+        <div class="location-card">
+          <div class="location-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.5!2d127.139!3d37.536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMyJzEwLjAiTiAxMjfCsDA4JzIwLjAiRQ!5e0!3m2!1sko!2skr!4v1" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="location-info">
+            <h3>강동점</h3>
+            <div class="location-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>서울시 강동구 양재대로 1464 남경빌딩 3층</span>
+            </div>
+            <div class="location-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>02-6072-0833</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">무료 상담을 신청하세요</h2>
+      <p class="cta-desc">유베이스의 체계적인 관리 시스템을 직접 경험해보세요. 무료 1일 체험도 가능합니다.</p>
+      <div class="cta-buttons">
+        <a href="https://pf.kakao.com/" target="_blank" class="btn btn-primary" style="background:#FEE500;color:#3C1E1E;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3c-5.2 0-9.4 3.3-9.4 7.4 0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.5.5.3l4.7-3.1c.3 0 .7.1 1 .1 5.2 0 9.4-3.3 9.4-7.4S17.2 3 12 3z"/></svg>
+          카카오톡 상담
+        </a>
+        <a href="tel:02-6072-0833" class="btn btn-primary">
+          📞 전화 상담
+        </a>
+      </div>
+      <p class="cta-phone">02-6072-0833</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span>UBASE</span>
+          <p>수험생 전문 관리형 독서실<br>공부습관을 100% 달라지게 만드는 환경<br><br>대표번호: 02-6072-0833<br>직원 상주 시간: 매일 08:00 ~ 01:30</p>
+        </div>
+        <div class="footer-col">
+          <h4>바로가기</h4>
+          <a href="#about">유베이스 소개</a>
+          <a href="#system">관리 시스템</a>
+          <a href="#mentoring">멘토링</a>
+          <a href="#facility">시설 안내</a>
+          <a href="#timetable">시간표</a>
+        </div>
+        <div class="footer-col">
+          <h4>지점 안내</h4>
+          <a href="#location">광장점</a>
+          <a href="#location">강동점</a>
+          <a href="#contact">상담 신청</a>
+          <a href="https://blog.naver.com/ubasegangdong" target="_blank">블로그</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 UBASE. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT BUTTON -->
+  <button class="chatbot-btn" id="chatbotBtn" aria-label="AI 상담">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
