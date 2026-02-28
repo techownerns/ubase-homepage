@@ -1,56 +1,60 @@
-// Navigation scroll effect
+// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Mobile menu toggle
-const mobileToggle = document.getElementById('mobileToggle');
+// Mobile toggle
+const toggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
-mobileToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  toggle.classList.toggle('active');
 });
-
-// Close mobile menu on link click
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-
-// Scroll reveal animation
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    toggle.classList.remove('active');
   });
+});
+
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
 }, { threshold: 0.15 });
+revealEls.forEach(el => revealObs.observe(el));
 
-reveals.forEach(el => revealObserver.observe(el));
+// Number count-up animation
+const numberEls = document.querySelectorAll('.number-value');
+const numberObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isZero = el.dataset.isZero === 'true';
 
-// Hero video handling
-const heroVideo = document.getElementById('heroVideo');
-const heroFallback = document.getElementById('heroFallback');
-const videoSrc = heroVideo.querySelector('source').src;
+      if (isZero) {
+        el.textContent = '0' + suffix;
+        numberObs.unobserve(el);
+        return;
+      }
 
-if (videoSrc && videoSrc !== window.location.href) {
-  heroVideo.style.display = 'block';
-  heroFallback.style.display = 'none';
-  heroVideo.load();
-}
+      let current = 0;
+      const duration = 1500;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.round(current) + suffix;
+      }, 16);
 
-// Chatbot button (placeholder)
-document.getElementById('chatbotBtn').addEventListener('click', () => {
-  alert('AI 챗봇은 추후 연동됩니다.');
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      numberObs.unobserve(el);
     }
   });
-});
+}, { threshold: 0.5 });
+numberEls.forEach(el => numberObs.observe(el));
