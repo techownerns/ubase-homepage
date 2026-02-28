@@ -19,7 +19,7 @@ navLinks.querySelectorAll('a').forEach(a => {
 });
 
 // Reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-fade');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
 }, { threshold: 0.15 });
