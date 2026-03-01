@@ -204,3 +204,17 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', initNaverMaps);
 }
+
+// 멘토 경제학과 텍스트 반복 전환
+(function(){
+  var univ=document.getElementById('parkUniv');
+  if(!univ) return;
+  var cycle=8000;
+  function run(){
+    univ.style.transition='none';univ.style.opacity='0';
+    setTimeout(function(){univ.style.transition='opacity 0.5s ease';univ.style.opacity='1';},cycle*0.25);
+    setTimeout(function(){univ.style.transition='opacity 0.5s ease';univ.style.opacity='0';},cycle*0.85);
+  }
+  run();
+  setInterval(run,cycle);
+})();
