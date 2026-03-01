@@ -158,6 +158,21 @@ const numberObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 numberEls.forEach(el => numberObs.observe(el));
 
+// ===== SYSTEM STEP VIDEO AUTOPLAY =====
+(function() {
+  const videos = document.querySelectorAll('.system-step-video video');
+  const videoObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.play();
+      } else {
+        e.target.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+  videos.forEach(v => videoObs.observe(v));
+})();
+
 // ===== NAVER MAP (안전가드 포함) =====
 function makeMapByAddress(mapId, address, title) {
   if (typeof naver === 'undefined' || !naver.maps) return;
