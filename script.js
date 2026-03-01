@@ -31,8 +31,9 @@ const numberObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       const el = e.target;
-      const target = parseInt(el.dataset.target);
+      const target = parseFloat(el.dataset.target);
       const suffix = el.dataset.suffix || '';
+      const decimal = parseInt(el.dataset.decimal) || 0;
       const isZero = el.dataset.isZero === 'true';
 
       if (isZero) {
@@ -50,7 +51,7 @@ const numberObs = new IntersectionObserver((entries) => {
           current = target;
           clearInterval(timer);
         }
-        el.textContent = Math.round(current) + suffix;
+        el.textContent = (decimal > 0 ? current.toFixed(decimal) : Math.round(current)) + suffix;
       }, 16);
 
       numberObs.unobserve(el);
