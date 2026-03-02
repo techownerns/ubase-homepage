@@ -205,7 +205,7 @@ if (document.readyState === 'complete') {
   window.addEventListener('load', initNaverMaps);
 }
 
-// ===== 멘토 카드 반복 사이클 (공통) =====
+// ===== 멘토 카드 1회 출력 =====
 (function(){
   var cards=document.querySelectorAll('.mentor-profile-card');
   cards.forEach(function(card){
@@ -216,34 +216,14 @@ if (document.readyState === 'complete') {
     var univ=card.querySelector('.mentor-cycle-univ');
     if(!video||!logo||!dept||!univ) return;
 
-    function resetEl(el){
-      el.style.animation='none';
-      el.offsetHeight;
-    }
+    logo.style.animation='logoIntro 2.8s ease-in-out forwards';
+    logoImg.style.animation='logoSpin 2.4s ease-in-out forwards';
+    dept.style.animation='deptIntro 2.8s ease-in-out forwards';
 
-    function runCycle(){
-      video.style.opacity='0';
-      univ.style.transition='none';univ.style.opacity='0';
-      resetEl(logo);resetEl(logoImg);resetEl(dept);
-
-      logo.style.animation='logoIntro 2.5s ease-in-out forwards';
-      logoImg.style.animation='logoSpin 2s ease-in-out forwards';
-      dept.style.animation='deptIntro 2.5s ease-in-out forwards';
-
-      setTimeout(function(){
-        video.currentTime=0;
-        video.style.opacity='1';
-        video.play();
-        univ.style.transition='opacity 0.5s ease';univ.style.opacity='1';
-      },2000);
-
-      video.onended=function(){
-        video.style.opacity='0';
-        univ.style.transition='opacity 0.5s ease';univ.style.opacity='0';
-        setTimeout(runCycle,1500);
-      };
-    }
-
-    runCycle();
+    setTimeout(function(){
+      video.currentTime=0;
+      video.style.opacity='1';
+      univ.style.transition='opacity 0.5s ease';univ.style.opacity='1';
+    },2400);
   });
 })();
