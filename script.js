@@ -49,8 +49,8 @@ navLinks.querySelectorAll('a').forEach(a => {
 
   heroVideo.addEventListener('timeupdate',function(){
     var t=heroVideo.currentTime;
-    if(t>=9.5){
-      heroVideo.style.objectPosition='75% center';
+    if(t>=14){
+      heroVideo.style.objectPosition='70% center';
     }else{
       heroVideo.style.objectPosition='center center';
     }
