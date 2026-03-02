@@ -50,7 +50,7 @@ navLinks.querySelectorAll('a').forEach(a => {
   heroVideo.addEventListener('timeupdate',function(){
     var t=heroVideo.currentTime;
     if(t>=9.5){
-      heroVideo.style.objectPosition='left center';
+      heroVideo.style.objectPosition='right center';
     }else{
       heroVideo.style.objectPosition='center center';
     }
