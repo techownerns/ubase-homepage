@@ -19,12 +19,12 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">소개</a></li>
-        <li><a href="#numbers">핵심 수치</a></li>
         <li><a href="#system">관리시스템</a></li>
-        <li><a href="#parent">학부모</a></li>
         <li><a href="#ai">AI 관리</a></li>
         <li><a href="#facility">시설</a></li>
+        <li><a href="#mentoring">멘토링</a></li>
         <li><a href="#timetable">시간표</a></li>
+        <li><a href="#parent">학부모</a></li>
         <li><a href="#reviews">후기</a></li>
         <li><a href="#contact" class="nav-cta">상담 신청</a></li>
       </ul>
@@ -52,23 +52,25 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="section" id="about">
+  <section class="section section-alt" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="reveal-up">
-          <h2 class="section-title">자율에 맡기는 순간,<br>성적은 흔들립니다</h2>
-          <p class="about-philosophy">
-            상위권은 <strong>'의지'로 공부하지 않습니다. 통제된 환경에서 반복되는 시스템으로 성적을 만듭니다.</strong>
-            학습에 방해되는 요소들을 사전에 차단하여, 꾸준히 학습을 이어나갈 수 있는 환경을 제공합니다.
-          </p>
-          <div class="about-float-card glass-card">
-            <p class="float-title">독학관리시스템의 새로운 변화</p>
-            <p>IT 시스템으로 이중 점검하여 사람의 실수까지 보완하는 체계적 관리</p>
+      <div class="reveal">
+        <h2 class="section-title">우리 아이, 정말 공부하고 있을까요?</h2>
+        <div class="about-stats">
+          <div class="about-stat-item">
+            <span class="about-stat-num">4시간 39분</span>
+            <span class="about-stat-desc">고등학생 하루 평균 스마트폰 사용시간</span>
+          </div>
+          <div class="about-stat-item">
+            <span class="about-stat-num">40%</span>
+            <span class="about-stat-desc">스마트폰 과의존 위험군 비율</span>
+          </div>
+          <div class="about-stat-item">
+            <span class="about-stat-num">42.3%</span>
+            <span class="about-stat-desc">평소 스트레스를 느끼는 중고등학생</span>
           </div>
         </div>
-        <div class="about-visual reveal-up" style="transition-delay:0.15s">
-          <div class="about-img-placeholder" id="aboutImg">시설 사진</div>
-        </div>
+        <p class="about-hook">의지로 버티는 수험생활, 대부분 무너집니다.<br>유베이스는 <strong>환경으로 통제</strong>합니다.</p>
       </div>
     </div>
   </section>
@@ -196,38 +198,6 @@
     </div>
   </section>
 
-  <!-- PARENT -->
-  <section class="section section-alt" id="parent">
-    <div class="container">
-      <div class="reveal-up">
-        <h2 class="section-title">학부모님이 직접 확인하십시오</h2>
-        <p class="section-desc">아이가 제대로 공부하고 있는지, 더 이상 물어보지 않아도 됩니다.</p>
-      </div>
-      <div class="ai-grid">
-        <div class="ai-card glass-card tilt-card reveal-up">
-          <div class="ai-icon tilt-float">📲</div>
-          <h3>입실·퇴실 실시간 알림</h3>
-          <p>아이가 독서실에 들어오고 나갈 때마다 알림톡이 발송됩니다. 언제 왔는지, 언제 갔는지 매번 물어볼 필요가 없습니다.</p>
-        </div>
-        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.1s">
-          <div class="ai-icon tilt-float">📊</div>
-          <h3>순공시간 리포트</h3>
-          <p>이번 달 총 학습시간, 일별 공부량을 그래프로 확인할 수 있습니다. 숫자로 보면 아이의 노력이 보입니다.</p>
-        </div>
-        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.2s">
-          <div class="ai-icon tilt-float">⚠️</div>
-          <h3>지각·결석 즉시 알림</h3>
-          <p>무단결석, 지각 발생 시 학부모에게 즉시 연락됩니다. 모르고 지나가는 일이 없습니다.</p>
-        </div>
-        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.3s">
-          <div class="ai-icon tilt-float">📋</div>
-          <h3>상벌점·출결 투명 공개</h3>
-          <p>벌점 내역, 교시별 출결 현황을 학부모 계정에서 직접 확인할 수 있습니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- AI MANAGEMENT -->
   <section class="section" id="ai">
     <div class="container">
@@ -237,25 +207,21 @@
       </div>
       <div class="ai-grid">
         <div class="ai-card glass-card tilt-card reveal-up">
-          <div class="ai-badge">Coming Soon</div>
           <div class="ai-icon tilt-float">📞</div>
           <h3>AI 자동 연락</h3>
           <p>지각·무단결석 감지 시 AI가 즉시 학생에게 등원 안내 연락을 실행합니다.</p>
         </div>
         <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.1s">
-          <div class="ai-badge">Coming Soon</div>
           <div class="ai-icon tilt-float">📊</div>
           <h3>출결 패턴 감지</h3>
           <p>학생의 출결 데이터를 AI가 분석하여 이상 패턴 발견 시 상담을 연결합니다.</p>
         </div>
         <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.2s">
-          <div class="ai-badge">Coming Soon</div>
           <div class="ai-icon tilt-float">🎙️</div>
           <h3>상담 내용 AI 분석</h3>
           <p>멘토 상담 내용을 AI가 요약·분석하여 학부모에게 리포트로 전달합니다.</p>
         </div>
         <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.3s">
-          <div class="ai-badge">Coming Soon</div>
           <div class="ai-icon tilt-float">📋</div>
           <h3>생활현황 AI 리포트</h3>
           <p>학생의 학습·생활 데이터를 종합 분석하여 학부모에게 정기 리포트를 발송합니다.</p>
@@ -264,41 +230,57 @@
     </div>
   </section>
 
-  <!-- MENTORING -->
-  <section class="section section-alt" id="mentoring">
+  <!-- FACILITY -->
+  <section class="section section-alt" id="facility">
     <div class="container">
-      <div class="mentor-grid">
-        <div class="mentor-visual reveal-up">
-          <div class="about-img-placeholder" id="mentorImg">멘토링 사진</div>
-        </div>
-        <div class="reveal-up" style="transition-delay:0.15s">
-          <h2 class="section-title">수능 백분위 99%<br>검증된 멘토진</h2>
-          <p class="section-desc" style="margin-bottom:32px;">질의전담 멘토는 담당과목 수능 백분위 99%로 철저하게 검증된 실력이 보장됩니다.</p>
-          <div class="mentor-features">
-            <div class="mentor-feature">
-              <div class="mentor-feature-num">01</div>
-              <div><h4>오프라인 질의응답</h4><p>학생 1명당 하루 최대 1시간 대면 질의가 가능하며, 원내 상담실에서 진행됩니다.</p></div>
-            </div>
-            <div class="mentor-feature">
-              <div class="mentor-feature-num">02</div>
-              <div><h4>사설 모의고사 원내 응시</h4><p>대성 더 프리미엄 전국 모의고사를 실전과 동일한 수능시간표로 응시할 수 있습니다.</p></div>
-            </div>
-            <div class="mentor-feature">
-              <div class="mentor-feature-num">03</div>
-              <div><h4>유베이스 학습 리포트</h4><p>순찰결과, 순공시간, 출석위반내역, 휴대폰 제출 검사를 데이터로 분석합니다.</p></div>
-            </div>
-          </div>
-        </div>
+      <div class="reveal-up">
+        <h2 class="section-title">집중을 강제하는 설계된 공간</h2>
+        <p class="section-desc">높은 층고, 자연 채광, 시디즈 의자. 학습 능률을 최적화하는 사소한 부분까지 고민했습니다.</p>
+      </div>
+      <div class="facility-features">
+        <div class="fac-feature glass-card tilt-card reveal-up"><div class="fac-feature-icon tilt-float">🪑</div><h4>시디즈 의자</h4><p>전 좌석 시디즈 의자 구비</p></div>
+        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.1s"><div class="fac-feature-icon tilt-float">🌬️</div><h4>세스코 공기질 케어</h4><p>공기청정기·살균기·에어제닉</p></div>
+        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.2s"><div class="fac-feature-icon tilt-float">🖨️</div><h4>프린터 무료 이용</h4><p>1일 최대 10장 무료</p></div>
+        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.3s"><div class="fac-feature-icon tilt-float">🔒</div><h4>캡스 보안</h4><p>CCTV 실시간 관제 + 비상출동</p></div>
+      </div>
+      <div class="facility-gallery reveal-up" style="margin-top:48px">
+        <div class="facility-gallery-track" id="facilityGallery"></div>
       </div>
     </div>
   </section>
 
-  <!-- MENTOR PROFILES -->
-  <section class="section section-dark" id="mentor-profiles">
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
+    <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+    <div class="lightbox-spinner" id="lightboxSpinner"></div>
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+    <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+  </div>
+
+  <!-- MENTORING -->
+  <section class="section" id="mentoring">
     <div class="container">
       <div class="reveal-up">
-        <h2 class="section-title" style="color:#fff;">유베이스와 함께하는 멘토진</h2>
-        <p class="section-desc" >출결부터 학습태도, 환경까지. 사람과 시스템이 함께 관리합니다.</p>
+        <h2 class="section-title">수능 백분위 99% 검증된 멘토진</h2>
+        <p class="section-desc">질의전담 멘토는 담당과목 수능 백분위 99%로 철저하게 검증된 실력이 보장됩니다.</p>
+      </div>
+      <div class="mentor-features" style="margin-bottom:48px">
+        <div class="mentor-feature reveal-up">
+          <div class="mentor-feature-num">01</div>
+          <div><h4>오프라인 질의응답</h4><p>학생 1명당 하루 최대 1시간 대면 질의가 가능하며, 원내 상담실에서 진행됩니다.</p></div>
+        </div>
+        <div class="mentor-feature reveal-up">
+          <div class="mentor-feature-num">02</div>
+          <div><h4>사설 모의고사 원내 응시</h4><p>대성 더 프리미엄 전국 모의고사를 실전과 동일한 수능시간표로 응시할 수 있습니다.</p></div>
+        </div>
+        <div class="mentor-feature reveal-up">
+          <div class="mentor-feature-num">03</div>
+          <div><h4>유베이스 학습 리포트</h4><p>순찰결과, 순공시간, 출석위반내역, 휴대폰 제출 검사를 데이터로 분석합니다.</p></div>
+        </div>
       </div>
       <div class="mentor-profiles-grid">
         <div class="mentor-profile-card reveal-up">
@@ -350,37 +332,6 @@
     </div>
   </section>
 
-  <!-- FACILITY -->
-  <section class="section" id="facility">
-    <div class="container">
-      <div class="reveal-up">
-        <h2 class="section-title">집중을 강제하는 설계된 공간</h2>
-        <p class="section-desc">높은 층고, 자연 채광, 시디즈 의자. 학습 능률을 최적화하는 사소한 부분까지 고민했습니다.</p>
-      </div>
-      <div class="facility-features">
-        <div class="fac-feature glass-card tilt-card reveal-up"><div class="fac-feature-icon tilt-float">🪑</div><h4>시디즈 의자</h4><p>전 좌석 시디즈 의자 구비</p></div>
-        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.1s"><div class="fac-feature-icon tilt-float">🌬️</div><h4>세스코 공기질 케어</h4><p>공기청정기·살균기·에어제닉</p></div>
-        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.2s"><div class="fac-feature-icon tilt-float">🖨️</div><h4>프린터 무료 이용</h4><p>1일 최대 10장 무료</p></div>
-        <div class="fac-feature glass-card tilt-card reveal-up" style="transition-delay:0.3s"><div class="fac-feature-icon tilt-float">🔒</div><h4>캡스 보안</h4><p>CCTV 실시간 관제 + 비상출동</p></div>
-      </div>
-      <div class="facility-gallery reveal-up" style="margin-top:48px">
-        <div class="facility-gallery-track" id="facilityGallery"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
-    <button class="lightbox-next" id="lightboxNext">&#10095;</button>
-    <div class="lightbox-spinner" id="lightboxSpinner"></div>
-    <img class="lightbox-img" id="lightboxImg" alt="">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-    <div class="lightbox-counter" id="lightboxCounter"></div>
-    <div class="lightbox-thumbs" id="lightboxThumbs"></div>
-  </div>
-
   <!-- TIMETABLE -->
   <section class="section" id="timetable">
     <div class="container">
@@ -418,8 +369,40 @@
     </div>
   </section>
 
+  <!-- PARENT -->
+  <section class="section section-alt" id="parent">
+    <div class="container">
+      <div class="reveal-up">
+        <h2 class="section-title">학부모님이 직접 확인하십시오</h2>
+        <p class="section-desc">아이가 제대로 공부하고 있는지, 더 이상 물어보지 않아도 됩니다.</p>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-card glass-card tilt-card reveal-up">
+          <div class="ai-icon tilt-float">📲</div>
+          <h3>입실·퇴실 실시간 알림</h3>
+          <p>아이가 독서실에 들어오고 나갈 때마다 알림톡이 발송됩니다. 언제 왔는지, 언제 갔는지 매번 물어볼 필요가 없습니다.</p>
+        </div>
+        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.1s">
+          <div class="ai-icon tilt-float">📊</div>
+          <h3>순공시간 리포트</h3>
+          <p>이번 달 총 학습시간, 일별 공부량을 그래프로 확인할 수 있습니다. 숫자로 보면 아이의 노력이 보입니다.</p>
+        </div>
+        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.2s">
+          <div class="ai-icon tilt-float">⚠️</div>
+          <h3>지각·결석 즉시 알림</h3>
+          <p>무단결석, 지각 발생 시 학부모에게 즉시 연락됩니다. 모르고 지나가는 일이 없습니다.</p>
+        </div>
+        <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.3s">
+          <div class="ai-icon tilt-float">📋</div>
+          <h3>상벌점·출결 투명 공개</h3>
+          <p>벌점 내역, 교시별 출결 현황을 학부모 계정에서 직접 확인할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- REVIEWS -->
-  <section class="section section-alt" id="reviews">
+  <section class="section" id="reviews">
     <div class="container">
       <div class="reveal-up">
         <h2 class="section-title">재원생·학부모 후기</h2>
@@ -494,13 +477,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand"><span>UBASE</span><p>수험생 전문 관리형 독서실<br>의지는 소모됩니다. 환경은 남습니다.<br><br>대표번호: 02-6072-0833<br>직원 상주: 매일 08:00 ~ 01:30</p></div>
-        <div class="footer-col"><h4>바로가기</h4><a href="#about">소개</a><a href="#system">관리 시스템</a><a href="#compare">비교</a><a href="#ai">AI 관리</a><a href="#facility">시설</a></div>
-        <div class="footer-col"><h4>지점</h4><a href="#location">광장점</a><a href="#location">강동점</a><a href="#contact">상담 신청</a><a href="https://blog.naver.com/ubasegangdong" target="_blank">블로그</a></div>
-      </div>
-      <div class="footer-bottom">© 2026 UBASE. All rights reserved.</div>
+    <div class="container" style="display:flex;justify-content:center;align-items:center;gap:20px;padding:20px 0;font-size:13px;color:rgba(255,255,255,.6)">
+      <span>운영시간 매일 08:00 ~ 01:30</span>
+      <a href="https://blog.naver.com/ubasegangdong" target="_blank" style="color:rgba(255,255,255,.6)">블로그</a>
+      <span>© 2026 UBASE</span>
     </div>
   </footer>
 
