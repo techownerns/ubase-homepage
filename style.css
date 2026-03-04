@@ -267,8 +267,8 @@ img{max-width:100%;display:block}
 .slider-wrap:hover .slider-track,.slider-wrap.dragging .slider-track{animation-play-state:paused}
 @keyframes slideScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .rs-card{
-  flex:0 0 420px;background:var(--white);border-radius:20px;
-  padding:36px 30px 30px;position:relative;overflow:hidden;
+  flex:0 0 340px;background:var(--white);border-radius:20px;
+  padding:24px 24px 22px;position:relative;overflow:hidden;
   box-shadow:0 2px 16px rgba(0,0,0,0.06);
   transition:transform 0.35s ease,box-shadow 0.35s ease;cursor:default;
   user-select:none;
