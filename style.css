@@ -277,7 +277,7 @@ img{max-width:100%;display:block}
 .rs-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,0.10)}
 .rs-uni{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .rs-uni-logo{width:30px;height:30px;object-fit:contain;flex-shrink:0}
-.rs-uni-name{font-size:13px;font-weight:600;color:var(--gray-600);flex:1}
+.rs-uni-name{font-size:clamp(28px,4vw,44px);font-weight:600;color:var(--gray-600);flex:1}
 .rs-year{font-size:12px;font-weight:700;color:var(--accent);background:rgba(59,109,245,0.08);padding:3px 10px;border-radius:20px;white-space:nowrap}
 .rs-headline{font-size:19px;font-weight:800;color:var(--primary);line-height:1.4;margin-bottom:12px}
 .rs-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:18px}
