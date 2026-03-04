@@ -386,7 +386,7 @@ const galleryItems = [
   {src:'facility-16.jpg',cap:'CCTV 관제'},
   {src:'facility-17.jpg',cap:'외관'}
 ];
-const blogBase = 'https://fzekarlxthupgcbfrasy.supabase.co/storage/v1/object/public/website/blog-images/';
+const blogBase = 'https://fzekarlxthupgcbfrasy.supabase.co/storage/v1/render/image/public/website/blog-images/';
 const blogImages = [
   {src:'b01_01.jpg'},{src:'b01_02.jpg'},{src:'b01_03.jpg'},{src:'b01_04.jpg'},{src:'b01_05.jpg'},
   {src:'b02_01.jpg'},{src:'b02_02.jpg'},{src:'b02_03.jpg'},{src:'b02_04.jpg'},{src:'b02_05.jpg'},
@@ -418,7 +418,8 @@ function initGalleryTrack(trackEl, items, direction){
     const d = document.createElement('div');
     d.className = 'fgal-slide';
     const fullSrc = item.base ? item.base + item.src : defined + item.src;
-    d.innerHTML = `<img src="${fullSrc}" alt="${item.cap||''}" loading="lazy">${item.cap ? '<span class="fgal-cap">'+item.cap+'</span>' : ''}`;
+    const thumbSrc = fullSrc.includes('/render/image/') ? fullSrc + '?width=400&height=280&resize=cover&quality=75' : fullSrc;
+    d.innerHTML = `<img src="${thumbSrc}" alt="${item.cap||''}" loading="lazy">${item.cap ? '<span class="fgal-cap">'+item.cap+'</span>' : ''}`;
     trackEl.appendChild(d);
   });
   let speed = 0.5 * direction;
@@ -469,7 +470,8 @@ function initGalleryTrack(trackEl, items, direction){
 }
 
 /* 시설 이미지 + 블로그 이미지 합치기 */
-const facilityFull = galleryItems.map(i=>({...i, base: defined}));
+const facilityRender = defined.replace('/object/','/render/image/');
+const facilityFull = galleryItems.map(i=>({...i, base: facilityRender}));
 const blogFull = blogImages.map(i=>({...i, base: blogBase, cap:''}));
 const topItems = [...facilityFull, ...blogFull.slice(0, Math.ceil(blogFull.length/2))];
 const bottomItems = [...blogFull.slice(Math.ceil(blogFull.length/2)), ...facilityFull];
