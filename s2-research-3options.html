@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UBASE S2 Research — 3가지 UX 비교</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#1A2151;--primary-light:#2D3A7B;--accent:#3B6DF5;
+      --accent-glow:rgba(59,109,245,0.4);--dark:#0A0E1A;
+      --gray-50:#F5F6FA;--gray-100:#E4E8F1;--gray-200:#C8CEDF;
+      --gray-400:#8E95A9;--gray-600:#5A607A;--gray-800:#2A2F45;
+      --white:#fff;--radius:16px;
+      --shadow:0 8px 32px rgba(10,14,26,0.12);
+      --transition:0.4s cubic-bezier(0.25,0.1,0.25,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,sans-serif;color:var(--gray-800);line-height:1.7;background:var(--gray-50)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* ===== TOP BANNER ===== */
+    .top-banner{
+      position:sticky;top:0;z-index:100;
+      background:var(--primary);color:var(--white);
+      text-align:center;padding:14px 20px;
+      font-size:15px;font-weight:700;letter-spacing:0.5px;
+      box-shadow:0 2px 12px rgba(0,0,0,0.2);
+    }
+    .top-banner span{color:var(--accent);margin:0 2px}
+
+    /* ===== OPTION DIVIDER ===== */
+    .option-divider{
+      background:linear-gradient(135deg,var(--accent),#6B8DF7);
+      color:var(--white);text-align:center;
+      padding:48px 20px;
+    }
+    .option-divider h2{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:8px}
+    .option-divider p{font-size:16px;opacity:0.85}
+
+    /* ===== COMMON SECTION ===== */
+    .section{padding:80px 20px;max-width:1200px;margin:0 auto}
+    .s2-header{text-align:center;margin-bottom:48px}
+    .s2-label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .s2-title{font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.3;margin-bottom:12px;letter-spacing:-0.02em;color:var(--primary)}
+    .s2-sub{font-size:17px;color:var(--gray-600);line-height:1.8}
+    .hook{text-align:center;font-size:18px;color:#444;margin-top:48px;line-height:1.8}
+    .hook strong{color:var(--primary)}
+
+    /* ===== OPTION A — 3+4 위계 분리 ===== */
+    .research-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:48px}
+    .research-card{
+      background:var(--white);border-radius:20px;
+      padding:36px 32px 32px;position:relative;overflow:hidden;
+      box-shadow:0 2px 16px rgba(0,0,0,0.06);
+      transition:transform 0.35s ease,box-shadow 0.35s ease;
+    }
+    .research-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#6B8DF7)}
+    .research-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,0.1)}
+    .rc-uni{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+    .rc-uni-logo{width:32px;height:32px;object-fit:contain;flex-shrink:0}
+    .rc-uni-name{font-size:13px;font-weight:600;color:var(--gray-600);flex:1}
+    .rc-year{font-size:12px;font-weight:700;color:var(--accent);background:rgba(59,109,245,0.08);padding:3px 10px;border-radius:20px;white-space:nowrap}
+    .rc-headline{font-size:20px;font-weight:800;color:var(--primary);line-height:1.4;margin-bottom:14px}
+    .rc-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+    .rc-source{font-size:12px;color:var(--gray-400);line-height:1.6}
+    .rc-source a{color:var(--accent);font-weight:600}
+    .rc-source a:hover{color:#2a5ce0}
+
+    .support-title{font-size:14px;font-weight:700;color:var(--gray-400);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;padding-left:4px}
+    .support-list{display:flex;flex-direction:column;gap:8px}
+    .support-item{
+      display:flex;align-items:center;gap:16px;
+      padding:14px 20px;background:var(--white);border-radius:12px;
+      border:1px solid var(--gray-100);
+      transition:background 0.25s,border-color 0.25s,transform 0.25s;
+    }
+    .support-item:hover{background:rgba(59,109,245,0.04);border-color:rgba(59,109,245,0.15);transform:translateX(4px)}
+    .si-uni{font-size:13px;font-weight:700;color:var(--primary);min-width:140px;flex-shrink:0}
+    .si-desc{font-size:14px;color:var(--gray-600);flex:1;line-height:1.5}
+    .si-year{font-size:12px;font-weight:600;color:var(--gray-400);min-width:40px;text-align:right;flex-shrink:0}
+    .si-link{font-size:12px;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0}
+
+    /* ===== OPTION B — 카테고리 탭 ===== */
+    .tab-nav{display:flex;gap:8px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+    .tab-btn{
+      padding:12px 28px;border-radius:40px;border:1.5px solid var(--gray-200);
+      background:var(--white);font-size:15px;font-weight:600;color:var(--gray-600);
+      cursor:pointer;transition:all 0.25s;
+    }
+    .tab-btn:hover{border-color:var(--accent);color:var(--accent)}
+    .tab-btn.active{background:var(--accent);color:var(--white);border-color:var(--accent)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+    .tab-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+    .tab-card{
+      background:var(--white);border-radius:20px;padding:32px 28px;
+      box-shadow:0 2px 16px rgba(0,0,0,0.06);position:relative;overflow:hidden;
+      transition:transform 0.3s,box-shadow 0.3s;
+    }
+    .tab-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#6B8DF7)}
+    .tab-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.1)}
+    .tc-uni{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .tc-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0}
+    .tc-name{font-size:13px;font-weight:600;color:var(--gray-600);flex:1}
+    .tc-year{font-size:11px;font-weight:700;color:var(--accent);background:rgba(59,109,245,0.08);padding:2px 10px;border-radius:20px}
+    .tc-headline{font-size:18px;font-weight:800;color:var(--primary);line-height:1.4;margin-bottom:10px}
+    .tc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:16px}
+    .tc-source{font-size:12px;color:var(--gray-400);line-height:1.5}
+    .tc-source a{color:var(--accent);font-weight:600}
+
+    /* ===== OPTION C — 타임라인 ===== */
+    .timeline{position:relative;padding:20px 0}
+    .timeline::before{
+      content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;
+      background:linear-gradient(to bottom,var(--accent),#6B8DF7);
+      transform:translateX(-50%);border-radius:3px;
+    }
+    .tl-item{
+      position:relative;width:50%;padding:0 48px 48px;
+    }
+    .tl-item:nth-child(odd){left:0;text-align:right;padding-right:48px;padding-left:20px}
+    .tl-item:nth-child(even){left:50%;text-align:left;padding-left:48px;padding-right:20px}
+    .tl-dot{
+      position:absolute;top:8px;width:16px;height:16px;border-radius:50%;
+      background:var(--accent);border:3px solid var(--white);
+      box-shadow:0 0 0 3px var(--accent);z-index:2;
+    }
+    .tl-item:nth-child(odd) .tl-dot{right:-8px}
+    .tl-item:nth-child(even) .tl-dot{left:-8px}
+    .tl-card{
+      background:var(--white);border-radius:20px;padding:28px 24px;
+      box-shadow:0 2px 16px rgba(0,0,0,0.06);text-align:left;
+      transition:transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;
+    }
+    .tl-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#6B8DF7)}
+    .tl-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.1)}
+    .tl-year-badge{
+      display:inline-block;font-size:13px;font-weight:800;color:var(--accent);
+      background:rgba(59,109,245,0.08);padding:4px 14px;border-radius:20px;margin-bottom:14px;
+    }
+    .tl-uni{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+    .tl-uni img{width:24px;height:24px;object-fit:contain}
+    .tl-uni span{font-size:13px;font-weight:600;color:var(--gray-600)}
+    .tl-headline{font-size:18px;font-weight:800;color:var(--primary);line-height:1.4;margin-bottom:10px}
+    .tl-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:14px}
+    .tl-source{font-size:12px;color:var(--gray-400);line-height:1.5}
+    .tl-source a{color:var(--accent);font-weight:600}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1024px){
+      .research-cards{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .section{padding:60px 16px}
+      .research-cards{grid-template-columns:1fr}
+      .support-item{flex-wrap:wrap;gap:8px}
+      .si-uni{min-width:auto}
+      .si-desc{min-width:100%;order:4}
+      .si-year{order:2}.si-link{order:3}
+      .tab-cards{grid-template-columns:1fr}
+      /* Timeline mobile — single column */
+      .timeline::before{left:20px}
+      .tl-item{width:100%;left:0!important;padding:0 20px 36px 52px!important;text-align:left!important}
+      .tl-item:nth-child(odd) .tl-dot,.tl-item:nth-child(even) .tl-dot{left:12px!important;right:auto!important}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">UBASE S2 Research Section — <span>3가지 UX 비교</span></div>
+
+<!-- ============================================================ -->
+<!-- OPTION A -->
+<!-- ============================================================ -->
+<div class="option-divider">
+  <h2>OPTION A</h2>
+  <p>3+4 위계 분리 — 메인 카드 3장 + 보조 논문 바 4줄</p>
+</div>
+
+<div class="section">
+  <div class="s2-header">
+    <span class="s2-label">Research Based</span>
+    <h2 class="s2-title">자율에 맡기는 순간, 합격은 흔들립니다</h2>
+    <p class="s2-sub">하버드 · 스탠퍼드 · 펜실베이니아 등 7개 연구가 증명합니다.<br>의지력이 아닌 환경이 성적을 결정합니다.</p>
+  </div>
+
+  <!-- Main 3 cards -->
+  <div class="research-cards">
+    <div class="research-card">
+      <div class="rc-uni">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/1200px-UPenn_shield_with_banner.svg.png" alt="UPenn" class="rc-uni-logo">
+        <span class="rc-uni-name">University of Pennsylvania</span>
+        <span class="rc-year">2016</span>
+      </div>
+      <div class="rc-headline">환경을 바꾸는 것이<br>의지력보다 효과적이다</div>
+      <p class="rc-desc">휴대폰을 참는 것보다 아예 치우는 것이 낫습니다. 유혹을 의지로 억누르기보다, 환경 자체를 바꾸는 상황적 전략이 충동을 초기 단계에서 차단합니다.</p>
+      <p class="rc-source">Duckworth, A., Gendler, T. & Gross, J. (2016).<br>Perspectives on Psychological Science, 11(1), 35-55<br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4736542/" target="_blank">원문 보기 →</a></p>
+    </div>
+    <div class="research-card">
+      <div class="rc-uni">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/1200px-Harvard_University_coat_of_arms.svg.png" alt="Harvard" class="rc-uni-logo">
+        <span class="rc-uni-name">Harvard Business School</span>
+        <span class="rc-year">2022</span>
+      </div>
+      <div class="rc-headline">외부 환경 전략이<br>목표 달성률을 높인다</div>
+      <p class="rc-desc">의지력으로 버티는 사람보다, 환경을 미리 설계한 사람이 학업·건강·재정 목표 달성률이 더 높습니다. 스스로 통제하려 하지 말고, 통제되는 환경에 들어가야 합니다.</p>
+      <p class="rc-source">Kristal, A. & Zlatev, J. (2022).<br>Harvard Business School Working Paper, 22-033<br><a href="https://www.hbs.edu/ris/download.aspx?name=22-033.pdf" target="_blank">원문 보기 →</a></p>
+    </div>
+    <div class="research-card">
+      <div class="rc-uni">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/1200px-Seal_of_Leland_Stanford_Junior_University.svg.png" alt="Stanford" class="rc-uni-logo">
+        <span class="rc-uni-name">Stanford University</span>
+        <span class="rc-year">2010</span>
+      </div>
+      <div class="rc-headline">의지력은<br>소모되는 자원이다</div>
+      <p class="rc-desc">의지력을 쓸수록 자기통제력은 고갈됩니다. 종단 연구에서 의지력이 고갈된 학생은 미루기가 증가하고 목표 달성이 떨어졌습니다.</p>
+      <p class="rc-source">Job, V., Dweck, C. & Walton, G. (2010).<br>Psychological Science, 21(11), 1686-1693<br><a href="https://pubmed.ncbi.nlm.nih.gov/20876879/" target="_blank">원문 보기 →</a></p>
+    </div>
+  </div>
+
+  <!-- Support 4 bars -->
+  <div class="support-title">관련 연구</div>
+  <div class="support-list">
+    <a class="support-item" href="https://www.journals.uchicago.edu/doi/10.1086/691462" target="_blank">
+      <span class="si-uni">University of Chicago</span>
+      <span class="si-desc">스마트폰이 옆에 있는 것만으로도 인지 자원이 감소한다</span>
+      <span class="si-year">2017</span>
+      <span class="si-link">원문 →</span>
+    </a>
+    <a class="support-item" href="https://link.springer.com/article/10.1007/s10648-019-09465-5" target="_blank">
+      <span class="si-uni">Cognitive Load Theory</span>
+      <span class="si-desc">학습 환경 설계가 인지부하를 줄이고 학습 효율을 높인다</span>
+      <span class="si-year">2019</span>
+      <span class="si-link">원문 →</span>
+    </a>
+    <a class="support-item" href="https://eddesignaward.com/research/wp-content/uploads/2021/12/clever-classrooms-summary-report-of-the-head-the-project_peter-barrett.pdf" target="_blank">
+      <span class="si-uni">University of Salford</span>
+      <span class="si-desc">교실 환경(조명·소음·공간)이 학습 성취도에 직접 영향</span>
+      <span class="si-year">2015</span>
+      <span class="si-link">원문 →</span>
+    </a>
+    <a class="support-item" href="https://s-space.snu.ac.kr/bitstream/10371/110043/1/12.%20%EC%98%A4%EC%9D%B8%EC%88%98_%EC%88%98%EC%A0%95.pdf" target="_blank">
+      <span class="si-uni">아시아교육연구</span>
+      <span class="si-desc">학습 환경과 교육 지원 요인이 대학생 학업성취에 유의미한 영향</span>
+      <span class="si-year">2016</span>
+      <span class="si-link">원문 →</span>
+    </a>
+  </div>
+
+  <p class="hook">유베이스는 의지가 아닌 <strong>환경 설계로 통제</strong>합니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- OPTION B -->
+<!-- ============================================================ -->
+<div class="option-divider">
+  <h2>OPTION B</h2>
+  <p>카테고리 탭 — 3개 카테고리로 7개 논문 분류, 탭 클릭 전환</p>
+</div>
+
+<div class="section">
+  <div class="s2-header">
+    <span class="s2-label">Research Based</span>
+    <h2 class="s2-title">자율에 맡기는 순간, 합격은 흔들립니다</h2>
+    <p class="s2-sub">하버드 · 스탠퍼드 · 펜실베이니아 등 7개 연구가 증명합니다.<br>의지력이 아닌 환경이 성적을 결정합니다.</p>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="tab1">의지력의 한계</button>
+    <button class="tab-btn" data-tab="tab2">환경이 답이다</button>
+    <button class="tab-btn" data-tab="tab3">학습환경 효과</button>
+  </div>
+
+  <!-- Tab 1: 의지력의 한계 -->
+  <div class="tab-panel active" id="tab1">
+    <div class="tab-cards">
+      <div class="tab-card">
+        <div class="tc-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/1200px-Seal_of_Leland_Stanford_Junior_University.svg.png" alt="Stanford" class="tc-logo">
+          <span class="tc-name">Stanford University</span>
+          <span class="tc-year">2010</span>
+        </div>
+        <div class="tc-headline">의지력은 소모되는 자원이다</div>
+        <p class="tc-desc">의지력을 쓸수록 자기통제력은 고갈됩니다. 종단 연구에서 의지력이 고갈된 학생은 미루기가 증가하고 목표 달성이 떨어졌습니다.</p>
+        <p class="tc-source">Job, V., Dweck, C. & Walton, G. (2010). Psychological Science, 21(11)<br><a href="https://pubmed.ncbi.nlm.nih.gov/20876879/" target="_blank">원문 보기 →</a></p>
+      </div>
+      <div class="tab-card">
+        <div class="tc-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/University_of_Chicago_shield.svg/1200px-University_of_Chicago_shield.svg.png" alt="UChicago" class="tc-logo">
+          <span class="tc-name">University of Chicago</span>
+          <span class="tc-year">2017</span>
+        </div>
+        <div class="tc-headline">스마트폰이 옆에 있는 것만으로도 인지 자원이 감소한다</div>
+        <p class="tc-desc">스마트폰의 물리적 존재만으로 가용 인지 자원이 줄어들어, 집중력과 작업 기억 용량이 저하됩니다.</p>
+        <p class="tc-source">Ward, A. et al. (2017). Journal of the Association for Consumer Research<br><a href="https://www.journals.uchicago.edu/doi/10.1086/691462" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 2: 환경이 답이다 -->
+  <div class="tab-panel" id="tab2">
+    <div class="tab-cards">
+      <div class="tab-card">
+        <div class="tc-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/1200px-UPenn_shield_with_banner.svg.png" alt="UPenn" class="tc-logo">
+          <span class="tc-name">University of Pennsylvania</span>
+          <span class="tc-year">2016</span>
+        </div>
+        <div class="tc-headline">환경을 바꾸는 것이 의지력보다 효과적이다</div>
+        <p class="tc-desc">휴대폰을 참는 것보다 아예 치우는 것이 낫습니다. 환경 자체를 바꾸는 상황적 전략이 충동을 초기 단계에서 차단합니다.</p>
+        <p class="tc-source">Duckworth, A., Gendler, T. & Gross, J. (2016). Perspectives on Psychological Science, 11(1)<br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4736542/" target="_blank">원문 보기 →</a></p>
+      </div>
+      <div class="tab-card">
+        <div class="tc-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/1200px-Harvard_University_coat_of_arms.svg.png" alt="Harvard" class="tc-logo">
+          <span class="tc-name">Harvard Business School</span>
+          <span class="tc-year">2022</span>
+        </div>
+        <div class="tc-headline">외부 환경 전략이 목표 달성률을 높인다</div>
+        <p class="tc-desc">의지력으로 버티는 사람보다, 환경을 미리 설계한 사람이 학업·건강·재정 목표 달성률이 더 높습니다.</p>
+        <p class="tc-source">Kristal, A. & Zlatev, J. (2022). Harvard Business School Working Paper, 22-033<br><a href="https://www.hbs.edu/ris/download.aspx?name=22-033.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+      <div class="tab-card">
+        <div class="tc-uni">
+          <span class="tc-name" style="font-size:14px;font-weight:700;color:var(--primary)">Cognitive Load Theory</span>
+          <span class="tc-year">2019</span>
+        </div>
+        <div class="tc-headline">학습 환경 설계가 인지부하를 줄이고 학습 효율을 높인다</div>
+        <p class="tc-desc">외재적 인지부하를 줄이는 환경 설계가 학습자의 작업 기억 효율을 높여 학습 성과를 향상시킵니다.</p>
+        <p class="tc-source">Sweller, J. et al. (2019). Educational Psychology Review<br><a href="https://link.springer.com/article/10.1007/s10648-019-09465-5" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 3: 학습환경 효과 -->
+  <div class="tab-panel" id="tab3">
+    <div class="tab-cards">
+      <div class="tab-card">
+        <div class="tc-uni">
+          <span class="tc-name" style="font-size:14px;font-weight:700;color:var(--primary)">University of Salford</span>
+          <span class="tc-year">2015</span>
+        </div>
+        <div class="tc-headline">교실 환경(조명·소음·공간)이 학습 성취도에 직접 영향</div>
+        <p class="tc-desc">HEAD 프로젝트 결과, 교실의 물리적 환경(자연광, 소음, 색채, 공간 배치)이 학생 학업 성취도에 유의미한 영향을 미칩니다.</p>
+        <p class="tc-source">Barrett, P. et al. (2015). HEAD Project Report<br><a href="https://eddesignaward.com/research/wp-content/uploads/2021/12/clever-classrooms-summary-report-of-the-head-the-project_peter-barrett.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+      <div class="tab-card">
+        <div class="tc-uni">
+          <span class="tc-name" style="font-size:14px;font-weight:700;color:var(--primary)">아시아교육연구</span>
+          <span class="tc-year">2016</span>
+        </div>
+        <div class="tc-headline">학습 환경과 교육 지원 요인이 대학생 학업성취에 유의미한 영향</div>
+        <p class="tc-desc">학습 환경 요인과 교육 지원 변인이 대학생의 학업 성취에 통계적으로 유의미한 영향을 미치는 것으로 확인되었습니다.</p>
+        <p class="tc-source">임이랑, 오인수 (2016). 아시아교육연구, 17(4)<br><a href="https://s-space.snu.ac.kr/bitstream/10371/110043/1/12.%20%EC%98%A4%EC%9D%B8%EC%88%98_%EC%88%98%EC%A0%95.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <p class="hook">유베이스는 의지가 아닌 <strong>환경 설계로 통제</strong>합니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- OPTION C -->
+<!-- ============================================================ -->
+<div class="option-divider">
+  <h2>OPTION C</h2>
+  <p>타임라인 — 2010 → 2022 연도순 세로 타임라인, 좌우 교차</p>
+</div>
+
+<div class="section">
+  <div class="s2-header">
+    <span class="s2-label">Research Based</span>
+    <h2 class="s2-title">자율에 맡기는 순간, 합격은 흔들립니다</h2>
+    <p class="s2-sub">하버드 · 스탠퍼드 · 펜실베이니아 등 7개 연구가 증명합니다.<br>의지력이 아닌 환경이 성적을 결정합니다.</p>
+  </div>
+
+  <div class="timeline">
+    <!-- 2010 — Stanford -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2010</span>
+        <div class="tl-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/1200px-Seal_of_Leland_Stanford_Junior_University.svg.png" alt="Stanford">
+          <span>Stanford University</span>
+        </div>
+        <div class="tl-headline">의지력은 소모되는 자원이다</div>
+        <p class="tl-desc">의지력을 쓸수록 자기통제력은 고갈됩니다. 종단 연구에서 의지력이 고갈된 학생은 미루기가 증가하고 목표 달성이 떨어졌습니다.</p>
+        <p class="tl-source">Job, V., Dweck, C. & Walton, G. (2010). Psychological Science, 21(11)<br><a href="https://pubmed.ncbi.nlm.nih.gov/20876879/" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2015 — Salford -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2015</span>
+        <div class="tl-uni">
+          <span>University of Salford</span>
+        </div>
+        <div class="tl-headline">교실 환경이 학습 성취도에 직접 영향</div>
+        <p class="tl-desc">HEAD 프로젝트 결과, 교실의 물리적 환경(자연광, 소음, 색채, 공간)이 학생 학업 성취도에 유의미한 영향을 미칩니다.</p>
+        <p class="tl-source">Barrett, P. et al. (2015). HEAD Project Report<br><a href="https://eddesignaward.com/research/wp-content/uploads/2021/12/clever-classrooms-summary-report-of-the-head-the-project_peter-barrett.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2016 — UPenn -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2016</span>
+        <div class="tl-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/1200px-UPenn_shield_with_banner.svg.png" alt="UPenn">
+          <span>University of Pennsylvania</span>
+        </div>
+        <div class="tl-headline">환경을 바꾸는 것이 의지력보다 효과적이다</div>
+        <p class="tl-desc">휴대폰을 참는 것보다 아예 치우는 것이 낫습니다. 환경 자체를 바꾸는 상황적 전략이 충동을 초기 단계에서 차단합니다.</p>
+        <p class="tl-source">Duckworth, A., Gendler, T. & Gross, J. (2016). Perspectives on Psychological Science, 11(1)<br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4736542/" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2016 — 아시아교육연구 -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2016</span>
+        <div class="tl-uni">
+          <span>아시아교육연구</span>
+        </div>
+        <div class="tl-headline">학습 환경과 교육 지원 요인이 학업성취에 영향</div>
+        <p class="tl-desc">학습 환경 요인과 교육 지원 변인이 대학생의 학업 성취에 통계적으로 유의미한 영향을 미치는 것으로 확인되었습니다.</p>
+        <p class="tl-source">임이랑, 오인수 (2016). 아시아교육연구, 17(4)<br><a href="https://s-space.snu.ac.kr/bitstream/10371/110043/1/12.%20%EC%98%A4%EC%9D%B8%EC%88%98_%EC%88%98%EC%A0%95.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2017 — Chicago -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2017</span>
+        <div class="tl-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/University_of_Chicago_shield.svg/1200px-University_of_Chicago_shield.svg.png" alt="UChicago">
+          <span>University of Chicago</span>
+        </div>
+        <div class="tl-headline">스마트폰이 옆에 있는 것만으로도 인지 자원이 감소한다</div>
+        <p class="tl-desc">스마트폰의 물리적 존재만으로 가용 인지 자원이 줄어들어, 집중력과 작업 기억 용량이 저하됩니다.</p>
+        <p class="tl-source">Ward, A. et al. (2017). Journal of the Association for Consumer Research<br><a href="https://www.journals.uchicago.edu/doi/10.1086/691462" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2019 — Sweller -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2019</span>
+        <div class="tl-uni">
+          <span>Cognitive Load Theory</span>
+        </div>
+        <div class="tl-headline">학습 환경 설계가 인지부하를 줄이고 학습 효율을 높인다</div>
+        <p class="tl-desc">외재적 인지부하를 줄이는 환경 설계가 학습자의 작업 기억 효율을 높여 학습 성과를 향상시킵니다.</p>
+        <p class="tl-source">Sweller, J. et al. (2019). Educational Psychology Review<br><a href="https://link.springer.com/article/10.1007/s10648-019-09465-5" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+
+    <!-- 2022 — Harvard -->
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="tl-year-badge">2022</span>
+        <div class="tl-uni">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/1200px-Harvard_University_coat_of_arms.svg.png" alt="Harvard">
+          <span>Harvard Business School</span>
+        </div>
+        <div class="tl-headline">외부 환경 전략이 목표 달성률을 높인다</div>
+        <p class="tl-desc">의지력으로 버티는 사람보다, 환경을 미리 설계한 사람이 학업·건강·재정 목표 달성률이 더 높습니다.</p>
+        <p class="tl-source">Kristal, A. & Zlatev, J. (2022). Harvard Business School Working Paper, 22-033<br><a href="https://www.hbs.edu/ris/download.aspx?name=22-033.pdf" target="_blank">원문 보기 →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <p class="hook">유베이스는 의지가 아닌 <strong>환경 설계로 통제</strong>합니다.</p>
+</div>
+
+<script>
+  // Tab switching for Option B
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -188,14 +188,75 @@ img{max-width:100%;display:block}
 .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:3px;text-align:center;z-index:2;will-change:opacity}
 .scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.15);margin:8px auto 0}
 
-/* ===== ABOUT ===== */
+/* ===== ABOUT / RESEARCH ===== */
 .section-alt{background:var(--gray-50,#f8f9fa)}
-.about-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:40px 0}
-.about-stat-item{background:#fff;border-radius:16px;padding:40px 32px;text-align:center;flex:1;min-width:280px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
-.about-stat-item:hover{transform:translateY(-6px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
-.about-stat-icon{display:flex;justify-content:center;margin-bottom:12px}
-.about-stat-num{font-size:20px;font-weight:800;color:var(--primary);display:block;margin-bottom:6px}
-.about-stat-desc{font-size:18px;color:#666;line-height:1.5}
+
+/* S2 Header */
+.s2-header{text-align:center;margin-bottom:48px}
+.s2-label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.s2-sub{font-size:17px;color:var(--gray-600);line-height:1.8;margin-top:8px}
+
+/* Research Cards — 3-column grid */
+.research-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:48px}
+.research-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:36px 32px 32px;
+  box-shadow:0 2px 16px rgba(0,0,0,0.06);
+  transition:transform 0.35s cubic-bezier(0.25,0.1,0.25,1),box-shadow 0.35s ease;
+  position:relative;
+  overflow:hidden;
+}
+.research-card::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),#6B8DF7);
+}
+.research-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 36px rgba(0,0,0,0.1);
+}
+
+/* Card — university row */
+.research-card-uni{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.research-card-uni-logo{width:32px;height:32px;object-fit:contain;flex-shrink:0}
+.research-card-uni-name{font-size:13px;font-weight:600;color:var(--gray-600);flex:1}
+.research-card-year{font-size:12px;font-weight:700;color:var(--accent);background:rgba(59,109,245,0.08);padding:3px 10px;border-radius:20px;white-space:nowrap}
+
+/* Card — content */
+.research-card-headline{font-size:20px;font-weight:800;color:var(--primary);line-height:1.4;margin-bottom:14px}
+.research-card-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.research-card-source{font-size:12px;color:var(--gray-400);line-height:1.6}
+.research-card-source a{color:var(--accent);font-weight:600;transition:color 0.2s}
+.research-card-source a:hover{color:#2a5ce0}
+
+/* Support / related research */
+.research-support{margin-bottom:32px}
+.research-support-title{font-size:14px;font-weight:700;color:var(--gray-400);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;padding-left:4px}
+.support-list{display:flex;flex-direction:column;gap:8px}
+.support-item{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:14px 20px;
+  background:var(--white);
+  border-radius:12px;
+  border:1px solid var(--gray-100);
+  transition:background 0.25s,border-color 0.25s,transform 0.25s;
+}
+.support-item:hover{
+  background:rgba(59,109,245,0.04);
+  border-color:rgba(59,109,245,0.15);
+  transform:translateX(4px);
+}
+.support-uni{font-size:13px;font-weight:700;color:var(--primary);min-width:140px;flex-shrink:0}
+.support-desc{font-size:14px;color:var(--gray-600);flex:1;line-height:1.5}
+.support-year{font-size:12px;font-weight:600;color:var(--gray-400);min-width:40px;text-align:right;flex-shrink:0}
+.support-link{font-size:12px;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0}
+
+/* Hook */
 .about-hook{text-align:center;font-size:18px;color:#444;margin-top:36px;line-height:1.8}
 .about-hook strong{color:var(--primary)}
 
@@ -402,6 +463,7 @@ img{max-width:100%;display:block}
   .mgmt-grid,.ai-grid{grid-template-columns:repeat(2,1fr)}
   .numbers-grid{grid-template-columns:repeat(3,1fr)}
   .facility-features{grid-template-columns:repeat(2,1fr)}
+  .research-cards{grid-template-columns:repeat(2,1fr)}
   .timetable-wrap{grid-template-columns:1fr}
   .mentor-grid{gap:48px}
 }
@@ -421,8 +483,12 @@ img{max-width:100%;display:block}
   .hero-year{font-size:36px}
   .number-value{font-size:48px}
   .mentor-grid{gap:32px}
-  .about-stat-item{min-width:0;width:100%}
-  .about-stat-num{font-size:26px}
+  .research-cards{grid-template-columns:1fr}
+  .support-item{flex-wrap:wrap;gap:8px}
+  .support-uni{min-width:auto}
+  .support-desc{min-width:100%;order:4}
+  .support-year{order:2}
+  .support-link{order:3}
   /* sticky CTA 있을때 하단 여백 */
   .footer{padding-bottom:90px}
 }
