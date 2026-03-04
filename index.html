@@ -232,7 +232,7 @@
   <section class="section section-alt" id="system">
     <div class="container">
       <div class="reveal-up">
-        <h2 class="section-title">합격을 설계하는 6단계 통제 시스템</h2>
+        <h2 class="section-title">합격을 설계하는 통제 시스템</h2>
         <p class="section-desc" >출결부터 학습태도, 환경까지. 사람과 시스템이 함께 관리합니다.</p>
       </div>
     </div>
@@ -306,6 +306,40 @@
       </div>
       <div class="system-step-video">
         <video muted loop playsinline preload="none"><source src="system-environment.mp4" type="video/mp4"></video>
+      </div>
+    </div>
+
+    <div class="container" id="timetable">
+      <div class="reveal-up" style="margin-top:64px">
+        <h3 class="section-title" style="font-size:28px;">교시제로 운영되는 학습시간</h3>
+      </div>
+      <div class="timetable-wrap reveal-up" style="transition-delay:0.15s">
+        <div class="timetable">
+          <div class="timetable-header">📋 의무학습 시간표</div>
+          <table>
+            <thead><tr><th>교시</th><th>시작</th><th>종료</th><th>시간</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>자율학습</td><td>06:30</td><td>08:00</td><td>90분</td><td>휴대폰 열람실 반입 불가</td></tr>
+              <tr><td>1교시</td><td>08:00</td><td>09:00</td><td>60분</td><td>의무학습 시작</td></tr>
+              <tr><td>2교시</td><td>09:20</td><td>10:40</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>3교시</td><td>11:00</td><td>12:10</td><td>70분</td><td>출석체크</td></tr>
+              <tr class="tt-break"><td>점심</td><td>12:10</td><td>13:30</td><td>80분</td><td>외출·휴대폰 가능</td></tr>
+              <tr><td>4교시</td><td>13:30</td><td>14:50</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>5교시</td><td>15:10</td><td>16:30</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>6교시</td><td>16:50</td><td>18:00</td><td>70분</td><td>토요일 종료</td></tr>
+              <tr class="tt-break"><td>저녁</td><td>18:00</td><td>19:10</td><td>70분</td><td>외출·휴대폰 가능</td></tr>
+              <tr><td>7교시</td><td>19:10</td><td>20:30</td><td>80분</td><td>출석체크</td></tr>
+              <tr><td>8교시</td><td>20:50</td><td>22:00</td><td>70분</td><td>평일 종료</td></tr>
+              <tr><td>자율학습</td><td>22:00</td><td>01:30</td><td>210분</td><td>휴대폰 반입 불가</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tt-sidebar">
+          <div class="tt-info-card glass-card tt-highlight"><h4>시설 운영시간</h4><p>연중무휴 06:30 ~ 01:30</p></div>
+          <div class="tt-info-card glass-card"><h4>의무자습시간</h4><p>평일: 08:00 ~ 22:00<br>토요일: 08:00 ~ 18:00<br>일요일: 자율등원</p></div>
+          <div class="tt-info-card glass-card"><h4>정기일정 등록</h4><p>매월 1일 재원생 전용 앱으로 등록</p></div>
+          <div class="tt-info-card glass-card"><h4>사유 제출</h4><p>앱으로 사유 제출 → 관리자 승인 후 반영</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -439,43 +473,6 @@
               <p class="mentor-quote">거시적 방향성부터 미시적 학습법까지 잡아주는 친구같은 멘토</p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIMETABLE -->
-  <section class="section" id="timetable">
-    <div class="container">
-      <div class="reveal-up">
-        <h2 class="section-title">교시제로 운영되는 학습시간</h2>
-      </div>
-      <div class="timetable-wrap reveal-up" style="transition-delay:0.15s">
-        <div class="timetable">
-          <div class="timetable-header">📋 의무학습 시간표</div>
-          <table>
-            <thead><tr><th>교시</th><th>시작</th><th>종료</th><th>시간</th><th>비고</th></tr></thead>
-            <tbody>
-              <tr><td>자율학습</td><td>06:30</td><td>08:00</td><td>90분</td><td>휴대폰 열람실 반입 불가</td></tr>
-              <tr><td>1교시</td><td>08:00</td><td>09:00</td><td>60분</td><td>의무학습 시작</td></tr>
-              <tr><td>2교시</td><td>09:20</td><td>10:40</td><td>80분</td><td>출석체크</td></tr>
-              <tr><td>3교시</td><td>11:00</td><td>12:10</td><td>70분</td><td>출석체크</td></tr>
-              <tr class="tt-break"><td>점심</td><td>12:10</td><td>13:30</td><td>80분</td><td>외출·휴대폰 가능</td></tr>
-              <tr><td>4교시</td><td>13:30</td><td>14:50</td><td>80분</td><td>출석체크</td></tr>
-              <tr><td>5교시</td><td>15:10</td><td>16:30</td><td>80분</td><td>출석체크</td></tr>
-              <tr><td>6교시</td><td>16:50</td><td>18:00</td><td>70분</td><td>토요일 종료</td></tr>
-              <tr class="tt-break"><td>저녁</td><td>18:00</td><td>19:10</td><td>70분</td><td>외출·휴대폰 가능</td></tr>
-              <tr><td>7교시</td><td>19:10</td><td>20:30</td><td>80분</td><td>출석체크</td></tr>
-              <tr><td>8교시</td><td>20:50</td><td>22:00</td><td>70분</td><td>평일 종료</td></tr>
-              <tr><td>자율학습</td><td>22:00</td><td>01:30</td><td>210분</td><td>휴대폰 반입 불가</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tt-sidebar">
-          <div class="tt-info-card glass-card tt-highlight"><h4>시설 운영시간</h4><p>연중무휴 06:30 ~ 01:30</p></div>
-          <div class="tt-info-card glass-card"><h4>의무자습시간</h4><p>평일: 08:00 ~ 22:00<br>토요일: 08:00 ~ 18:00<br>일요일: 자율등원</p></div>
-          <div class="tt-info-card glass-card"><h4>정기일정 등록</h4><p>매월 1일 재원생 전용 앱으로 등록</p></div>
-          <div class="tt-info-card glass-card"><h4>사유 제출</h4><p>앱으로 사유 제출 → 관리자 승인 후 반영</p></div>
         </div>
       </div>
     </div>
