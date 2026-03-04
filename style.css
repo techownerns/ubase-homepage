@@ -1,4 +1,4 @@
-/* ===== RESET & BASE ===== */
+﻿/* ===== RESET & BASE ===== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --primary:#1A2151;--primary-light:#2D3A7B;--accent:#3B6DF5;
@@ -194,7 +194,7 @@ img{max-width:100%;display:block}
 /* S2 Header */
 .s2-header{margin-bottom:48px}
 .s2-label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.s2-sub{font-size:17px;color:var(--gray-600);line-height:1.8;margin-top:8px}
+.s2-sub{font-size:20px;color:var(--gray-600);line-height:1.8;margin-top:8px}
 
 /* Research Cards — 3-column grid */
 .research-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:48px}
