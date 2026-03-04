@@ -342,26 +342,75 @@ if (document.readyState === 'complete') {
   window.addEventListener('load', initNaverMaps);
 }
 
-// ===== 멘토 카드 1회 출력 =====
+// ===== 멘토 인터뷰 모달 =====
 (function(){
-  var cards=document.querySelectorAll('.mentor-profile-card');
-  cards.forEach(function(card){
-    var video=card.querySelector('.mentor-cycle-video');
-    var logo=card.querySelector('.mentor-cycle-logo');
-    var logoImg=logo?logo.querySelector('img'):null;
-    var dept=card.querySelector('.mentor-cycle-dept');
-    var univ=card.querySelector('.mentor-cycle-univ');
-    if(!video||!logo||!dept||!univ) return;
+  var mentorData={
+    choi:{
+      name:'최호준 멘토',
+      univ:'세명대학교 한의예과',
+      intro:'수능 4등급에서 시작해 삼수 끝에 일반정시로 한의대에 합격한 최호준입니다. 성적이 오르지 않던 시절을 겪어봤기에, 막막한 학생의 마음을 가장 잘 이해하는 멘토가 되겠습니다.',
+      qa:[
+        {q:'어떤 담임멘토가 되어주실 건가요?',a:'단순히 위에서 지시하고 진도만 체크하는 관리자가 아니라, 같은 길을 먼저 걸어보고 그 고통을 누구보다 잘 아는 든든한 페이스메이커이자 나침반이 되겠습니다. 포기하고 싶은 순간에는 마음 편히 기댈 수 있는 따뜻한 버팀목이 되어주고, 잘못된 방향으로 가고 있을 때는 가장 빠르고 확실한 길을 안내해 주는 단단한 멘토가 되겠습니다.'},
+        {q:'멘토링 시 가장 중요하게 생각하는 것은?',a:'정확한 내 위치 파악(메타인지)과 올바른 방향성 설정입니다. 학생과의 깊이 있는 상담을 통해 현재 성적대와 학습 습관의 문제점을 냉정하고 정확하게 진단하는 것을 최우선으로 삼습니다. 학생의 현재 수준에 딱 맞는 단계별 목표를 설정해 주고, 반드시 성적이 오르는 경험을 맛보게 해주겠습니다.'},
+        {q:'어떤 유형의 학생에게 도움을 줄 수 있나요?',a:'열심히 하려는 의지는 있지만 기초가 부족해 막막한 학생, 그리고 특정 등급에 정체되어 아무리 노력해도 성적이 오르지 않아 답답함을 느끼는 학생에게 가장 극적인 변화를 만들어 줄 수 있습니다. 현실적으로 소화 가능한 분량으로 학습 계획을 쪼개는 법, 개념과 기출의 본질을 파헤치는 분석법, 멘탈 관리법까지 기초부터 탄탄하게 세워드리겠습니다.'},
+        {q:'본인의 공부 스타일은?',a:'압도적인 기본기 완성과 타협 없는 기출 분석이었습니다. 평가원 기출문제는 출제자의 의도와 매력적인 오답의 근거까지 완벽하게 설명할 수 있을 때까지 분석했습니다. 약점을 회피하지 않고 집요하게 파고들어 강점으로 바꾸는 독종 같은 공부 스타일, 그것이 제가 기적을 만든 비결입니다.'}
+      ]
+    },
+    kim:{
+      name:'김명준 멘토',
+      univ:'서울대학교 전기정보공학부',
+      intro:'군복무를 하던 도중 수능을 보고 전역 후 신입생으로 입학했습니다. 나름 입시를 오래했었고, 그 경험을 바탕으로 올해 수능을 보는 멘티들한테 많은 도움을 주고 싶습니다.',
+      qa:[
+        {q:'본인의 공부 방법이나 스토리를 들려주세요',a:'군대라는 한정된 환경 속 최대한으로 효율적인 공부를 하기 위해 많은 고민을 했었습니다. 6월 모의고사 전후, 9월 모의고사 전후, 수능 직전에 어떤 문제집을 풀지 크게 틀을 잡아 주마다 계획을 세워 변수가 생기면 조금씩 수정하는 방향으로 공부를 진행했습니다.'},
+        {q:'학습지도 포인트를 들려주세요',a:'각 학생들이 스스로 공부의 방향성을 확립하는 것이 중요하다고 생각합니다. 각 과목을 어떻게 공부하는지, 실제 시험장에서 어떤 방식으로 문제를 풀고 전략을 짜는지는 개인마다 모두 다릅니다. 저의 경험을 바탕으로 조언을 해주며 학생 자신이 스스로의 공부방법을 잡게 해 효율적으로 공부하는 데 도와주고 싶습니다.'},
+        {q:'구체적으로 어떤 학습 조언을 주실 수 있나요?',a:'현재 수능 시장은 컨텐츠가 너무 많아 오히려 어떤 문제집을 어느 시기에 풀어야 할지 고민하는 경우가 많습니다. 특히 국어의 경우 수능 백분위 91에서 96, 그리고 100으로 정직하게 우상향을 했었습니다. 국어의 여러 기출 문제집과 사설 문제집의 균형을 어떤 식으로 잡아야 할지 방향성을 제시하겠습니다.'},
+        {q:'어떤 학생분이 멘토님과 잘 맞을까요?',a:'성적을 올리고 싶은 열의가 있는 학생, 과목의 시간 배분과 같은 학습 방향에 대한 고민이 있는 학생에게 현실적인 조언과 함께 무거운 입시의 짐을 같이 들어주는 멘토가 되겠습니다.'}
+      ]
+    },
+    park:{
+      name:'박예지 멘토',
+      univ:'고려대학교 경제학과',
+      intro:'학생부종합전형, 논술전형, 정시전형 모두에서 성과를 이루었습니다. 반수 생활에서 철저한 시간 관리와 기출 분석을 통해 합격한 경험을 바탕으로 도움을 드리겠습니다.',
+      qa:[
+        {q:'본인의 공부 방법이나 스토리를 들려주세요',a:'항상 계획을 짜면서 공부하였습니다. 입시는 오래, 꾸준히 하는 장기 레이스입니다. 주어진 시간을 알차게 활용하는 것이 입시 성공에 가장 큰 부분이었습니다. 기본 개념을 공부한 뒤 평가원 기출문제를 최소 5개년치를 풀고, 기출문제를 여러번 분석하며 완벽하게 숙지한 후 사설 문제를 풀었습니다.'},
+        {q:'학습지도 포인트를 들려주세요',a:'가장 중요하게 생각하는 것은 방향성입니다. 본인이 현재 어떤 위치에 있는지, 어떤 상황인지 객관적으로 생각하고 앞으로 어떤 부분을 채워나갈 건지 먼저 생각해야 합니다. 멘토로서 객관적으로 학생들의 상태를 보고 거시적인 부분부터 미시적인 부분까지 공부의 방향성을 잡아주겠습니다.'},
+        {q:'구체적으로 어떤 학습 조언을 주실 수 있나요?',a:'학생부종합전형을 준비하는 학생의 경우, 현재 등급대와 생기부를 참고해 앞으로 어떤 방향으로 생기부를 채워나가야 할지 조언해드립니다. 정시전형을 준비하는 학생의 경우, 최근 모의고사 성적과 현재 공부 방법을 보고 과목별로 어떤 방향으로 공부하는게 좋을지 조언해드립니다.'},
+        {q:'어떤 학생분이 멘토님과 잘 맞을까요?',a:'아직 공부 방향성을 못잡겠는 학생, 내가 지금 하고 있는게 맞는지 의심되는 학생, 객관적으로 자신의 상태를 점검해보고 싶은 학생, 입시에 대한 고민이 있는 모든 학생에게 추천합니다. 친구같은 멘토가 되겠습니다.'}
+      ]
+    }
+  };
 
-    logo.style.animation='logoIntro 2.8s ease-in-out forwards';
-    logoImg.style.animation='logoSpin 2.4s ease-in-out forwards';
-    dept.style.animation='deptIntro 2.8s ease-in-out forwards';
+  var overlay=document.getElementById('mentorModal');
+  var body=document.getElementById('mentorModalBody');
+  if(!overlay||!body) return;
 
-    setTimeout(function(){
-      video.currentTime=0;
-      video.style.opacity='1';
-      univ.style.transition='opacity 0.5s ease';univ.style.opacity='1';
-    },2400);
+  document.querySelectorAll('.mentor-profile-card[data-mentor]').forEach(function(card){
+    card.addEventListener('click',function(){
+      var key=card.getAttribute('data-mentor');
+      var d=mentorData[key];
+      if(!d) return;
+      var html='<div class="mentor-modal-header"><div><h3>'+d.name+'</h3><div class="mentor-modal-univ">'+d.univ+'</div></div></div>';
+      html+='<div class="mentor-modal-intro">'+d.intro+'</div>';
+      d.qa.forEach(function(item){
+        html+='<div class="mentor-modal-qa"><h4>'+item.q+'</h4><p>'+item.a+'</p></div>';
+      });
+      body.innerHTML=html;
+      overlay.classList.add('active');
+      document.body.style.overflow='hidden';
+    });
+  });
+
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay||e.target.classList.contains('mentor-modal-close')){
+      overlay.classList.remove('active');
+      document.body.style.overflow='';
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&overlay.classList.contains('active')){
+      overlay.classList.remove('active');
+      document.body.style.overflow='';
+    }
   });
 })();
 
