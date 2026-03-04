@@ -1,50 +1,118 @@
-﻿// ===== RESEARCH SLIDER (drag/touch swipe) =====
+﻿// ===== RESEARCH SLIDER (drag + momentum) =====
 (function(){
   const wrap = document.querySelector('.slider-wrap');
   const track = document.querySelector('.slider-track');
   if(!wrap || !track) return;
-  let isDown = false, startX, startScroll;
 
-  // mouse drag — translate 기반
-  wrap.addEventListener('mousedown',function(e){
+  let isDown = false;
+  let startX, currentX;
+  let velX = 0, lastX, lastT;
+  let rafId = null;
+  let animPaused = false;
+
+  // 트랙 전체 너비의 절반 = 1세트 길이
+  function halfW(){
+    return track.scrollWidth / 2;
+  }
+
+  // CSS 애니메이션 현재 위치 읽기
+  function getTranslateX(){
+    return new DOMMatrix(getComputedStyle(track).transform).m41;
+  }
+
+  function pauseAnim(){
+    if(animPaused) return;
+    currentX = getTranslateX();
+    track.style.animation = 'none';
+    track.style.transform = 'translateX(' + currentX + 'px)';
+    animPaused = true;
+  }
+
+  function resumeAnim(){
+    track.style.transform = '';
+    track.style.animation = '';
+    animPaused = false;
+  }
+
+  function setX(x){
+    // 무한루프: -halfW ~ 0 범위 유지
+    const h = halfW();
+    x = x % h;
+    if(x > 0) x -= h;
+    currentX = x;
+    track.style.transform = 'translateX(' + x + 'px)';
+  }
+
+  function momentum(){
+    if(Math.abs(velX) < 0.3){
+      // 속도 다 빠지면 CSS 애니메이션 복귀
+      resumeAnim();
+      return;
+    }
+    velX *= 0.93; // 감속 계수
+    setX(currentX + velX);
+    rafId = requestAnimationFrame(momentum);
+  }
+
+  // ── mouse ──
+  wrap.addEventListener('mousedown', function(e){
+    cancelAnimationFrame(rafId);
+    pauseAnim();
     isDown = true;
-    wrap.classList.add('dragging','grabbing');
     startX = e.clientX;
-    const transform = getComputedStyle(track).transform;
-    const matrix = new DOMMatrix(transform);
-    startScroll = matrix.m41;
+    lastX = e.clientX;
+    lastT = Date.now();
+    velX = 0;
+    wrap.classList.add('dragging','grabbing');
     track.style.transition = 'none';
   });
-  document.addEventListener('mouseup',function(){
+
+  document.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    const now = Date.now();
+    const dt = Math.max(now - lastT, 1);
+    velX = (e.clientX - lastX) / dt * 16; // 16ms 기준 속도
+    lastX = e.clientX;
+    lastT = now;
+    setX(currentX + (e.clientX - startX));
+    startX = e.clientX;
+  });
+
+  document.addEventListener('mouseup', function(){
     if(!isDown) return;
     isDown = false;
     wrap.classList.remove('dragging','grabbing');
-    track.style.transition = '';
-  });
-  document.addEventListener('mousemove',function(e){
-    if(!isDown) return;
-    e.preventDefault();
-    const dx = e.clientX - startX;
-    track.style.transform = 'translateX(' + (startScroll + dx) + 'px)';
+    rafId = requestAnimationFrame(momentum);
   });
 
-  // touch swipe
-  wrap.addEventListener('touchstart',function(e){
-    wrap.classList.add('dragging');
+  // ── touch ──
+  wrap.addEventListener('touchstart', function(e){
+    cancelAnimationFrame(rafId);
+    pauseAnim();
     startX = e.touches[0].clientX;
-    const transform = getComputedStyle(track).transform;
-    const matrix = new DOMMatrix(transform);
-    startScroll = matrix.m41;
+    lastX = startX;
+    lastT = Date.now();
+    velX = 0;
+    wrap.classList.add('dragging');
     track.style.transition = 'none';
   },{passive:true});
-  wrap.addEventListener('touchend',function(){
-    wrap.classList.remove('dragging');
-    track.style.transition = '';
-  });
-  wrap.addEventListener('touchmove',function(e){
-    const dx = e.touches[0].clientX - startX;
-    track.style.transform = 'translateX(' + (startScroll + dx) + 'px)';
+
+  wrap.addEventListener('touchmove', function(e){
+    const now = Date.now();
+    const dt = Math.max(now - lastT, 1);
+    const cx = e.touches[0].clientX;
+    velX = (cx - lastX) / dt * 16;
+    lastX = cx;
+    lastT = now;
+    setX(currentX + (cx - startX));
+    startX = cx;
   },{passive:true});
+
+  wrap.addEventListener('touchend', function(){
+    wrap.classList.remove('dragging');
+    rafId = requestAnimationFrame(momentum);
+  });
 })();
 
 // ===== NAV SCROLL =====
