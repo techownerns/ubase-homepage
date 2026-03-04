@@ -261,10 +261,11 @@ img{max-width:100%;display:block}
 .about-hook strong{color:var(--primary)}
 
 /* ===== RESEARCH AUTO-SLIDE ===== */
-.slider-wrap{position:relative;width:100%;overflow-x:auto;overflow-y:hidden;padding:8px 0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
-.slider-wrap::-webkit-scrollbar{display:none}
+.slider-wrap{position:relative;width:100%;overflow:hidden;padding:8px 0 16px;cursor:grab}
 .slider-wrap.grabbing{cursor:grabbing}
-.slider-track{display:flex;gap:24px;width:max-content;padding:0 max(24px,calc((100vw - 1200px)/2))}
+.slider-track{display:flex;gap:24px;width:max-content;animation:slideScroll 45s linear infinite}
+.slider-wrap:hover .slider-track,.slider-wrap.dragging .slider-track{animation-play-state:paused}
+@keyframes slideScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .rs-card{
   flex:0 0 420px;background:var(--white);border-radius:20px;
   padding:36px 30px 30px;position:relative;overflow:hidden;

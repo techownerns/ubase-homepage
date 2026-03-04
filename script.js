@@ -1,54 +1,50 @@
-// ===== RESEARCH SLIDER (swipe + auto-scroll) =====
+// ===== RESEARCH SLIDER (drag/touch swipe) =====
 (function(){
   const wrap = document.querySelector('.slider-wrap');
-  if(!wrap) return;
-  let isDown = false, startX, scrollLeft, autoId, pauseTimeout, paused = false;
+  const track = document.querySelector('.slider-track');
+  if(!wrap || !track) return;
+  let isDown = false, startX, startScroll;
 
-  function autoScroll(){
-    paused = false;
-    clearInterval(autoId);
-    autoId = setInterval(function(){
-      if(paused) return;
-      wrap.scrollLeft += 1;
-      if(wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth){
-        wrap.scrollLeft = 0;
-      }
-    }, 16);
-  }
-  function stopAuto(){ paused = true; clearInterval(autoId); }
-  function resumeAfterDelay(){
-    clearTimeout(pauseTimeout);
-    pauseTimeout = setTimeout(autoScroll, 3000);
-  }
-
-  // mouse drag
+  // mouse drag — translate 기반
   wrap.addEventListener('mousedown',function(e){
-    isDown = true; wrap.classList.add('grabbing');
-    startX = e.pageX - wrap.offsetLeft;
-    scrollLeft = wrap.scrollLeft; stopAuto();
+    isDown = true;
+    wrap.classList.add('dragging','grabbing');
+    startX = e.clientX;
+    const transform = getComputedStyle(track).transform;
+    const matrix = new DOMMatrix(transform);
+    startScroll = matrix.m41;
+    track.style.transition = 'none';
   });
-  wrap.addEventListener('mouseleave',function(){ if(isDown){isDown=false; wrap.classList.remove('grabbing'); resumeAfterDelay();} });
-  wrap.addEventListener('mouseup',function(){ isDown=false; wrap.classList.remove('grabbing'); resumeAfterDelay(); });
-  wrap.addEventListener('mousemove',function(e){
-    if(!isDown) return; e.preventDefault();
-    wrap.scrollLeft = scrollLeft - (e.pageX - wrap.offsetLeft - startX) * 1.5;
+  document.addEventListener('mouseup',function(){
+    if(!isDown) return;
+    isDown = false;
+    wrap.classList.remove('dragging','grabbing');
+    track.style.transition = '';
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    const dx = e.clientX - startX;
+    track.style.transform = 'translateX(' + (startScroll + dx) + 'px)';
   });
 
-  // touch
+  // touch swipe
   wrap.addEventListener('touchstart',function(e){
-    startX = e.touches[0].pageX - wrap.offsetLeft;
-    scrollLeft = wrap.scrollLeft; stopAuto();
+    wrap.classList.add('dragging');
+    startX = e.touches[0].clientX;
+    const transform = getComputedStyle(track).transform;
+    const matrix = new DOMMatrix(transform);
+    startScroll = matrix.m41;
+    track.style.transition = 'none';
   },{passive:true});
-  wrap.addEventListener('touchend',function(){ resumeAfterDelay(); });
+  wrap.addEventListener('touchend',function(){
+    wrap.classList.remove('dragging');
+    track.style.transition = '';
+  });
   wrap.addEventListener('touchmove',function(e){
-    wrap.scrollLeft = scrollLeft - (e.touches[0].pageX - wrap.offsetLeft - startX);
+    const dx = e.touches[0].clientX - startX;
+    track.style.transform = 'translateX(' + (startScroll + dx) + 'px)';
   },{passive:true});
-
-  // hover pause
-  wrap.addEventListener('mouseenter', stopAuto);
-  wrap.addEventListener('mouseleave', function(){ if(!isDown) resumeAfterDelay(); });
-
-  autoScroll();
 })();
 
 // ===== NAV SCROLL =====
