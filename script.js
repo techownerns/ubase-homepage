@@ -1,4 +1,5 @@
 ﻿// ===== RESEARCH SLIDER (drag + momentum) =====
+window._sliderDragged = false;
 (function(){
   const wrap = document.querySelector('.slider-wrap');
   const track = document.querySelector('.slider-track');
