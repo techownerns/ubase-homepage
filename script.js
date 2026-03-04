@@ -365,91 +365,62 @@ if (document.readyState === 'complete') {
   });
 })();
 
-/* ── FACILITY GALLERY (TABS + GRID + LIGHTBOX/INSTA VIEWER) ── */
+/* ── FACILITY GALLERY (BENTO GRID + LIGHTBOX/INSTA VIEWER) ── */
 const BUCKET = 'https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/render/image/public/facility/';
 const BUCKET_FULL = 'https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/object/public/facility/';
-const THUMB_Q = '?width=400&height=300&resize=cover&quality=75';
 
-const facilityImages = [
-  /* study — 학습 공간 (18) */
-  {src:'facility-02.jpg',cap:'개인 독서 공간',cat:'study'},
-  {src:'facility-04.jpg',cap:'독서실 전경',cat:'study'},
-  {src:'facility-10.jpg',cap:'개인 좌석',cat:'study'},
-  {src:'b01_02.jpg',cat:'study'},{src:'b01_03.jpg',cat:'study'},
-  {src:'b02_05.jpg',cat:'study'},
-  {src:'b03_01.jpg',cat:'study'},{src:'b03_03.jpg',cat:'study'},
-  {src:'b05_05.jpg',cat:'study'},
-  {src:'b07_03.jpg',cat:'study'},
-  {src:'b09_04.jpg',cat:'study'},
-  {src:'b11_01.jpg',cat:'study'},{src:'b11_02.jpg',cat:'study'},{src:'b11_03.jpg',cat:'study'},
-  {src:'b13_02.jpg',cat:'study'},
-  {src:'b14_01.jpg',cat:'study'},
-  {src:'b17_01.jpg',cat:'study'},{src:'b17_02.jpg',cat:'study'},
-  /* building — 건물·환경 (12) */
-  {src:'facility-01.jpg',cap:'안면인식 턴게이트',cat:'building'},
-  {src:'facility-03.jpg',cap:'프리미엄 로비',cat:'building'},
-  {src:'facility-11.jpg',cap:'복도',cat:'building'},
-  {src:'b05_02.jpg',cat:'building'},
-  {src:'b10_02.jpg',cat:'building'},
-  {src:'b11_04.jpg',cat:'building'},
-  {src:'b14_03.jpg',cat:'building'},
-  {src:'b15_01.jpg',cat:'building'},{src:'b15_02.jpg',cat:'building'},
-  {src:'b17_05.jpg',cat:'building'},
-  {src:'b19_01.jpg',cat:'building'},
-  {src:'b20_03.jpg',cat:'building'},
-  /* amenity — 편의시설 (9) */
-  {src:'facility-06.jpg',cap:'휴게 공간',cat:'amenity'},
-  {src:'facility-08.jpg',cap:'식당/휴게 공간',cat:'amenity'},
-  {src:'facility-15.jpg',cap:'상담실',cat:'amenity'},
-  {src:'facility-16.jpg',cap:'프린터/복합기',cat:'amenity'},
-  {src:'facility-17.jpg',cap:'휴게실 전경',cat:'amenity'},
-  {src:'b03_05.jpg',cat:'amenity'},
-  {src:'b08_02.jpg',cat:'amenity'},
-  {src:'b12_03.jpg',cat:'amenity'},
-  {src:'b14_05.jpg',cat:'amenity'},
-  /* info — 안내·브랜딩 (11) */
-  {src:'b04_01.jpg',cat:'info'},{src:'b04_05.jpg',cat:'info'},
-  {src:'b07_01.jpg',cat:'info'},{src:'b07_05.jpg',cat:'info'},
-  {src:'b08_04.jpg',cat:'info'},
-  {src:'b10_01.jpg',cat:'info'},
-  {src:'b12_04.jpg',cat:'info'},
-  {src:'b13_01.jpg',cat:'info'},
-  {src:'b15_05.jpg',cat:'info'},
-  {src:'b16_05.jpg',cat:'info'},
-  {src:'b18_05.jpg',cat:'info'}
+/* 벤토 배치 순서: featured(lg)는 큰 타일, 나머지는 작은 타일 */
+var facilityImages = [
+  {src:'facility-04.jpg',cap:'독서실 전경',lg:true},
+  {src:'b01_02.jpg'},{src:'b01_03.jpg'},
+  {src:'b02_05.jpg'},{src:'b03_01.jpg'},
+  {src:'b03_03.jpg'},{src:'b05_05.jpg'},
+  {src:'facility-02.jpg',cap:'개인 독서 공간',lg:true},
+  {src:'b07_03.jpg'},{src:'b09_04.jpg'},
+  {src:'facility-01.jpg',cap:'안면인식 턴게이트',lg:true},
+  {src:'b11_01.jpg'},{src:'b11_02.jpg'},
+  {src:'b11_03.jpg'},{src:'b13_02.jpg'},
+  {src:'b14_01.jpg'},{src:'b17_01.jpg'},
+  {src:'facility-03.jpg',cap:'프리미엄 로비',lg:true},
+  {src:'b17_02.jpg'},{src:'b05_02.jpg'},
+  {src:'b10_02.jpg'},{src:'b11_04.jpg'},
+  {src:'facility-11.jpg',cap:'복도'},
+  {src:'b14_03.jpg'},{src:'b15_01.jpg'},
+  {src:'facility-06.jpg',cap:'휴게 공간',lg:true},
+  {src:'b15_02.jpg'},{src:'b17_05.jpg'},
+  {src:'b19_01.jpg'},{src:'b20_03.jpg'},
+  {src:'facility-08.jpg',cap:'식당/휴게 공간',lg:true},
+  {src:'facility-15.jpg',cap:'상담실'},
+  {src:'facility-16.jpg',cap:'프린터/복합기'},
+  {src:'facility-17.jpg',cap:'휴게실 전경'},
+  {src:'b03_05.jpg'},{src:'b08_02.jpg'},
+  {src:'b12_03.jpg'},{src:'b14_05.jpg'},
+  {src:'facility-10.jpg',cap:'개인 좌석'},
+  {src:'b04_01.jpg'},{src:'b04_05.jpg'},
+  {src:'b07_01.jpg'},{src:'b07_05.jpg'},
+  {src:'b08_04.jpg'},{src:'b10_01.jpg'},
+  {src:'b12_04.jpg'},{src:'b13_01.jpg'},
+  {src:'b15_05.jpg'},{src:'b16_05.jpg'},
+  {src:'b18_05.jpg'}
 ];
 
-/* ── 그리드 렌더링 ── */
-var currentCat = 'all';
-var currentFiltered = facilityImages.slice();
+/* ── 벤토 그리드 렌더링 ── */
+var currentFiltered = facilityImages;
 
-function renderGrid(cat) {
-  currentCat = cat;
+(function renderBento() {
   var grid = document.getElementById('facGrid');
-  grid.innerHTML = '';
-  currentFiltered = cat === 'all' ? facilityImages : facilityImages.filter(function(i){ return i.cat === cat; });
-  currentFiltered.forEach(function(item, i) {
+  facilityImages.forEach(function(item, i) {
     var card = document.createElement('div');
-    card.className = 'fac-card';
-    var thumbUrl = BUCKET + item.src + THUMB_Q;
+    card.className = 'bento-card' + (item.lg ? ' bento-card--lg' : '');
+    var w = item.lg ? 800 : 400;
+    var h = item.lg ? 600 : 300;
+    var thumbUrl = BUCKET + item.src + '?width=' + w + '&height=' + h + '&resize=cover&quality=75';
     card.innerHTML = '<img src="' + thumbUrl + '" alt="' + (item.cap||'') + '" loading="lazy">'
-      + (item.cap ? '<span class="fac-cap">' + item.cap + '</span>' : '');
+      + (item.cap ? '<span class="bento-cap">' + item.cap + '</span>' : '');
     card.addEventListener('click', function(){ openViewer(i); });
     grid.appendChild(card);
   });
-}
-
-/* ── 탭 클릭 ── */
-document.querySelectorAll('.fac-tab').forEach(function(tab) {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.fac-tab').forEach(function(t){ t.classList.remove('active'); });
-    tab.classList.add('active');
-    renderGrid(tab.dataset.cat);
-  });
-});
-
-/* 초기 렌더 */
-renderGrid('all');
+})();
 
 /* ── PC/모바일 분기 ── */
 function openViewer(idx) {
