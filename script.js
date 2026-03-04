@@ -422,6 +422,28 @@ var currentFiltered = facilityImages;
   });
 })();
 
+/* ── 더보기 버튼 ── */
+var bentoMore = document.getElementById('bentoMore');
+function getBentoStep() {
+  var w = window.innerWidth;
+  if (w <= 480) return 256;
+  if (w <= 768) return 308;
+  if (w <= 1024) return 395;
+  return 470;
+}
+bentoMore.addEventListener('click', function() {
+  var grid = document.getElementById('facGrid');
+  var step = getBentoStep();
+  var current = parseInt(grid.style.maxHeight) || step;
+  var next = current + step;
+  if (next >= grid.scrollHeight) {
+    grid.style.maxHeight = 'none';
+    bentoMore.classList.add('hidden');
+  } else {
+    grid.style.maxHeight = next + 'px';
+  }
+});
+
 /* ── PC/모바일 분기 ── */
 function openViewer(idx) {
   if (window.innerWidth <= 768) {
@@ -459,7 +481,7 @@ function openLB(i) {
   document.body.style.overflow = 'hidden';
 }
 function closeLB() { lb.classList.remove('active'); document.body.style.overflow = ''; resetZoom(); }
-function resetZoom() { scale = 1; lbImg.style.transform = ''; }
+function resetZoom() { scale = 1; lbImg.style.transform = ''; lbImg.style.transformOrigin = ''; }
 function lbUpdate() {
   lbSpinner.style.display = 'block'; lbImg.style.opacity = '0';
   var img = new Image();
@@ -467,7 +489,7 @@ function lbUpdate() {
   img.onload = function() {
     lbImg.src = img.src; lbImg.style.opacity = '1'; lbSpinner.style.display = 'none';
   };
-  lbCounter.textContent = (cur+1) + ' / ' + currentFiltered.length;
+  /* 카운터 삭제됨 */
   lbCaption.textContent = currentFiltered[cur].cap || '';
   resetZoom();
   var thumbs = thumbStrip.querySelectorAll('.lb-thumb');
@@ -503,6 +525,10 @@ var initDist=0;
 lbImg.addEventListener('touchstart', function(e){
   if(e.touches.length===2){
     initDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    var rect=lbImg.getBoundingClientRect();
+    var mx=(e.touches[0].clientX+e.touches[1].clientX)/2-rect.left;
+    var my=(e.touches[0].clientY+e.touches[1].clientY)/2-rect.top;
+    lbImg.style.transformOrigin=mx+'px '+my+'px';
   }
 },{passive:true});
 lbImg.addEventListener('touchmove', function(e){
@@ -517,7 +543,16 @@ var lastTap=0;
 lbImg.addEventListener('touchend', function(e){
   if(e.touches.length>0)return;
   var now=Date.now();
-  if(now-lastTap<300){scale=scale>1?1:2;lbImg.style.transform='scale('+scale+')';}
+  if(now-lastTap<300){
+    if(scale>1){scale=1;lbImg.style.transform='';lbImg.style.transformOrigin='';}
+    else{
+      var rect=lbImg.getBoundingClientRect();
+      var tx=e.changedTouches[0].clientX-rect.left;
+      var ty=e.changedTouches[0].clientY-rect.top;
+      lbImg.style.transformOrigin=tx+'px '+ty+'px';
+      scale=2;lbImg.style.transform='scale(2)';
+    }
+  }
   lastTap=now;
 });
 
@@ -536,6 +571,34 @@ function openInsta(idx) {
     slide.innerHTML = '<img src="' + imgUrl + '" alt="' + (item.cap||'') + '">'
       + (item.cap ? '<div class="insta-slide-cap">' + item.cap + '</div>' : '');
     instaScroll.appendChild(slide);
+    /* 인스타 슬라이드 핀치 줌 */
+    (function(sl){
+      var img=sl.querySelector('img');
+      var sDist=0,sScale=1;
+      img.addEventListener('touchstart',function(e){
+        if(e.touches.length===2){
+          sDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+          var rect=img.getBoundingClientRect();
+          var mx=(e.touches[0].clientX+e.touches[1].clientX)/2-rect.left;
+          var my=(e.touches[0].clientY+e.touches[1].clientY)/2-rect.top;
+          img.style.transformOrigin=mx+'px '+my+'px';
+          instaScroll.style.scrollSnapType='none';
+        }
+      },{passive:true});
+      img.addEventListener('touchmove',function(e){
+        if(e.touches.length===2){
+          var d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+          sScale=Math.min(3,Math.max(1,sScale*(d/sDist)));sDist=d;
+          img.style.transform='scale('+sScale+')';e.preventDefault();
+        }
+      },{passive:false});
+      img.addEventListener('touchend',function(e){
+        if(e.touches.length===0 && sScale<=1){
+          sScale=1;img.style.transform='';img.style.transformOrigin='';
+          instaScroll.style.scrollSnapType='y mandatory';
+        }
+      });
+    })(slide);
   });
   instaEl.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -553,7 +616,7 @@ function updateInstaCounter() {
   var scrollTop = instaScroll.scrollTop;
   var slideH = instaScroll.children[0] ? instaScroll.children[0].offsetHeight : 1;
   var idx = Math.round(scrollTop / slideH);
-  instaCounter.textContent = (idx + 1) + ' / ' + currentFiltered.length;
+  /* 카운터 삭제됨 */
 }
 
 function closeInsta() {
