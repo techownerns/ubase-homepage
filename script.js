@@ -386,74 +386,99 @@ const galleryItems = [
   {src:'facility-16.jpg',cap:'CCTV 관제'},
   {src:'facility-17.jpg',cap:'외관'}
 ];
-const track = document.getElementById('facilityGallery');
-if(track){
-  // 원본 + 복제본으로 무한루프용 슬라이드 생성
-  const allItems = [...galleryItems, ...galleryItems];
-  allItems.forEach((item, i) => {
+const blogBase = 'blog-images/';
+const blogImages = [
+  {src:'b01_01.jpg'},{src:'b01_02.jpg'},{src:'b01_03.jpg'},{src:'b01_04.jpg'},{src:'b01_05.jpg'},
+  {src:'b02_01.jpg'},{src:'b02_02.jpg'},{src:'b02_03.jpg'},{src:'b02_04.jpg'},{src:'b02_05.jpg'},
+  {src:'b03_01.jpg'},{src:'b03_02.jpg'},{src:'b03_03.jpg'},{src:'b03_04.jpg'},{src:'b03_05.jpg'},
+  {src:'b04_01.jpg'},{src:'b04_02.jpg'},{src:'b04_03.jpg'},{src:'b04_04.jpg'},{src:'b04_05.jpg'},
+  {src:'b05_01.jpg'},{src:'b05_02.jpg'},{src:'b05_03.jpg'},{src:'b05_04.jpg'},{src:'b05_05.jpg'},
+  {src:'b06_01.png'},{src:'b06_02.png'},{src:'b06_03.png'},{src:'b06_04.png'},
+  {src:'b07_01.jpg'},{src:'b07_02.jpg'},{src:'b07_03.jpg'},{src:'b07_04.jpg'},{src:'b07_05.jpg'},
+  {src:'b08_01.jpg'},{src:'b08_02.jpg'},{src:'b08_03.jpg'},{src:'b08_04.jpg'},{src:'b08_05.jpg'},
+  {src:'b09_01.jpg'},{src:'b09_02.jpg'},{src:'b09_03.jpg'},{src:'b09_04.jpg'},{src:'b09_05.jpg'},
+  {src:'b10_01.jpg'},{src:'b10_02.jpg'},{src:'b10_03.jpg'},{src:'b10_04.jpg'},
+  {src:'b11_01.jpg'},{src:'b11_02.jpg'},{src:'b11_03.jpg'},{src:'b11_04.jpg'},
+  {src:'b12_01.jpg'},{src:'b12_02.jpg'},{src:'b12_03.jpg'},{src:'b12_04.jpg'},{src:'b12_05.jpg'},
+  {src:'b13_01.jpg'},{src:'b13_02.jpg'},{src:'b13_03.jpg'},
+  {src:'b14_01.jpg'},{src:'b14_02.jpg'},{src:'b14_03.jpg'},{src:'b14_04.jpg'},{src:'b14_05.jpg'},
+  {src:'b15_01.jpg'},{src:'b15_02.jpg'},{src:'b15_03.jpg'},{src:'b15_04.jpg'},{src:'b15_05.jpg'},
+  {src:'b16_01.jpg'},{src:'b16_02.jpg'},{src:'b16_03.jpg'},{src:'b16_04.jpg'},{src:'b16_05.jpg'},
+  {src:'b17_01.jpg'},{src:'b17_02.jpg'},{src:'b17_03.jpg'},{src:'b17_04.jpg'},{src:'b17_05.jpg'},
+  {src:'b18_01.jpg'},{src:'b18_02.jpg'},{src:'b18_03.jpg'},{src:'b18_04.jpg'},{src:'b18_05.jpg'},
+  {src:'b19_01.jpg'},{src:'b19_02.jpg'},{src:'b19_03.jpg'},{src:'b19_04.jpg'},{src:'b19_05.jpg'},
+  {src:'b20_01.jpg'},{src:'b20_02.jpg'},{src:'b20_03.jpg'},{src:'b20_04.jpg'}
+];
+
+/* 트랙 초기화 헬퍼 — direction: 1 = →, -1 = ← */
+function initGalleryTrack(trackEl, items, direction){
+  if(!trackEl) return;
+  const doubled = [...items, ...items];
+  doubled.forEach((item) => {
     const d = document.createElement('div');
     d.className = 'fgal-slide';
-    d.innerHTML = `<img src="${defined}${item.src}" alt="${item.cap}" loading="lazy"><span class="fgal-cap">${item.cap}</span>`;
-    d.onclick = () => { if(!dragMoved) openLB(i % galleryItems.length); };
-    track.appendChild(d);
+    const fullSrc = item.base ? item.base + item.src : defined + item.src;
+    d.innerHTML = `<img src="${fullSrc}" alt="${item.cap||''}" loading="lazy">${item.cap ? '<span class="fgal-cap">'+item.cap+'</span>' : ''}`;
+    trackEl.appendChild(d);
   });
-  // 자동 스크롤
-  let autoSpeed = 0.6;
-  let scrollPos = 0;
+  let speed = 0.5 * direction;
+  let pos = direction === -1 ? trackEl.scrollWidth / 2 : 0;
   let rafId;
-  const halfW = () => track.scrollWidth / 2;
-  function autoScroll(){
-    scrollPos += autoSpeed;
-    if(scrollPos >= halfW()) scrollPos -= halfW();
-    track.scrollLeft = scrollPos;
-    rafId = requestAnimationFrame(autoScroll);
+  const halfW = () => trackEl.scrollWidth / 2;
+  function auto(){
+    pos += speed;
+    if(pos >= halfW()) pos -= halfW();
+    if(pos < 0) pos += halfW();
+    trackEl.scrollLeft = pos;
+    rafId = requestAnimationFrame(auto);
   }
-  rafId = requestAnimationFrame(autoScroll);
+  rafId = requestAnimationFrame(auto);
   // 드래그
-  let isDrag = false, dragMoved = false, startX, startScroll;
-  track.addEventListener('mousedown', e => {
-    isDrag = true; dragMoved = false;
-    startX = e.pageX; startScroll = scrollPos;
-    cancelAnimationFrame(rafId);
-    track.classList.add('grabbing');
+  let isDrag=false, dragMoved=false, sx, ss;
+  trackEl.addEventListener('mousedown', e=>{
+    isDrag=true; dragMoved=false; sx=e.pageX; ss=pos;
+    cancelAnimationFrame(rafId); trackEl.classList.add('grabbing');
   });
-  window.addEventListener('mousemove', e => {
+  window.addEventListener('mousemove', e=>{
     if(!isDrag) return;
-    const dx = e.pageX - startX;
-    if(Math.abs(dx) > 4) dragMoved = true;
-    scrollPos = startScroll - dx;
-    if(scrollPos < 0) scrollPos += halfW();
-    if(scrollPos >= halfW()) scrollPos -= halfW();
-    track.scrollLeft = scrollPos;
+    const dx=e.pageX-sx; if(Math.abs(dx)>4) dragMoved=true;
+    pos=ss-dx;
+    if(pos<0) pos+=halfW(); if(pos>=halfW()) pos-=halfW();
+    trackEl.scrollLeft=pos;
   });
-  window.addEventListener('mouseup', () => {
-    if(!isDrag) return;
-    isDrag = false;
-    track.classList.remove('grabbing');
-    rafId = requestAnimationFrame(autoScroll);
+  window.addEventListener('mouseup', ()=>{
+    if(!isDrag) return; isDrag=false;
+    trackEl.classList.remove('grabbing');
+    rafId=requestAnimationFrame(auto);
   });
   // 터치
-  let touchX;
-  track.addEventListener('touchstart', e => {
-    cancelAnimationFrame(rafId);
-    touchX = e.touches[0].pageX; startScroll = scrollPos;
-    dragMoved = false;
-  }, {passive:true});
-  track.addEventListener('touchmove', e => {
-    const dx = e.touches[0].pageX - touchX;
-    if(Math.abs(dx) > 4) dragMoved = true;
-    scrollPos = startScroll - dx;
-    if(scrollPos < 0) scrollPos += halfW();
-    if(scrollPos >= halfW()) scrollPos -= halfW();
-    track.scrollLeft = scrollPos;
-  }, {passive:true});
-  track.addEventListener('touchend', () => {
-    rafId = requestAnimationFrame(autoScroll);
-  });
-  // 호버 시 일시정지
-  track.addEventListener('mouseenter', () => { if(!isDrag) cancelAnimationFrame(rafId); });
-  track.addEventListener('mouseleave', () => { if(!isDrag) rafId = requestAnimationFrame(autoScroll); });
+  let tx;
+  trackEl.addEventListener('touchstart', e=>{
+    cancelAnimationFrame(rafId); tx=e.touches[0].pageX; ss=pos; dragMoved=false;
+  },{passive:true});
+  trackEl.addEventListener('touchmove', e=>{
+    const dx=e.touches[0].pageX-tx; if(Math.abs(dx)>4) dragMoved=true;
+    pos=ss-dx;
+    if(pos<0) pos+=halfW(); if(pos>=halfW()) pos-=halfW();
+    trackEl.scrollLeft=pos;
+  },{passive:true});
+  trackEl.addEventListener('touchend', ()=>{ rafId=requestAnimationFrame(auto); });
+  trackEl.addEventListener('mouseenter', ()=>{ if(!isDrag) cancelAnimationFrame(rafId); });
+  trackEl.addEventListener('mouseleave', ()=>{ if(!isDrag) rafId=requestAnimationFrame(auto); });
+  return { trackEl, dragMoved:()=>dragMoved };
 }
+
+/* 시설 이미지 + 블로그 이미지 합치기 */
+const facilityFull = galleryItems.map(i=>({...i, base: defined}));
+const blogFull = blogImages.map(i=>({...i, base: blogBase, cap:''}));
+const topItems = [...facilityFull, ...blogFull.slice(0, Math.ceil(blogFull.length/2))];
+const bottomItems = [...blogFull.slice(Math.ceil(blogFull.length/2)), ...facilityFull];
+
+var dragMoved = false;
+const topTrack = initGalleryTrack(document.getElementById('facilityGalleryTop'), topItems, 1);
+const bottomTrack = initGalleryTrack(document.getElementById('facilityGalleryBottom'), bottomItems, -1);
+/* dragMoved 동기화 (라이트박스 클릭 방지용) */
+Object.defineProperty(window, '_fgalDrag', {get:()=> (topTrack&&topTrack.dragMoved()) || (bottomTrack&&bottomTrack.dragMoved()) });
 
 /* Lightbox */
 var lb=document.getElementById('lightbox');
