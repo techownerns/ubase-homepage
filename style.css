@@ -380,19 +380,14 @@ img{max-width:100%;display:block}
 .fac-feature h4{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--primary)}
 .fac-feature p{font-size:16px;color:var(--gray-600)}
 
-/* ===== TIMETABLE ===== */
-.timetable-wrap{display:grid;grid-template-columns:1fr 300px;gap:32px;margin-top:40px}
-.timetable{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+/* ===== TIMETABLE (inside system-step 07) ===== */
+.system-step-timetable{display:flex;align-items:center;justify-content:center;padding:40px 32px;background:var(--gray-100)}
+.timetable{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;width:100%}
 .timetable-header{background:var(--primary);color:var(--white);padding:18px 28px;font-size:18px;font-weight:700}
 .timetable table{width:100%;border-collapse:collapse}
 .timetable th,.timetable td{padding:13px 18px;text-align:center;font-size:15px;border-bottom:1px solid var(--gray-100)}
 .timetable th{background:var(--gray-50);font-weight:600;color:var(--gray-600)}
 .tt-break{background:rgba(59,109,245,0.04)}
-.tt-sidebar{display:flex;flex-direction:column;gap:16px}
-.tt-info-card{padding:22px}
-.tt-info-card h4{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:8px}
-.tt-info-card p{font-size:14px;color:var(--gray-600);line-height:1.7}
-.tt-highlight{border-left:4px solid var(--accent)}
 
 /* ===== REVIEWS ===== */
 .reviews-slider{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
@@ -493,7 +488,7 @@ img{max-width:100%;display:block}
   .numbers-grid{grid-template-columns:repeat(3,1fr)}
   .facility-features{grid-template-columns:repeat(2,1fr)}
   .research-cards{grid-template-columns:repeat(2,1fr)}
-  .timetable-wrap{grid-template-columns:1fr}
+  .system-step-timetable{padding:24px 20px}
   .mentor-grid{gap:48px}
 }
 @media(max-width:768px){
@@ -525,6 +520,9 @@ img{max-width:100%;display:block}
   .rs-headline{font-size:17px}
   .rs-desc{font-size:13px}
   .slider-track{gap:16px}
+  .system-step-timetable{padding:20px 16px}
+  .timetable th,.timetable td{padding:10px 8px;font-size:13px}
+  .timetable-header{padding:14px 20px;font-size:16px}
   /* sticky CTA 있을때 하단 여백 */
   .footer{padding-bottom:90px}
 }
