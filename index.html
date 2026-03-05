@@ -28,11 +28,20 @@
         <li><a href="#reviews">후기</a></li>
         <li><a href="#contact" class="nav-cta">상담 신청</a></li>
       </ul>
-      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="메뉴">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </nav>
+  <!-- MOBILE TAB BAR -->
+  <div class="mob-tab-bar" id="mobTabBar">
+    <a href="#about">소개</a>
+    <a href="#system">관리시스템</a>
+    <a href="#ai">AI관리</a>
+    <a href="#facility">시설</a>
+    <a href="#mentoring">멘토링</a>
+    <a href="#parent">학부모</a>
+    <a href="#scholarship">장학금</a>
+    <a href="#reviews">후기</a>
+    <a href="#contact" class="mob-tab-cta">상담신청</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -57,7 +66,7 @@
       <div class="reveal">
         <div class="s2-header">
           <h2 class="section-title">자율에 맡기는 순간, 합격은 흔들립니다</h2>
-          <p class="s2-sub">스탠퍼드, 하버드, 서울대 등 주요 대학 논문은 의지보다 학습환경이 집중력을 만든다고 말합니다.</p>
+          <p class="s2-sub">스탠퍼드, 하버드, 서울대 등 주요 대학 <strong class="s2-highlight">논문은</strong> <strong class="s2-highlight">의지보다</strong> <strong class="s2-highlight">학습환경이 집중력을 만든다</strong>고 말합니다.</p>
         </div>
       </div>
     </div>
@@ -363,7 +372,7 @@
       <div class="mentor-profiles-grid">
         <div class="mentor-profile-card reveal-up" data-mentor="kim">
           <div class="mentor-video-wrap">
-            <video class="mentor-video" autoplay muted loop playsinline>
+            <video class="mentor-video" muted loop playsinline preload="metadata">
               <source src="https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/object/public/video/mentor-kim.mp4" type="video/mp4">
             </video>
             <div class="mentor-video-overlay"></div>
@@ -376,7 +385,7 @@
         </div>
         <div class="mentor-profile-card reveal-up" data-mentor="park" style="transition-delay:0.12s">
           <div class="mentor-video-wrap">
-            <video class="mentor-video" autoplay muted loop playsinline style="object-position:center 80%">
+            <video class="mentor-video" muted loop playsinline preload="metadata" style="object-position:center 80%">
               <source src="https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/object/public/video/mentor-park.mp4" type="video/mp4">
             </video>
             <div class="mentor-video-overlay"></div>
@@ -389,7 +398,7 @@
         </div>
         <div class="mentor-profile-card reveal-up" data-mentor="choi" style="transition-delay:0.24s">
           <div class="mentor-video-wrap">
-            <video class="mentor-video" autoplay muted loop playsinline style="object-position:center 55%;transform:scale(1.05)">
+            <video class="mentor-video" muted loop playsinline preload="metadata" style="object-position:center 55%;transform:scale(1.05)">
               <source src="https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/object/public/video/mentor-choi.mp4" type="video/mp4">
             </video>
             <div class="mentor-video-overlay"></div>
@@ -416,7 +425,7 @@
   <section class="section section-alt" id="parent">
     <div class="container">
       <div class="reveal-up">
-        <h2 class="section-title">학부모님이 직접 확인하십시오</h2>
+        <h2 class="section-title">학부모님, 직접 보실 수 있습니다.</h2>
         <p class="section-desc">아이가 제대로 공부하고 있는지, 더 이상 물어보지 않아도 됩니다.</p>
       </div>
       <div class="ai-grid">
@@ -444,27 +453,92 @@
     </div>
   </section>
 
+  <!-- SCHOLARSHIP -->
+  <section class="section section-dark" id="scholarship">
+    <div class="container">
+      <div class="reveal-up">
+        <h2 class="section-title" style="color:#fff;">합격하면 장학으로 보답합니다</h2>
+      </div>
+
+      <!-- 합격 장학금 (히어로 카드) -->
+      <div class="schol-hero glass-card-dark reveal-up">
+        <div class="schol-hero-badge">BEST</div>
+        <div class="schol-hero-amount">50<span class="schol-hero-pct">%</span></div>
+        <div class="schol-hero-label">합격 장학금</div>
+        <p class="schol-hero-desc">스카이·서성한, 의치한약수, 국가자격증, 공무원 5~7급 합격 시<br><strong>결제금액의 50%</strong>를 장학금으로 돌려드립니다.</p>
+      </div>
+
+      <!-- 성적 장학금 (2열) -->
+      <div class="schol-grid-2">
+        <div class="schol-card glass-card-dark reveal-up">
+          <div class="schol-card-icon">📈</div>
+          <div class="schol-card-amount">20<span class="schol-card-pct">%</span></div>
+          <div class="schol-card-label">성적우수 장학금</div>
+          <p class="schol-card-desc">모의고사 주요 과목 1등급 2과목 이상 보유 시<br>결제금액의 20%를 별도 지급합니다.</p>
+        </div>
+        <div class="schol-card glass-card-dark reveal-up" style="transition-delay:0.1s">
+          <div class="schol-card-icon">🚀</div>
+          <div class="schol-card-amount">10<span class="schol-card-unit">만원</span></div>
+          <div class="schol-card-label">성적향상 장학금</div>
+          <p class="schol-card-desc">6월/9월 평가원 모의고사 전회 대비<br>등급 1단계 이상 상승 시 정액 지급합니다.</p>
+        </div>
+      </div>
+
+      <!-- 커뮤니티 장학금 (3열) -->
+      <div class="schol-grid-3">
+        <div class="schol-card-sm glass-card-dark reveal-up">
+          <div class="schol-sm-amount">1만원<span class="schol-sm-per">/월</span></div>
+          <div class="schol-sm-label">SNS 후기 장학금</div>
+        </div>
+        <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.08s">
+          <div class="schol-sm-amount">5만원</div>
+          <div class="schol-sm-label">친구추천 상품권</div>
+        </div>
+        <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.16s">
+          <div class="schol-sm-amount">5만원</div>
+          <div class="schol-sm-label">학부모 소개 상품권</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- REVIEWS -->
   <section class="section" id="reviews">
     <div class="container">
       <div class="reveal-up">
         <h2 class="section-title">재원생·학부모 후기</h2>
       </div>
-      <div class="reviews-slider">
-        <div class="review-card glass-card reveal-up">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">시설이 정말 깔끔하고 정숙한 분위기라 공부에만 온전히 집중하기 최고의 환경이에요. 관리형이라 생활 패턴을 딱 잡아주니 나태해질 틈이 없고, 효율이 확 올라갑니다.</p>
-          <div class="review-author"><div class="review-avatar">한</div><div><div class="review-name">한글28</div><div class="review-date">2026.02.24</div></div></div>
+      <div class="nb-pile reveal-up">
+        <div class="nb-card" style="--r:-2.5deg;--x:-8%;--y:0">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">한글28</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">시설이 정말 깔끔하고 정숙한 분위기라 공부에만 온전히 집중하기 최고의 환경이에요. 관리형이라 생활 패턴을 딱 잡아주니 나태해질 틈이 없고, 효율이 확 올라갑니다.</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.02.24</span><span class="nb-source">네이버 블로그</span></div>
         </div>
-        <div class="review-card glass-card reveal-up" style="transition-delay:0.1s">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">집에 있으면 잘 집중 못하던 아이가 여기에서는 차분하게 공부한다고 하더라구요. 관리도 잘해주시는것 같아 만족하고 있어요!</p>
-          <div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">학부모님</div><div class="review-date">2026.01.27</div></div></div>
+        <div class="nb-card" style="--r:1.8deg;--x:5%;--y:-12px">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">학부모님</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">집에 있으면 잘 집중 못하던 아이가 여기에서는 차분하게 공부한다고 하더라구요. 관리도 잘해주시는것 같아 만족하고 있어요!</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.01.27</span><span class="nb-source">네이버 블로그</span></div>
         </div>
-        <div class="review-card glass-card reveal-up" style="transition-delay:0.2s">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">강제성이 있어서 빠지지 않고 꾸준히 다니게 되고, 규칙적인 생활 리듬을 유지하며 공부 습관을 잡는데 도움이 됐습니다.</p>
-          <div class="review-author"><div class="review-avatar">1</div><div><div class="review-name">1qa****</div><div class="review-date">2026.02.10</div></div></div>
+        <div class="nb-card" style="--r:-1deg;--x:-3%;--y:-24px">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">1qa****</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">강제성이 있어서 빠지지 않고 꾸준히 다니게 되고, 규칙적인 생활 리듬을 유지하며 공부 습관을 잡는데 도움이 됐습니다.</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.02.10</span><span class="nb-source">네이버 블로그</span></div>
+        </div>
+        <div class="nb-card" style="--r:2.2deg;--x:8%;--y:-36px">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">꿈을향해</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">사감 선생님이 25분마다 순찰하시니까 졸거나 딴짓할 틈이 없어요. 처음엔 빡셌는데 지금은 이 루틴이 없으면 오히려 불안합니다.</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.01.15</span><span class="nb-source">네이버 블로그</span></div>
+        </div>
+        <div class="nb-card" style="--r:-1.8deg;--x:-6%;--y:-48px">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">수능D-100</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">핸드폰 완전 차단이라 처음엔 힘들었는데, 순공시간이 2배 이상 늘었어요. 여기 오기 전엔 하루 4시간도 힘들었는데 지금은 10시간 넘게 합니다.</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.02.18</span><span class="nb-source">네이버 블로그</span></div>
+        </div>
+        <div class="nb-card" style="--r:1.2deg;--x:3%;--y:-60px">
+          <div class="nb-header"><span class="nb-logo-bar"></span><svg class="nb-naver-icon" viewBox="0 0 20 20" fill="none"><path d="M13.27 10.6L6.44 1H1v18h5.73V9.4L13.56 19H19V1h-5.73v9.6z" fill="#03C75A"/></svg><span class="nb-blog-label">블로그 리뷰</span><span class="nb-author">재수맘</span></div>
+          <div class="nb-body"><div class="nb-stars">★★★★★</div><p class="nb-text">아이 출결 알림이 실시간으로 와서 안심이 됩니다. 매달 순공시간 리포트도 받아보는데, 아이가 정말 열심히 하고 있구나 느낍니다.</p></div>
+          <div class="nb-footer"><span class="nb-date">2026.03.01</span><span class="nb-source">네이버 블로그</span></div>
         </div>
       </div>
     </div>
@@ -500,13 +574,11 @@
   <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="container">
-      <h2 class="section-title">이번 수험생활, 제대로 관리받아 보시겠습니까?</h2>
+      <h2 class="section-title">이번 합격, 확실하게 준비하시겠습니까?</h2>
       <p class="cta-desc">하루만 경험해도 차이를 압니다. 관리의 밀도를 직접 확인하십시오.</p>
       <div class="cta-buttons">
         <a href="https://pf.kakao.com/" target="_blank" class="btn btn-kakao">💬 카카오톡 상담</a>
-        <a href="tel:02-6072-0833" class="btn btn-primary">📞 전화 상담</a>
       </div>
-      <p class="cta-phone">02-6072-0833</p>
     </div>
   </section>
 
@@ -515,6 +587,51 @@
     <div class="sticky-cta-inner">
       <a href="https://naver.me/xCtZ89pr" target="_blank" class="btn btn-primary btn-magnetic">강동점 상담</a>
       <a href="https://naver.me/5ISHvGVc" target="_blank" class="btn btn-kakao btn-magnetic">광장점 상담</a>
+    </div>
+  </div>
+
+  <!-- DISCOUNT POPUP -->
+  <div class="discount-overlay" id="discountOverlay">
+    <div class="discount-modal">
+      <button class="discount-close" id="discountClose" aria-label="닫기">&times;</button>
+      <div class="discount-layout">
+        <div class="discount-img">
+          <div class="discount-img-placeholder">
+            <span class="discount-img-badge">2026 신규등록</span>
+            <p class="discount-img-text">UBASE<br>관리형 독서실</p>
+          </div>
+        </div>
+        <div class="discount-content">
+          <div class="discount-header">
+            <p class="discount-label">SPECIAL OFFER</p>
+            <h3 class="discount-title">첫 달 <strong>30%</strong> 할인</h3>
+            <p class="discount-subtitle">3개월 등록 시 적용</p>
+          </div>
+          <ul class="discount-list">
+            <li>
+              <span class="discount-list-tag">재학생</span>
+              <span class="discount-list-desc">1일 1,000원 할인</span>
+            </li>
+            <li>
+              <span class="discount-list-tag">장기등록</span>
+              <span class="discount-list-desc">2개월 5% · 3개월 10% · 6개월 15%</span>
+            </li>
+            <li>
+              <span class="discount-list-tag">내신우수</span>
+              <span class="discount-list-desc">2등급 이내 15% 할인</span>
+            </li>
+            <li>
+              <span class="discount-list-tag">무료체험</span>
+              <span class="discount-list-desc">3일 무료체험 가능</span>
+            </li>
+          </ul>
+          <p class="discount-note">* 할인 혜택은 중복 적용이 불가합니다 (가장 유리한 1개 적용)</p>
+          <div class="discount-actions">
+            <a href="#contact" class="btn btn-primary discount-cta" id="discountCta">3일 무료체험 신청</a>
+            <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="btn btn-kakao discount-cta-sub">카카오 상담</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

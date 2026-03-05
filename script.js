@@ -344,6 +344,64 @@ if (document.readyState === 'complete') {
 
 
 
+// ===== 모바일 탭바 =====
+(function(){
+  var tabBar = document.getElementById('mobTabBar');
+  if(!tabBar) return;
+  var heroH = window.innerHeight * 0.6;
+
+  // 스크롤 시 표시/숨김
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > heroH){
+      tabBar.classList.add('visible');
+    } else {
+      tabBar.classList.remove('visible');
+    }
+  }, {passive:true});
+
+  // 현재 섹션 하이라이트
+  var links = tabBar.querySelectorAll('a[href^="#"]');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var sec = document.getElementById(id);
+    if(sec) sections.push({el:sec, link:a});
+  });
+
+  function updateActive(){
+    var scrollY = window.scrollY + 80;
+    var current = null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop <= scrollY) current = s;
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', updateActive, {passive:true});
+  updateActive();
+
+  // 탭 클릭 시 해당 탭으로 스크롤 (탭바 내)
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      var rect = a.getBoundingClientRect();
+      var barRect = tabBar.getBoundingClientRect();
+      var offset = rect.left - barRect.left - barRect.width/2 + rect.width/2;
+      tabBar.scrollBy({left:offset, behavior:'smooth'});
+    });
+  });
+})();
+
+// ===== 멘토 영상 호버 재생 =====
+(function(){
+  var cards = document.querySelectorAll('.mentor-profile-card');
+  cards.forEach(function(card){
+    var video = card.querySelector('.mentor-video');
+    if(!video) return;
+    card.addEventListener('mouseenter', function(){ video.play(); });
+    card.addEventListener('mouseleave', function(){ video.pause(); });
+  });
+})();
+
 // ===== 멘토 인터뷰 모달 =====
 (function(){
   var mentorData={
@@ -798,5 +856,34 @@ document.addEventListener('keydown', function(e) {
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
   });
+})();
+
+// ===== 할인 팝업 =====
+(function(){
+  var overlay = document.getElementById('discountOverlay');
+  var closeBtn = document.getElementById('discountClose');
+  var ctaBtn = document.getElementById('discountCta');
+  if(!overlay) return;
+
+  function openPopup(){ overlay.classList.add('active'); document.body.style.overflow='hidden'; }
+  function closePopup(){ overlay.classList.remove('active'); document.body.style.overflow=''; sessionStorage.setItem('ubase_discount_seen','1'); }
+
+  if(!sessionStorage.getItem('ubase_discount_seen')){
+    setTimeout(openPopup, 2500);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closePopup(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && overlay.classList.contains('active')) closePopup();
+  });
+
+  if(ctaBtn){
+    ctaBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      closePopup();
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    });
+  }
 })();
 
