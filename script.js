@@ -133,19 +133,8 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ===== MOBILE TOGGLE =====
-const toggle = document.getElementById('mobileToggle');
-const navLinks = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  toggle.classList.toggle('active');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    toggle.classList.remove('active');
-  });
-});
+// ===== MOBILE TOGGLE (모바일 탭바로 대체됨) =====
+// 햄버거 버튼 제거 → 모바일 탭바(mobTabBar) 사용
 
 // ===== HERO SCROLL PARALLAX =====
 (function() {
