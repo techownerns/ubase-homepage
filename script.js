@@ -855,11 +855,9 @@ document.addEventListener('keydown', function(e) {
   if(!overlay) return;
 
   function openPopup(){ overlay.classList.add('active'); document.body.style.overflow='hidden'; }
-  function closePopup(){ overlay.classList.remove('active'); document.body.style.overflow=''; sessionStorage.setItem('ubase_discount_seen','1'); }
+  function closePopup(){ overlay.classList.remove('active'); document.body.style.overflow=''; localStorage.setItem('ubase_discount_seen', Date.now().toString()); }
 
-  if(!sessionStorage.getItem('ubase_discount_seen')){
-    setTimeout(openPopup, 2500);
-  }
+  openPopup();
 
   closeBtn.addEventListener('click', closePopup);
   overlay.addEventListener('click', function(e){ if(e.target===overlay) closePopup(); });
@@ -888,11 +886,27 @@ document.addEventListener('keydown', function(e) {
 
   var history = [];
 
+  function openChatbot(){
+    if(!fab.classList.contains('active')){
+      fab.classList.add('active');
+      panel.classList.add('active');
+      input.focus();
+    }
+  }
+
   fab.addEventListener('click', function(){
     var open = fab.classList.toggle('active');
     panel.classList.toggle('active');
     if(open) input.focus();
   });
+
+  var ctaChatBtn = document.getElementById('ctaChatbotOpen');
+  if(ctaChatBtn){
+    ctaChatBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openChatbot();
+    });
+  }
 
   function addMsg(role, text){
     var wrap = document.createElement('div');

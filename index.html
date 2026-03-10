@@ -219,9 +219,9 @@
           <div class="number-desc">고객만족도 평가 최상</div>
         </div>
         <div class="number-card glass-card-dark reveal-up" style="transition-delay:0.24s">
-          <div class="number-value" data-target="55" data-suffix="%">0%</div>
+          <div class="number-value" data-target="30" data-suffix="%">0%</div>
           <div class="number-label">공부시간 증가</div>
-          <div class="number-desc">입원 후 평균 순공시간</div>
+          <div class="number-desc">유베이스 이용 후 평균 순공시간</div>
         </div>
         <div class="number-card glass-card-dark reveal-up" style="transition-delay:0.32s">
           <div class="number-value" data-target="1" data-suffix="초">0초</div>
@@ -252,7 +252,7 @@
         <div class="system-card-body">
           <h3>출결 및 학습시간 관리</h3>
           <p>안면인식 턴게이트로 입실·퇴실·외출·복귀를 1분 단위로 기록합니다.</p>
-          <ul><li>의무학습 교시제 운영</li><li>학부모 계정 실시간 연동</li><li>무단 부재 학생 즉시 연락</li></ul>
+          <ul><li>의무학습 교시제 운영</li><li>학부모에게 실시간 알림</li><li>무단 부재 학생 즉시 연락</li></ul>
         </div>
       </div>
       <div class="system-card reveal-up" style="transition-delay:0.08s">
@@ -284,7 +284,7 @@
         <div class="system-card-body">
           <h3>학습 동기부여</h3>
           <p>매주 장학생을 선발하여 수험생활 동안 꾸준히 동기를 부여합니다.</p>
-          <ul><li>순공시간 최대 / 얼리버드</li><li>주말 순공 / 익월 할인</li><li>4개 부문 매주 선발</li></ul>
+          <ul><li>순공시간 최대 / 얼리버드</li><li>주말 순공</li><li>3개 부문 매주 선발</li><li>선발인원 등록비 할인 및 상품권 증정</li></ul>
         </div>
       </div>
       <div class="system-card reveal-up" style="transition-delay:0.08s">
@@ -308,8 +308,8 @@
       <div class="ai-grid">
         <div class="ai-card glass-card tilt-card reveal-up">
           <div class="ai-icon tilt-float">📞</div>
-          <h3>AI 자동 연락</h3>
-          <p>지각·무단결석 감지 시 AI가 즉시 학생에게 등원 안내 연락을 실행합니다.</p>
+          <h3>AI 기반 출결 연락 시스템</h3>
+          <p>지각·무단결석 발생 시 AI가 즉시 감지하여 담당 선생님에게 보고하고, 학생에게 출석 독려 전화를 자동으로 진행합니다.</p>
         </div>
         <div class="ai-card glass-card tilt-card reveal-up" style="transition-delay:0.1s">
           <div class="ai-icon tilt-float">📊</div>
@@ -334,8 +334,8 @@
   <section class="section section-alt" id="facility">
     <div class="container">
       <div class="reveal-up">
-        <h2 class="section-title">집중을 강제하는 설계된 공간</h2>
-        <p class="section-desc">높은 층고, 자연 채광, 시디즈 의자. 학습 능률을 최적화하는 사소한 부분까지 고민했습니다.</p>
+        <h2 class="section-title">집중력이 생성되게 설계된 공간</h2>
+        <p class="section-desc">높은 층고, 자연채광, 넓은 책상, 서울대 시디즈 의자. 학습 능률을 최적화하는 사소한 부분까지 고민했습니다.</p>
       </div>
       <!-- 벤토 그리드 -->
       <div class="bento-grid reveal-up" id="facGrid"></div>
@@ -367,7 +367,7 @@
     <div class="container">
       <div class="reveal-up">
         <h2 class="section-title">수능 백분위 99% 검증된 멘토진</h2>
-        <p class="section-desc">질의전담 멘토는 담당과목 수능 백분위 99%로 철저하게 검증된 실력이 보장됩니다.</p>
+        <p class="section-desc">수능 백분위 99%로 철저하게 검증된 멘토가 합격까지 생활 관리와 학습 진도 관리를 함께합니다.</p>
       </div>
       <div class="mentor-profiles-grid">
         <div class="mentor-profile-card reveal-up" data-mentor="kim">
@@ -491,7 +491,7 @@
           <div class="schol-sm-label">SNS 후기 장학금</div>
         </div>
         <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.08s">
-          <div class="schol-sm-amount">5만원</div>
+          <div class="schol-sm-amount">3만원</div>
           <div class="schol-sm-label">친구추천 상품권</div>
         </div>
         <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.16s">
@@ -577,7 +577,7 @@
       <h2 class="section-title">이번 합격, 확실하게 준비하시겠습니까?</h2>
       <p class="cta-desc">하루만 경험해도 차이를 압니다. 관리의 밀도를 직접 확인하십시오.</p>
       <div class="cta-buttons">
-        <a href="https://pf.kakao.com/" target="_blank" class="btn btn-kakao">💬 카카오톡 상담</a>
+        <a href="#" class="btn btn-primary" id="ctaChatbotOpen">💬 상담 시작하기</a>
       </div>
     </div>
   </section>
@@ -597,38 +597,32 @@
       <div class="discount-layout">
         <div class="discount-img">
           <div class="discount-img-placeholder">
-            <span class="discount-img-badge">2026 신규등록</span>
-            <p class="discount-img-text">UBASE<br>관리형 독서실</p>
+            <p class="discount-img-sub">3월 한정</p>
+            <p class="discount-img-highlight">첫 달<br><span>20%</span></p>
+            <p class="discount-img-sub2">할인</p>
           </div>
         </div>
         <div class="discount-content">
-          <div class="discount-header">
-            <p class="discount-label">SPECIAL OFFER</p>
-            <h3 class="discount-title">첫 달 <strong>30%</strong> 할인</h3>
-            <p class="discount-subtitle">3개월 등록 시 적용</p>
-          </div>
           <ul class="discount-list">
             <li>
-              <span class="discount-list-tag">재학생</span>
-              <span class="discount-list-desc">1일 1,000원 할인</span>
+              <span class="discount-list-tag">재등록</span>
+              <span class="discount-list-desc">기존 고객 3월 재등록 <strong>10%</strong></span>
             </li>
             <li>
               <span class="discount-list-tag">장기등록</span>
-              <span class="discount-list-desc">2개월 5% · 3개월 10% · 6개월 15%</span>
+              <span class="discount-list-desc">2개월<strong>5%</strong>/3개월<strong>10%</strong>/6개월<strong>15%</strong></span>
             </li>
             <li>
               <span class="discount-list-tag">내신우수</span>
-              <span class="discount-list-desc">2등급 이내 15% 할인</span>
+              <span class="discount-list-desc">2등급 이내 <strong>15%</strong> 할인</span>
             </li>
             <li>
               <span class="discount-list-tag">무료체험</span>
-              <span class="discount-list-desc">3일 무료체험 가능</span>
+              <span class="discount-list-desc"><strong>1일</strong> 무료체험 가능</span>
             </li>
           </ul>
-          <p class="discount-note">* 할인 혜택은 중복 적용이 불가합니다 (가장 유리한 1개 적용)</p>
           <div class="discount-actions">
-            <a href="#contact" class="btn btn-primary discount-cta" id="discountCta">3일 무료체험 신청</a>
-            <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="btn btn-kakao discount-cta-sub">카카오 상담</a>
+            <a href="#contact" class="btn btn-primary discount-cta" id="discountCta">상담 신청하기</a>
           </div>
         </div>
       </div>
