@@ -444,18 +444,19 @@ img{max-width:100%;display:block}
 .discount-img-placeholder{text-align:center;padding:40px}
 .discount-img-sub{font-size:16px;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:2px;margin-bottom:8px}
 .discount-img-highlight{font-size:32px;font-weight:900;color:#fff;line-height:1.2}
-.discount-img-highlight span{font-size:72px;display:block;margin:8px 0;text-shadow:0 4px 24px rgba(0,0,0,0.2)}
-.discount-img-sub2{font-size:28px;font-weight:800;color:#fff;letter-spacing:4px}
+.discount-img-highlight span{font-size:84px;display:block;margin:8px 0;text-shadow:0 4px 24px rgba(0,0,0,0.2);letter-spacing:-2px}
+.discount-img-sub2{font-size:30px;font-weight:800;color:#fff;letter-spacing:6px}
 .discount-content{padding:32px 36px;display:flex;flex-direction:column;justify-content:center}
-.discount-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
-.discount-list li{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(74,124,255,0.05);border-radius:12px;border:1px solid rgba(74,124,255,0.1)}
-.discount-list-tag{font-size:15px;font-weight:800;color:#4A7CFF;background:rgba(74,124,255,0.12);padding:5px 10px;border-radius:8px;white-space:nowrap;flex-shrink:0;text-align:center}
-.discount-list-desc{font-size:15px;color:var(--gray-700);font-weight:500;line-height:1.5}
-.discount-list-desc strong{color:#FF6B35;font-weight:800;font-size:17px}
+.discount-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.discount-list li{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(74,124,255,0.06);border-radius:14px;border:1px solid rgba(74,124,255,0.12);transition:background 0.2s}
+.discount-list li:hover{background:rgba(74,124,255,0.12)}
+.discount-list-tag{font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#4A7CFF,#6B8FFF);padding:6px 0;border-radius:20px;white-space:nowrap;flex-shrink:0;text-align:center;letter-spacing:0.5px;width:76px;box-sizing:border-box}
+.discount-list-desc{font-size:16px;color:var(--gray-700);font-weight:600;line-height:1.5}
+.discount-list-desc strong{color:#FF5522;font-weight:900;font-size:22px}
 .discount-note{font-size:12px;color:var(--gray-400);margin-bottom:24px}
 .discount-actions{display:flex;gap:12px;flex-wrap:wrap}
 .discount-cta,.discount-cta-sub{flex:1;justify-content:center;text-align:center;font-size:15px;padding:14px 20px}
-@media(min-width:1440px){.discount-modal{max-width:620px}.discount-layout{grid-template-columns:1fr}.discount-img{min-height:200px}.discount-content{padding:32px 36px}.discount-list-tag{font-size:17px;padding:6px 16px}.discount-list-desc{font-size:17px}.discount-list-desc strong{font-size:19px}.discount-list li{padding:12px 16px;gap:14px}.discount-cta,.discount-cta-sub{font-size:16px;padding:16px 24px}}
+@media(min-width:1440px){.discount-modal{max-width:620px}.discount-layout{grid-template-columns:1fr}.discount-img{min-height:200px}.discount-content{padding:32px 36px}.discount-list-tag{font-size:14px;padding:7px 16px}.discount-list-desc{font-size:18px}.discount-list-desc strong{font-size:24px}.discount-list li{padding:14px 18px;gap:16px}.discount-cta,.discount-cta-sub{font-size:16px;padding:16px 24px}}
 
 /* ===== LOCATION ===== */
 .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
@@ -567,10 +568,10 @@ img{max-width:100%;display:block}
   .discount-modal{max-height:92vh;max-height:92dvh;overflow-y:auto}
   .discount-content{padding:16px 18px}
   .discount-list{gap:8px;margin-bottom:16px}
-  .discount-list li{padding:10px 14px;flex-direction:column;align-items:flex-start;gap:4px}
-  .discount-list-tag{font-size:13px;padding:3px 10px;min-width:auto}
+  .discount-list li{padding:10px 14px;flex-direction:row;align-items:center;gap:10px}
+  .discount-list-tag{font-size:11px;padding:4px 10px;min-width:54px}
   .discount-list-desc{font-size:14px}
-  .discount-list-desc strong{font-size:16px}
+  .discount-list-desc strong{font-size:18px}
   .discount-close{background:rgba(255,255,255,0.2)}
   .discount-cta{padding:12px 16px;font-size:14px}
   .mgmt-grid,.nb-pile,.ai-grid{grid-template-columns:1fr}
