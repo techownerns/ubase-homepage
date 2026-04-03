@@ -464,8 +464,8 @@ if (document.readyState === 'complete') {
 })();
 
 /* ── FACILITY GALLERY (BENTO GRID + LIGHTBOX/INSTA VIEWER) ── */
-const BUCKET = 'https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/render/image/public/facility/';
-const BUCKET_FULL = 'https://ohuqwtugvafcxfvwizqh.supabase.co/storage/v1/object/public/facility/';
+const BUCKET = 'https://storage.googleapis.com/ubase-facility/';
+const BUCKET_FULL = 'https://storage.googleapis.com/ubase-facility/';
 
 /* 벤토 배치 순서: featured(lg)는 큰 타일, 나머지는 작은 타일 */
 var facilityImages = [
@@ -876,7 +876,7 @@ document.addEventListener('keydown', function(e) {
 
 /* ── CHATBOT ── */
 (function(){
-  var CHAT_URL = 'https://ohuqwtugvafcxfvwizqh.supabase.co/functions/v1/chat';
+  var CHAT_URL = 'https://dev-api-hjrdfvy3uq-du.a.run.app/api/chatbot';
   var fab = document.getElementById('chatbotFab');
   var panel = document.getElementById('chatbotPanel');
   var form = document.getElementById('chatbotForm');
