@@ -459,7 +459,7 @@ img{max-width:100%;display:block}
 @media(min-width:1440px){.discount-modal{max-width:620px}.discount-layout{grid-template-columns:1fr}.discount-img{min-height:200px}.discount-content{padding:32px 36px}.discount-list-tag{font-size:14px;padding:7px 16px}.discount-list-desc{font-size:18px}.discount-list-desc strong{font-size:24px}.discount-list li{padding:14px 18px;gap:16px}.discount-cta,.discount-cta-sub{font-size:16px;padding:16px 24px}}
 
 /* ===== LOCATION ===== */
-.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.location-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;margin-top:40px}
 .location-card{overflow:hidden}
 .location-map{height:300px;background:var(--gray-100)}
 .location-info{padding:28px}

@@ -323,6 +323,7 @@ function initNaverMaps() {
   if (typeof naver === 'undefined' || !naver.maps) return;
   makeMapByAddress('map-gwangjang', '서울시 광진구 구의강변로106 삼성쉐르빌', '유베이스 광장점');
   makeMapByAddress('map-gangdong', '서울시 강동구 양재대로 1464 남경빌딩', '유베이스 강동점');
+  makeMapByAddress('map-seohyeon', '경기 성남시 분당구 돌마로 481 분당우성프라자', '유베이스 서현점');
 }
 
 if (document.readyState === 'complete') {
@@ -845,33 +846,6 @@ document.addEventListener('keydown', function(e) {
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
   });
-})();
-
-// ===== 할인 팝업 =====
-(function(){
-  var overlay = document.getElementById('discountOverlay');
-  var closeBtn = document.getElementById('discountClose');
-  var ctaBtn = document.getElementById('discountCta');
-  if(!overlay) return;
-
-  function openPopup(){ overlay.classList.add('active'); document.body.style.overflow='hidden'; }
-  function closePopup(){ overlay.classList.remove('active'); document.body.style.overflow=''; localStorage.setItem('ubase_discount_seen', Date.now().toString()); }
-
-  openPopup();
-
-  closeBtn.addEventListener('click', closePopup);
-  overlay.addEventListener('click', function(e){ if(e.target===overlay) closePopup(); });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape' && overlay.classList.contains('active')) closePopup();
-  });
-
-  if(ctaBtn){
-    ctaBtn.addEventListener('click', function(e){
-      e.preventDefault();
-      closePopup();
-      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-    });
-  }
 })();
 
 /* ── CHATBOT ── */

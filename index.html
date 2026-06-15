@@ -38,7 +38,6 @@
     <a href="#facility">시설</a>
     <a href="#mentoring">멘토링</a>
     <a href="#parent">학부모</a>
-    <a href="#scholarship">장학금</a>
     <a href="#reviews">후기</a>
     <a href="#contact" class="mob-tab-cta">상담신청</a>
   </div>
@@ -55,6 +54,7 @@
       <div class="hero-actions">
         <a href="https://naver.me/xCtZ89pr" target="_blank" class="btn btn-primary btn-magnetic">강동점 상담신청</a>
         <a href="https://naver.me/5ISHvGVc" target="_blank" class="btn btn-primary btn-magnetic">광장점 상담신청</a>
+        <a href="https://naver.me/xCjxDHiY" target="_blank" class="btn btn-primary btn-magnetic">서현점 상담신청</a>
       </div>
     </div>
     <div class="hero-scroll">SCROLL<div class="scroll-line"></div></div>
@@ -454,56 +454,6 @@
     </div>
   </section>
 
-  <!-- SCHOLARSHIP -->
-  <section class="section section-dark" id="scholarship">
-    <div class="container">
-      <div class="reveal-up">
-        <h2 class="section-title" style="color:#fff;">합격하면 장학으로 보답합니다</h2>
-      </div>
-
-      <!-- 합격 장학금 (히어로 카드) -->
-      <div class="schol-hero glass-card-dark reveal-up">
-        <div class="schol-hero-badge">BEST</div>
-        <div class="schol-hero-amount">50<span class="schol-hero-pct">%</span></div>
-        <div class="schol-hero-label">합격 장학금</div>
-        <p class="schol-hero-desc">스카이·서성한, 의치한약수, 국가자격증, 공무원 5~7급 합격 시<br><strong>결제금액의 50%</strong>를 장학금으로 돌려드립니다.</p>
-      </div>
-
-      <!-- 성적 장학금 (2열) -->
-      <div class="schol-grid-2">
-        <div class="schol-card glass-card-dark reveal-up">
-          <div class="schol-card-icon">📈</div>
-          <div class="schol-card-amount">20<span class="schol-card-pct">%</span></div>
-          <div class="schol-card-label">성적우수 장학금</div>
-          <p class="schol-card-desc">모의고사 주요 과목 1등급 2과목 이상 보유 시<br>결제금액의 20%를 별도 지급합니다.</p>
-        </div>
-        <div class="schol-card glass-card-dark reveal-up" style="transition-delay:0.1s">
-          <div class="schol-card-icon">🚀</div>
-          <div class="schol-card-amount">10<span class="schol-card-unit">만원</span></div>
-          <div class="schol-card-label">성적향상 장학금</div>
-          <p class="schol-card-desc">6월/9월 평가원 모의고사 전회 대비<br>등급 1단계 이상 상승 시 정액 지급합니다.</p>
-        </div>
-      </div>
-
-      <!-- 커뮤니티 장학금 (3열) -->
-      <div class="schol-grid-3">
-        <div class="schol-card-sm glass-card-dark reveal-up">
-          <div class="schol-sm-amount">1만원<span class="schol-sm-per">/월</span></div>
-          <div class="schol-sm-label">SNS 후기 장학금</div>
-        </div>
-        <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.08s">
-          <div class="schol-sm-amount">3만원</div>
-          <div class="schol-sm-label">친구추천 상품권</div>
-        </div>
-        <div class="schol-card-sm glass-card-dark reveal-up" style="transition-delay:0.16s">
-          <div class="schol-sm-amount">5만원</div>
-          <div class="schol-sm-label">학부모 소개 상품권</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- REVIEWS -->
   <section class="section" id="reviews">
     <div class="container">
@@ -568,6 +518,14 @@
             <p>📞 <a href="tel:010-6526-6824">010-6526-6824</a></p>
           </div>
         </div>
+        <div class="location-card glass-card">
+          <div class="location-map" id="map-seohyeon" style="width:100%;height:300px;cursor:pointer;" onclick="window.open('https://naver.me/xCjxDHiY','_blank')"></div>
+          <div class="location-info">
+            <h3>서현점</h3>
+            <p>📍 경기도 성남시 분당구 돌마로 481 분당우성프라자 313~315호</p>
+            <p>📞 <a href="tel:010-3388-5429">010-3388-5429</a></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -580,6 +538,7 @@
       <div class="cta-buttons">
         <a href="https://naver.me/xCtZ89pr" target="_blank" class="btn btn-primary btn-magnetic">강동점 상담신청</a>
         <a href="https://naver.me/5ISHvGVc" target="_blank" class="btn btn-primary btn-magnetic">광장점 상담신청</a>
+        <a href="https://naver.me/xCjxDHiY" target="_blank" class="btn btn-primary btn-magnetic">서현점 상담신청</a>
       </div>
     </div>
   </section>
@@ -589,46 +548,7 @@
     <div class="sticky-cta-inner">
       <a href="https://naver.me/xCtZ89pr" target="_blank" class="btn btn-primary btn-magnetic">강동점 상담</a>
       <a href="https://naver.me/5ISHvGVc" target="_blank" class="btn btn-kakao btn-magnetic">광장점 상담</a>
-    </div>
-  </div>
-
-  <!-- DISCOUNT POPUP -->
-  <div class="discount-overlay" id="discountOverlay">
-    <div class="discount-modal">
-      <button class="discount-close" id="discountClose" aria-label="닫기">&times;</button>
-      <div class="discount-layout">
-        <div class="discount-img">
-          <div class="discount-img-placeholder">
-            <p class="discount-img-sub">3월 한정</p>
-            <p class="discount-img-highlight">첫 달<br><span>20%</span></p>
-            <p class="discount-img-sub2">할인</p>
-          </div>
-        </div>
-        <div class="discount-content">
-          <ul class="discount-list">
-            <li>
-              <span class="discount-list-tag">재등록</span>
-              <span class="discount-list-desc">기존 고객 3월 재등록 <strong>10%</strong></span>
-            </li>
-            <li>
-              <span class="discount-list-tag">장기등록</span>
-              <span class="discount-list-desc">2개월<strong>5%</strong>/3개월<strong>10%</strong>/6개월<strong>15%</strong></span>
-            </li>
-            <li>
-              <span class="discount-list-tag">내신우수</span>
-              <span class="discount-list-desc">2등급 이내 <strong>15%</strong> 할인</span>
-            </li>
-            <li>
-              <span class="discount-list-tag">무료체험</span>
-              <span class="discount-list-desc"><strong>1일</strong> 무료체험 가능</span>
-            </li>
-          </ul>
-          <div class="discount-actions">
-            <a href="https://naver.me/xCtZ89pr" target="_blank" class="btn btn-primary discount-cta">강동점 상담신청</a>
-            <a href="https://naver.me/5ISHvGVc" target="_blank" class="btn btn-primary discount-cta">광장점 상담신청</a>
-          </div>
-        </div>
-      </div>
+      <a href="https://naver.me/xCjxDHiY" target="_blank" class="btn btn-primary btn-magnetic">서현점 상담</a>
     </div>
   </div>
 
