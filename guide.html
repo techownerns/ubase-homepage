@@ -47,10 +47,13 @@
   .steps .n{flex-shrink:0;width:25px;height:25px;border-radius:50%;background:var(--primary);color:var(--white);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
   .steps .t{font-size:15.5px;color:var(--gray-800);line-height:1.6}
   .feature-shot{flex-shrink:0;display:flex;justify-content:center}
-  .phone{width:280px;border-radius:42px;background:#0A0E1A;padding:11px;box-shadow:0 30px 70px rgba(10,14,26,0.26),0 0 0 1px rgba(255,255,255,0.05) inset}
-  .phone-screen{border-radius:32px;overflow:hidden;position:relative;background:#F2F4F6}
+  .phone{width:280px;border-radius:40px;background:#0A0E1A;padding:15px 12px 13px;box-shadow:0 30px 70px rgba(10,14,26,0.26),0 0 0 1px rgba(255,255,255,0.05) inset}
+  .phone-top{display:flex;align-items:center;justify-content:center;gap:8px;height:9px;margin-bottom:8px}
+  .phone-top .spk{width:40px;height:4px;border-radius:2px;background:#2b313d}
+  .phone-top .cam{width:7px;height:7px;border-radius:50%;background:#11161f;box-shadow:inset 0 0 0 1.5px #2b313d}
+  .phone-screen{border-radius:27px;overflow:hidden;position:relative;background:#F2F4F6}
   .phone-screen img{width:100%;display:block}
-  .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:118px;height:26px;background:#0A0E1A;border-radius:0 0 16px 16px;z-index:5}
+  .pin{position:absolute;transform:translate(-50%,-50%);min-width:23px;height:23px;padding:0 3px;border-radius:999px;background:var(--accent);color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 7px rgba(10,14,26,.5);border:2px solid #fff;z-index:6}
   footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:44px 24px;font-size:13px;line-height:1.8}
   footer a{color:rgba(255,255,255,0.7)}
   .hidden{display:none}
@@ -99,7 +102,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">맨 위에 우리 지점 이름과 알림 버튼이 있어요. 빨간 숫자는 읽지 않은 알림 개수입니다.</span></li><li><span class="n">2</span><span class="t">출입 현황 카드 — 입실하면 "공부중", 퇴실하면 "휴식중"으로 바뀌고 지금 몇 시간째 공부 중인지 보여줘요.</span></li><li><span class="n">3</span><span class="t">리포트 카드에서 이번 달 학습 시간·벌점·상점을 요약해서 봅니다. 탭하면 상세 화면으로 이동해요.</span></li><li><span class="n">4</span><span class="t">맨 아래 탭 바로 홈·요청사항·일정·더보기를 이동합니다.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/home_student.png" alt="홈"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:88%;top:7%">1</span><span class="pin" style="left:50%;top:38%">2</span><span class="pin" style="left:50%;top:66%">3</span><span class="pin" style="left:50%;top:96%">4</span><img loading="lazy" src="guide-assets/home_student.png" alt="홈"></div></div>
       </div>
     </section>
     <section class="feature" id="f-attendance_student">
@@ -110,7 +113,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">위쪽 달력에서 보고 싶은 날짜를 누르세요. 기본은 오늘 날짜예요.</span></li><li><span class="n">2</span><span class="t">가운데 세로 막대가 1교시부터 7교시까지의 시간표예요. 초록색은 학습 중, 주황색은 미출석, 파란색은 미리 알린 일정 시간입니다.</span></li><li><span class="n">3</span><span class="t">막대 양옆의 작은 사진을 누르면 입실·퇴실 시각과 출입 사진을 크게 볼 수 있어요.</span></li><li><span class="n">4</span><span class="t">출입 사진은 10일 동안만 보관되고, 그 이후에는 사진 없이 시각만 남습니다.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/attendance_student.png" alt="출입 현황"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:74%;top:31%">1</span><span class="pin" style="left:50%;top:82%">2</span><span class="pin" style="left:86%;top:66%">3</span><img loading="lazy" src="guide-assets/attendance_student.png" alt="출입 현황"></div></div>
       </div>
     </section>
     <section class="feature" id="f-schedule_student">
@@ -121,7 +124,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">달력에서 일정을 등록할 날짜를 누르세요. 여러 날짜를 눌러 한 번에 같은 내용으로 등록할 수도 있어요.</span></li><li><span class="n">2</span><span class="t">날짜를 누르면 달력이 접히고 아래에 그 날의 일정 목록이 보입니다.</span></li><li><span class="n">3</span><span class="t">오른쪽 아래 파란색 + 버튼을 눌러 새 일정을 등록하세요. 상황 유형(지각·조퇴·외출·전체 미출석)을 고르고 시간과 사유만 적으면 됩니다.</span></li><li><span class="n">4</span><span class="t">이미 등록한 일정 카드를 누르면 내용을 고치거나 삭제할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/schedule_student.png" alt="일정"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:45%;top:28%">1</span><span class="pin" style="left:86%;top:90%">3</span><img loading="lazy" src="guide-assets/schedule_student.png" alt="일정"></div></div>
       </div>
     </section>
     <section class="feature" id="f-reason_student">
@@ -132,7 +135,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">등록된 사유들이 최근에 만든 순서로 나열됩니다.</span></li><li><span class="n">2</span><span class="t">왼쪽 색 칸은 사유 종류(결석·지각·조퇴·외출)예요.</span></li><li><span class="n">3</span><span class="t">오른쪽 글씨로 사유 내용과 '몇 교시부터 출석'인지 시작 시각을 보여줘요.</span></li><li><span class="n">4</span><span class="t">카드를 누르면 날짜·출결 가능 시각·등록 경로가 담긴 상세 화면이 열립니다.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/reason_student.png" alt="사유"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:16%;top:30%">2</span><span class="pin" style="left:60%;top:30%">3</span><img loading="lazy" src="guide-assets/reason_student.png" alt="사유"></div></div>
       </div>
     </section>
     <section class="feature" id="f-meal_student">
@@ -143,7 +146,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">식단표 사진을 눌러 무슨 메뉴인지 확인해요. (사진을 두 손가락으로 벌리면 크게 볼 수 있어요)</span></li><li><span class="n">2</span><span class="t">원하는 날짜에서 점심 또는 저녁 칸을 눌러 선택하면 파란색으로 바뀌어요.</span></li><li><span class="n">3</span><span class="t">아래쪽에 선택한 개수와 합계 금액이 보이면 '결제하기'를 눌러요.</span></li><li><span class="n">4</span><span class="t">결제 링크를 받을 사람(본인 또는 부모님)을 고르면 알림톡으로 결제 링크가 가요.</span></li><li><span class="n">5</span><span class="t">결제를 마치면 칸이 '결제완료'로 바뀌어요. 신청 날짜 전날까지는 '취소'를 눌러 취소할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/meal_student.png" alt="도시락 신청"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:32%">1</span><span class="pin" style="left:40%;top:82%">2</span><span class="pin" style="left:50%;top:62%">3</span><img loading="lazy" src="guide-assets/meal_student.png" alt="도시락 신청"></div></div>
       </div>
     </section>
     <section class="feature" id="f-internet_list_student">
@@ -154,7 +157,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">맨 위 카드에서 내 폰 상태를 확인해요. '학원 와이파이 사용 중'이면 신청할 수 있어요.</span></li><li><span class="n">2</span><span class="t">학원 밖이거나 와이파이에 연결돼 있지 않으면 카드가 주황색으로 바뀌고 신청이 잠겨요.</span></li><li><span class="n">3</span><span class="t">신청할 수 있을 때 오른쪽 아래 파란색 '신청' 버튼을 눌러요.</span></li><li><span class="n">4</span><span class="t">지난 신청 내역은 사이트 주소와 사용 시간으로 목록에 나와요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/internet_list_student.png" alt="인터넷 신청"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:20%">1</span><span class="pin" style="left:86%;top:90%">3</span><span class="pin" style="left:50%;top:55%">4</span><img loading="lazy" src="guide-assets/internet_list_student.png" alt="인터넷 신청"></div></div>
       </div>
     </section>
     <section class="feature" id="f-internet_new_student">
@@ -165,7 +168,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">사용할 사이트 주소를 입력해요. 이미 허용된 사이트면 '바로 접속하면 된다'는 안내가 떠요.</span></li><li><span class="n">2</span><span class="t">사용 사유를 적어요. (예: 수행평가 자료 조사)</span></li><li><span class="n">3</span><span class="t">'사용시간'을 눌러 '오늘 종일' 또는 2시간·4시간처럼 원하는 길이를 골라요.</span></li><li><span class="n">4</span><span class="t">'신청' 버튼을 누르면 신청이 접수되고 신청 내역 화면으로 돌아가요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/internet_new_student.png" alt="인터넷 신청 작성"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:19%">1</span><span class="pin" style="left:50%;top:33%">2</span><span class="pin" style="left:50%;top:46%">3</span><img loading="lazy" src="guide-assets/internet_new_student.png" alt="인터넷 신청 작성"></div></div>
       </div>
     </section>
     <section class="feature" id="f-internet_device_student">
@@ -176,7 +179,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">학원 와이파이(PRNSS)에 연결돼 있는지 확인해요.</span></li><li><span class="n">2</span><span class="t">'지금 이 폰 등록' 버튼을 누르면 앱이 알아서 등록을 시도해요.</span></li><li><span class="n">3</span><span class="t">등록되면 아래 '등록된 폰' 목록에 '활성'으로 표시돼요.</span></li><li><span class="n">4</span><span class="t">더 쓰지 않는 폰은 '등록 해제'를 눌러 정리할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/internet_device_student.png" alt="내 폰 등록"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:30%">2</span><span class="pin" style="left:50%;top:58%">3</span><img loading="lazy" src="guide-assets/internet_device_student.png" alt="내 폰 등록"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notice_list">
@@ -187,7 +190,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">더보기 화면에서 공지사항을 누르면 우리 지점 공지 목록이 열려요.</span></li><li><span class="n">2</span><span class="t">압정 표시가 붙은 공지는 꼭 확인해야 하는 고정 공지예요.</span></li><li><span class="n">3</span><span class="t">제목 옆 클립 표시는 첨부파일이 있다는 뜻이에요.</span></li><li><span class="n">4</span><span class="t">공지를 누르면 전체 내용과 첨부파일을 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notice_list.png" alt="공지사항"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:14%;top:29%">2</span><span class="pin" style="left:76%;top:29%">3</span><span class="pin" style="left:50%;top:42%">4</span><img loading="lazy" src="guide-assets/notice_list.png" alt="공지사항"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notice_detail">
@@ -198,7 +201,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">목록에서 공지를 누르면 제목, 작성자, 작성일과 본문이 보여요.</span></li><li><span class="n">2</span><span class="t">본문에 들어간 사진이나 링크도 그대로 볼 수 있어요.</span></li><li><span class="n">3</span><span class="t">첨부파일이 있으면 맨 아래에서 눌러 내려받을 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notice_detail.png" alt="공지 상세"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:20%">1</span><span class="pin" style="left:50%;top:82%">3</span><img loading="lazy" src="guide-assets/notice_detail.png" alt="공지 상세"></div></div>
       </div>
     </section>
     <section class="feature" id="f-report_student">
@@ -209,7 +212,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">홈 화면의 리포트 카드를 누르면 상세 리포트가 열립니다.</span></li><li><span class="n">2</span><span class="t">맨 위 '주간 / 월간 / 일간' 버튼으로 보고 싶은 기간을 고르세요.</span></li><li><span class="n">3</span><span class="t">핵심 지표에서 내 학습시간·출석률을 같은 학년 평균·최고와 막대로 비교합니다.</span></li><li><span class="n">4</span><span class="t">아래로 내리면 시간대별·일별·요일별 공부 그래프와 출결, 상벌점 내역을 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/report_student.png" alt="리포트"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:17%">2</span><span class="pin" style="left:50%;top:64%">3</span><img loading="lazy" src="guide-assets/report_student.png" alt="리포트"></div></div>
       </div>
     </section>
     <section class="feature" id="f-planner_student">
@@ -220,7 +223,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">더보기에서 '플래너 / 타이머'를 누르세요.</span></li><li><span class="n">2</span><span class="t">오른쪽 아래 + 버튼으로 할일 제목·날짜·시간을 입력해 추가합니다.</span></li><li><span class="n">3</span><span class="t">끝낸 할일을 누르면 완료 도장이 찍히고 가운데 달성률이 올라갑니다.</span></li><li><span class="n">4</span><span class="t">위쪽 '타이머' 탭에서는 과목을 고르고 재생 버튼을 눌러 공부 시간을 잴 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/planner_student.png" alt="플래너 / 타이머"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:86%;top:90%">2</span><span class="pin" style="left:50%;top:52%">3</span><span class="pin" style="left:50%;top:13%">4</span><img loading="lazy" src="guide-assets/planner_student.png" alt="플래너 / 타이머"></div></div>
       </div>
     </section>
     <section class="feature" id="f-request_student">
@@ -231,7 +234,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">오른쪽 아래 파란 + 버튼을 누르면 요청 작성 창이 열려요.</span></li><li><span class="n">2</span><span class="t">내용을 100자 이내로 적고 요청 보내기를 누르면 접수돼요.</span></li><li><span class="n">3</span><span class="t">보낸 요청은 목록에 쌓이고, 처리되면 '완료'로 바뀌어요.</span></li><li><span class="n">4</span><span class="t">요청을 누르면 자세한 내용과 처리 상태를 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/request_student.png" alt="요청사항"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:86%;top:90%">1</span><span class="pin" style="left:50%;top:42%">3</span><img loading="lazy" src="guide-assets/request_student.png" alt="요청사항"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notification_student">
@@ -242,7 +245,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">안 읽은 알림은 진하게 표시되고 오른쪽에 파란 점이 보여요.</span></li><li><span class="n">2</span><span class="t">알림을 누르면 읽음 처리되고, 관련 화면이 있으면 바로 이동해요.</span></li><li><span class="n">3</span><span class="t">오른쪽 위 모두 읽음을 누르면 한 번에 모두 읽음으로 바꿀 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notification_student.png" alt="알림함"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:80%;top:26%">1</span><span class="pin" style="left:85%;top:9%">3</span><img loading="lazy" src="guide-assets/notification_student.png" alt="알림함"></div></div>
       </div>
     </section>
     <section class="feature" id="f-profile_student">
@@ -253,7 +256,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">이름·연락처·성별·생년은 학원에 등록된 정보라 화면에서 바꿀 수 없어요.</span></li><li><span class="n">2</span><span class="t">오른쪽 위 연필 버튼을 누르면 학교, 목표학교, 이메일, 집주소를 고칠 수 있어요.</span></li><li><span class="n">3</span><span class="t">수정한 뒤 체크 버튼을 누르면 저장돼요.</span></li><li><span class="n">4</span><span class="t">맨 아래에서 로그아웃하거나 계정 탈퇴를 할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/profile_student.png" alt="프로필"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:22%">1</span><span class="pin" style="left:88%;top:8%">2</span><span class="pin" style="left:50%;top:88%">4</span><img loading="lazy" src="guide-assets/profile_student.png" alt="프로필"></div></div>
       </div>
     </section>
   </div>
@@ -274,7 +277,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">인사말 아래에 자녀 이름과 오늘 현황이 표시됩니다.</span></li><li><span class="n">2</span><span class="t">알림 카드 — 입실/퇴실, 일일 리포트, 학원 회신 등 최신 알림이 쌓입니다. 오른쪽 숫자는 안 읽은 알림 수예요.</span></li><li><span class="n">3</span><span class="t">출입 현황에서 자녀가 지금 공부 중인지, 몇 시에 입실했는지 확인합니다.</span></li><li><span class="n">4</span><span class="t">리포트 카드로 이번 달 학습 시간과 상·벌점을 봅니다.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/home_parent.png" alt="홈"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:35%;top:13%">1</span><span class="pin" style="left:50%;top:27%">2</span><span class="pin" style="left:50%;top:56%">3</span><span class="pin" style="left:50%;top:77%">4</span><img loading="lazy" src="guide-assets/home_parent.png" alt="홈"></div></div>
       </div>
     </section>
     <section class="feature" id="f-attendance_parent">
@@ -285,7 +288,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">오른쪽 위에서 보고 싶은 자녀를 선택하세요(자녀가 한 명이면 자동 선택).</span></li><li><span class="n">2</span><span class="t">달력에서 날짜를 누르면 그날의 출입 기록이 교시 시간표 위에 표시됩니다.</span></li><li><span class="n">3</span><span class="t">초록색은 학습 중, 주황색은 미출석, 파란색은 미리 알린 일정 구간이에요.</span></li><li><span class="n">4</span><span class="t">사진을 누르면 입실·퇴실 시각과 출입 사진을 크게 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/attendance_parent.png" alt="출입 현황"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:80%;top:7%">1</span><span class="pin" style="left:45%;top:33%">2</span><span class="pin" style="left:86%;top:68%">4</span><img loading="lazy" src="guide-assets/attendance_parent.png" alt="출입 현황"></div></div>
       </div>
     </section>
     <section class="feature" id="f-schedule_parent">
@@ -296,7 +299,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">오른쪽 위에서 자녀를 선택하세요(한 명이면 자동 선택).</span></li><li><span class="n">2</span><span class="t">달력에서 날짜를 누르고, 여러 날짜를 골라 한 번에 등록할 수도 있어요.</span></li><li><span class="n">3</span><span class="t">오른쪽 아래 + 버튼으로 새 일정을 등록하세요.</span></li><li><span class="n">4</span><span class="t">등록한 일정 카드를 누르면 수정·삭제할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/schedule_parent.png" alt="일정"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:80%;top:7%">1</span><span class="pin" style="left:86%;top:90%">3</span><img loading="lazy" src="guide-assets/schedule_parent.png" alt="일정"></div></div>
       </div>
     </section>
     <section class="feature" id="f-report_parent">
@@ -307,7 +310,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">홈 화면의 리포트 카드를 누르면 자녀 리포트가 열립니다.</span></li><li><span class="n">2</span><span class="t">'주간 / 월간 / 일간' 버튼으로 기간을 바꿔 가며 학습량 변화를 확인합니다.</span></li><li><span class="n">3</span><span class="t">그래프 아래 '분석' 문장이 자녀의 학습 상태를 쉬운 말로 설명해 줍니다.</span></li><li><span class="n">4</span><span class="t">오른쪽 위 날짜 버튼으로 특정 날짜 기준 기록도 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/report_parent.png" alt="리포트"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:12%">2</span><span class="pin" style="left:50%;top:40%">3</span><img loading="lazy" src="guide-assets/report_parent.png" alt="리포트"></div></div>
       </div>
     </section>
     <section class="feature" id="f-request_parent">
@@ -318,7 +321,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">오른쪽 아래 파란 + 버튼을 누르면 요청 작성 창이 열려요.</span></li><li><span class="n">2</span><span class="t">내용을 적고 요청 보내기를 누르면 접수돼요.</span></li><li><span class="n">3</span><span class="t">보낸 요청은 목록에 쌓이고, 처리되면 '완료'로 바뀌어요.</span></li><li><span class="n">4</span><span class="t">요청을 누르면 자세한 내용과 처리 상태를 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/request_parent.png" alt="요청사항"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:86%;top:90%">1</span><span class="pin" style="left:50%;top:42%">4</span><img loading="lazy" src="guide-assets/request_parent.png" alt="요청사항"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notice_list">
@@ -329,7 +332,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">더보기 화면에서 공지사항을 누르면 우리 지점 공지 목록이 열려요.</span></li><li><span class="n">2</span><span class="t">압정 표시가 붙은 공지는 꼭 확인해야 하는 고정 공지예요.</span></li><li><span class="n">3</span><span class="t">제목 옆 클립 표시는 첨부파일이 있다는 뜻이에요.</span></li><li><span class="n">4</span><span class="t">공지를 누르면 전체 내용과 첨부파일을 볼 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notice_list.png" alt="공지사항"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:14%;top:29%">2</span><span class="pin" style="left:76%;top:29%">3</span><span class="pin" style="left:50%;top:42%">4</span><img loading="lazy" src="guide-assets/notice_list.png" alt="공지사항"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notice_detail">
@@ -340,7 +343,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">목록에서 공지를 누르면 제목, 작성자, 작성일과 본문이 보여요.</span></li><li><span class="n">2</span><span class="t">본문에 들어간 사진이나 링크도 그대로 볼 수 있어요.</span></li><li><span class="n">3</span><span class="t">첨부파일이 있으면 맨 아래에서 눌러 내려받을 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notice_detail.png" alt="공지 상세"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:20%">1</span><span class="pin" style="left:50%;top:82%">3</span><img loading="lazy" src="guide-assets/notice_detail.png" alt="공지 상세"></div></div>
       </div>
     </section>
     <section class="feature" id="f-notification_parent">
@@ -351,7 +354,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">알림 제목 앞에 자녀 이름이 함께 표시돼요.</span></li><li><span class="n">2</span><span class="t">안 읽은 알림은 진하게 보이고 오른쪽에 파란 점이 붙어요.</span></li><li><span class="n">3</span><span class="t">알림을 누르면 읽음 처리되고 관련 화면으로 이동해요.</span></li><li><span class="n">4</span><span class="t">오른쪽 위 모두 읽음으로 한 번에 정리할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/notification_parent.png" alt="알림함"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:30%;top:26%">1</span><span class="pin" style="left:78%;top:26%">2</span><span class="pin" style="left:85%;top:9%">4</span><img loading="lazy" src="guide-assets/notification_parent.png" alt="알림함"></div></div>
       </div>
     </section>
     <section class="feature" id="f-profile_parent">
@@ -362,7 +365,7 @@
         <ol class="steps"><li><span class="n">1</span><span class="t">맨 위 카드에서 내 이름과 연락처를 볼 수 있어요.</span></li><li><span class="n">2</span><span class="t">아래 자녀 카드에서 자녀의 학교, 학년, 목표학교 등을 확인할 수 있어요.</span></li><li><span class="n">3</span><span class="t">정보를 바꾸려면 학원 데스크에 문의해 주세요.</span></li><li><span class="n">4</span><span class="t">맨 아래에서 로그아웃하거나 계정 탈퇴를 할 수 있어요.</span></li></ol>
       </div>
       <div class="feature-shot">
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><img loading="lazy" src="guide-assets/profile_parent.png" alt="프로필"></div></div>
+        <div class="phone"><div class="phone-top"><span class="spk"></span><span class="cam"></span></div><div class="phone-screen"><span class="pin" style="left:50%;top:12%">1</span><span class="pin" style="left:50%;top:30%">2</span><span class="pin" style="left:50%;top:78%">4</span><img loading="lazy" src="guide-assets/profile_parent.png" alt="프로필"></div></div>
       </div>
     </section>
   </div>
