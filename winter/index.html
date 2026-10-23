@@ -3,9 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>유베이스 윈터스쿨 | 올 겨울 제대로 공부할 학생 주목</title>
+<title>유베이스 윈터스쿨 모집 OPEN | 광장점·강동점 관리형 독서실</title>
 <script defer src="/analytics.js?v=20261023c"></script>
+<meta name="description" content="수능 다음 날부터 2월까지. 11월 이용료 50%, 12월 최대 40% 할인. 프리윈터 11.19~12.31 · 정규윈터 1.1~2.28. 이용 시작일 순서대로 좌석 사전 지정.">
 <meta name="robots" content="noindex">
+<!-- 링크 미리보기 (카카오톡·인스타·문자) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="유베이스 관리형 독서실">
+<meta property="og:title" content="유베이스 윈터스쿨 모집 OPEN">
+<meta property="og:description" content="11월 이용료 50% · 12월 최대 40% 할인. 프리윈터 11.19~12.31 · 정규윈터 1.1~2.28. 광장점·강동점">
+<meta property="og:image" content="https://ubase.kr/winter/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://ubase.kr/winter/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="유베이스 윈터스쿨 모집 OPEN">
+<meta name="twitter:description" content="11월 이용료 50% · 12월 최대 40% 할인. 프리윈터 11.19~12.31 · 정규윈터 1.1~2.28">
+<meta name="twitter:image" content="https://ubase.kr/winter/assets/og-image.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,8 +46,6 @@ a{text-decoration:none;color:inherit}
 @supports not (overflow:clip){.page{overflow:visible}}
 .wrap{padding:0 22px}
 
-/* 초안 표시 */
-.draft-note{background:#111827;color:#fbbf24;font-size:12px;font-weight:700;text-align:center;padding:6px 10px;letter-spacing:-.2px}
 .tag{position:absolute;z-index:3;top:10px;right:10px;background:rgba(17,24,39,.72);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;letter-spacing:-.2px}
 
 /* 0 혜택 화면 (h19 샘플5, 맨 위) */
@@ -332,7 +344,8 @@ section{position:relative}
 .ticket .band{display:inline-block;font-family:var(--display);font-size:18px;font-weight:900;color:#fff;padding:6px 12px;border-radius:10px;letter-spacing:-.4px;white-space:nowrap}
 .ticket.main .band{background:var(--vivid)}
 .ticket .period{font-family:var(--display);font-weight:900;font-size:19.5px;margin:0;letter-spacing:-.8px;white-space:nowrap}
-.common-box{margin-top:26px;background:#fff;border:1px solid #c9dbff;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 20px rgba(15,30,90,.08)}
+.ticket .tk-tag{font-family:var(--display);font-weight:900;font-size:19.5px;color:#c2410c;letter-spacing:-.6px;white-space:nowrap}
+.common-box{margin-top:16px;background:#fff;border:1px solid #c9dbff;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 20px rgba(15,30,90,.08)}
 .cb-tag{display:inline-block;align-self:flex-start;font-size:12.5px;font-weight:900;color:#fff;background:var(--vivid);padding:4px 10px;border-radius:999px}
 .cb-item{display:flex;align-items:center;gap:14px}
 .cb-item svg{flex:0 0 44px;width:44px;height:44px;padding:10px;border-radius:12px;background:var(--orange);stroke:#0b1640;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -356,9 +369,15 @@ section{position:relative}
 .ticket .bl span{font-size:12.5px;font-weight:700;color:var(--gray)}
 .ticket .bl em{font-style:normal;font-size:16px;font-weight:900;color:#c2410c;line-height:1.35}
 .ticket .bl em.dl{display:grid;gap:4px;margin-top:2px}
-.ticket .bl em.dl span{display:flex;align-items:baseline;gap:6px;color:var(--ink);font-weight:800;font-size:15px}
+.ticket .bl em.dl span{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;color:var(--ink);font-weight:800;font-size:15px}
+.ticket .bl em.dl span>span.px{flex:0 0 auto}
 .ticket .bl em.dl strong{font-family:var(--display);font-size:26px;font-weight:900;color:#c2410c;letter-spacing:-.8px;line-height:1}
 .ticket .bl em.dl small{font-size:12.5px;font-weight:700;color:var(--gray)}
+.ticket .bl em.dl .dl-note{font-size:12px;font-weight:600;color:#9ca3af;margin-top:2px}
+.ticket .bl em.dl .px{display:inline-flex;align-items:baseline;gap:6px;margin-left:0;white-space:nowrap;padding:3px 10px;border-radius:999px;background:#fff4e8;border:1px solid #ffd3ad;color:var(--ink)}
+.ticket .bl em.dl .px s{font-size:13.5px;font-weight:700;color:#9ca3af;text-decoration:line-through;text-decoration-thickness:2px}
+.ticket .bl em.dl .px i{font-style:normal;font-size:13px;color:#9ca3af}
+.ticket .bl em.dl .px b{font-family:var(--display);font-size:20px;font-weight:900;color:var(--vivid);letter-spacing:-.5px}
 .ticket .grps.one{grid-template-columns:1fr}
 .ticket.pre .band{background:var(--orange-deep)}
 .ticket .benefit{margin-top:auto;align-self:stretch;padding-top:12px;border-top:2px dashed var(--line);font-size:20px;font-weight:900;color:#c2410c;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -645,7 +664,7 @@ form{margin-top:26px;display:grid;gap:20px}
   .closing .c2{font-size:22px;margin-top:24px}
 
   /* 할인권: 2열 */
-  .tickets{grid-template-columns:1fr;gap:24px;max-width:1000px;margin:24px auto 0}
+  .tickets{grid-template-columns:1fr;gap:24px;max-width:1000px;margin:48px auto 0}
   .ticket .grps{grid-template-columns:1fr 1fr;gap:0 32px}
   .ticket .grp{padding-top:16px}
   .ticket{padding:30px 30px 26px;border-radius:22px}
@@ -653,8 +672,9 @@ form{margin-top:26px;display:grid;gap:20px}
   .ticket .band{font-size:26px;padding:9px 18px;border-radius:12px}
   .ticket{--cut:68px}
   .ticket .period{font-size:30px}
+  .ticket .tk-tag{font-size:26px}
   .ticket .benefit{font-size:20px;padding-top:16px}
-  .common-box{max-width:1000px;margin:40px auto 0;padding:22px 26px;flex-direction:row;align-items:center;gap:22px}
+  .common-box{max-width:1000px;margin:24px auto 0;padding:22px 26px;flex-direction:row;align-items:center;gap:22px}
   .cb-tag{font-size:14px;padding:5px 12px}
   .cb-item b{font-size:21px}
   .cb-item span{font-size:15px}
@@ -670,6 +690,8 @@ form{margin-top:26px;display:grid;gap:20px}
   .ticket .bl em{font-size:18px}
   .ticket .bl em.dl span{font-size:17px}
   .ticket .bl em.dl strong{font-size:32px}
+  .ticket .bl em.dl .px s{font-size:15px}
+  .ticket .bl em.dl .px b{font-size:24px}
   .ticket .status{font-size:13px;padding:4px 10px}
   .offer .btn{margin-top:40px}
 
@@ -734,7 +756,6 @@ form{margin-top:26px;display:grid;gap:20px}
 <style data-archive-hide>.sample{display:none!important}</style></head>
 <body>
 <div class="page">
-  <div class="draft-note">초안 · 신청 접수 미연결 (제출하면 안내창만 뜸) · 개인정보 처리 안내 자리 비어 있음</div>
 
 
   <!-- 0 혜택 화면 (가장 먼저 보이는 화면) -->
@@ -743,7 +764,7 @@ form{margin-top:26px;display:grid;gap:20px}
       <div class="left">
         <span class="open rise d1"><i></i>2027 윈터 시즌 · 광장점·강동점</span>
         <h1 class="hook rise d1">유베이스 윈터스쿨<br><u>모집 OPEN</u></h1>
-        <p class="sub rise d2">수능 다음 날부터 2월까지,<br>다음 수능 목표를 이루는 가장 확실한 선택.</p>
+        <p class="sub rise d2">수능 목표를 이루는 가장 확실한 선택</p>
         <ul class="terms rise d2">
           <li><b>프리윈터</b><span>11월 19일 ~ 12월 31일</span></li>
           <li><b>정규윈터</b><span>1월 1일 ~ 2월 28일</span></li>
@@ -773,39 +794,38 @@ form{margin-top:26px;display:grid;gap:20px}
         <p class="lead">프리윈터와 정규윈터, 미리 예약할수록 혜택이 커요</p>
       </div>
 
-      <div class="common-box reveal">
-        <span class="cb-tag">공통 혜택</span>
-        <div class="cb-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 14h16M8 7V4h8v3"/></svg><div><b>이용 시작일 순서대로 좌석 사전 지정</b><span>먼저 시작하는 학생부터 원하는 자리를 먼저 골라요</span></div></div>
-      </div>
-
       <div class="tickets">
         <div class="ticket pre reveal" id="t-pre">
-          <div class="tk-head"><span class="band">프리윈터</span><span class="period">11월 19일 ~ 12월 31일</span><span class="status" data-start="2026-11-19" data-end="2026-12-31"></span></div>
+          <div class="tk-head"><span class="band">프리윈터</span><span class="period">11월 19일 ~ 12월 31일</span><span class="tk-tag">신규생 할인 혜택</span><span class="status" data-start="2026-11-19" data-end="2026-12-31"></span></div>
           <div class="grps">
           <div class="grp"><h4>광장점</h4>
             <ul class="bl">
-              <li><b>신규 등록</b><em class="dl"><span>11월 이용료 <strong>50%</strong> 할인</span><span>12월 이용료 <strong>15%</strong> 할인</span></em></li>
+              <li><em class="dl"><span>11월 이용료 <strong>50%</strong> 할인</span><span>12월 이용료 <strong>15%</strong> 할인</span></em></li>
             </ul>
           </div>
           <div class="grp"><h4>강동점</h4>
             <ul class="bl">
-              <li><b>신규 등록</b><em class="dl"><span>11월 이용료 <strong>50%</strong> 할인</span><span>12월 이용료 <strong>40%</strong> 할인</span></em></li>
+              <li><em class="dl"><span>11월 이용료 <strong>50%</strong> 할인</span><span>12월 이용료 <strong>40%</strong> 할인</span></em></li>
             </ul>
           </div>
           </div>
         </div>
 
         <div class="ticket main reveal" id="t-main">
-          <div class="tk-head"><span class="band">정규윈터</span><span class="period">1월 1일 ~ 2월 28일</span><span class="status" data-start="2027-01-01" data-end="2027-02-28"></span></div>
-          <p class="tk-lead">12월 31일까지 미리 결제하면<br>신규·재원생 모두 할인</p>
+          <div class="tk-head"><span class="band">정규윈터</span><span class="period">1월 1일 ~ 2월 28일</span><span class="tk-tag">신규·재원생 모두 할인</span><span class="status" data-start="2027-01-01" data-end="2027-02-28"></span></div>
           <div class="grps one">
           <div class="grp"><h4>광장점 · 강동점 공통</h4>
             <ul class="bl">
-              <li><b>윈터 선결제</b><em class="dl"><span>매달 <strong>3만원</strong> 할인 <small>(하루 1천원)</small></span><span>3월까지 결제 시 추가 <strong>10만원</strong> 할인</span></em></li>
+              <li><em class="dl"><span>윈터 1~2월 선결제 시 총 <strong>5.9만원</strong> 할인 <span class="px"><s>94.4만원</s><i>→</i><b>88.5만원</b></span></span><span>1~3월 선결제 시 총 <strong>15.9만원</strong> 할인 <span class="px"><s>144만원</s><i>→</i><b>128.1만원</b></span></span><span class="dl-note">금액은 광장점 오픈형 기준이에요</span></em></li>
             </ul>
           </div>
           </div>
         </div>
+      </div>
+
+      <div class="common-box reveal">
+        <span class="cb-tag">공통 혜택</span>
+        <div class="cb-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 14h16M8 7V4h8v3"/></svg><div><b>이용 시작일 순서대로 좌석 사전 지정</b><span>먼저 시작하는 학생부터 원하는 자리를 먼저 골라요</span></div></div>
       </div>
 
       <div class="refer reveal">
@@ -816,7 +836,7 @@ form{margin-top:26px;display:grid;gap:20px}
         </ul>
       </div>
 
-      <a class="btn btn-orange" href="#apply">혜택받고 예약하기</a>
+      <a class="btn btn-orange" href="#calc">할인 금액 계산해보기</a>
     </div>
   </section>
 
@@ -869,7 +889,7 @@ form{margin-top:26px;display:grid;gap:20px}
           </div>
           <div class="co-scroll"><table class="co-table" id="cTable"><thead><tr><th>기간</th><th>일수</th><th>정가</th><th>할인</th><th>금액</th></tr></thead><tbody></tbody></table></div>
           <ul class="co-benefits" id="cBen"></ul>
-          <p class="co-fine">정가는 좌석 타입별 월 이용료 기준이고(광장 오픈형 48만원·칸막이형 51만원, 강동 오픈형 49만원·칸막이형 52만원·큐브형 60만원), 한 달은 30일로 나눠 하루 요금을 계산해요. 실제 결제 금액은 상담 때 확인해 주세요. 친구 추천 상품권은 별도예요.</p>
+          <p class="co-fine">정가는 좌석 타입별 월 이용료(광장 오픈형 48만원·칸막이형 51만원, 강동 오픈형 49만원·칸막이형 52만원·큐브형 60만원)를 30일로 나눈 하루 요금 × 이용 일수로 계산해요. 실제 결제 금액은 상담 때 확인해 주세요. 친구 추천 상품권은 별도예요.</p>
           <a class="btn btn-orange" href="#apply">이 조건으로 혜택받고 예약하기</a>
         </div>
       </div>
@@ -1024,7 +1044,7 @@ form{margin-top:26px;display:grid;gap:20px}
         <video class="kb" id="aiVideo" muted loop playsinline preload="none" poster="assets/teacher-care-poster.webp" aria-label="얼굴인식 출입, 선생님의 학습 점검, 순찰 장면"><source src="assets/teacher-care.mp4" type="video/mp4"></video>
         <div class="toast t1"><i></i><div><b>1교시 출석 자동 확인</b><span>전원 입실 · AI가 확인했어요</span></div></div>
         <div class="toast t2"><i class="warn"></i><div><b>늦은 학생 바로 연락</b><span>선생님이 학습 기록도 함께 점검해요</span></div></div>
-        <div class="toast t3"><i></i><div><b>3교시 순찰 완료</b><span>졸던 학생 깨우고 자리 정리</span></div></div>
+        <div class="toast t3"><i></i><div><b>모든 교시</b><span>순찰 25분 간격 진행</span></div></div>
       </div>
       <div class="steps">
         <div class="step reveal"><i>1</i><p>교시마다 출석 자동 확인</p></div>
@@ -1054,7 +1074,7 @@ form{margin-top:26px;display:grid;gap:20px}
       <div class="center reveal">
         <span class="eyebrow">REVIEWS</span>
         <h2 class="h2">먼저 다녀간 <em>학생들의 이야기</em></h2>
-        <p class="lead">옆으로 넘겨서 더 볼 수 있어. 합격생 인터뷰, 자필 후기, 네이버 플레이스 리뷰를 모았어요</p>
+        <p class="lead">옆으로 넘겨서 더 볼 수 있어요. 합격생 인터뷰, 자필 후기, 네이버 플레이스 리뷰를 모았어요</p>
       </div>
       <div class="story-wrap">
         <div class="story-track" id="storyTrack">
@@ -1364,7 +1384,7 @@ form{margin-top:26px;display:grid;gap:20px}
       var fs = s < a ? a : s, fe = e > b ? b : e;
       var days = Math.round((fe - fs)/86400000) + 1;
       var isFull = (fs.getTime() === s.getTime() && fe.getTime() === e.getTime());
-      var price = isFull ? m : Math.min(m, r10(days * daily));
+      var price = r10(days * daily);
       other += isFull ? OTHER_MONTH : Math.min(OTHER_MONTH, r10(days * OTHER_MONTH / 30));
       var rate = 0, why = '';
       if(mo === 10 && y === 2026){ // 11월: 프리윈터 신규 등록
@@ -1384,8 +1404,9 @@ form{margin-top:26px;display:grid;gap:20px}
     var canPre = today <= D1231;
     var preDisc = 0, preWhy = '';
     if(jan && feb && canPre){
-      preDisc = mar ? 90000 + 100000 : 60000;
-      preWhy = mar ? '윈터 선결제 (1~3월 함께 결제) 매달 3만원 + 추가 10만원' : '윈터 선결제 (1~2월 함께 결제) 매달 3만원';
+      var jfDays = rows.filter(function(r){ return r.y === 2027 && (r.mo === 0 || r.mo === 1); }).reduce(function(n, r){ return n + r.days; }, 0);
+      preDisc = jfDays * 1000 + (mar ? 100000 : 0);
+      preWhy = mar ? '윈터 선결제 (1~3월) 하루 1천원 + 추가 10만원' : '윈터 선결제 (1~2월) 하루 1천원';
     }
     if(preDisc){ disc += preDisc; }
     var finalAmt = total - disc;
@@ -1410,7 +1431,7 @@ form{margin-top:26px;display:grid;gap:20px}
     if(decRow){ benefits.push({on:!!decRow.disc, t:'12월 이용료 ' + (br === 'gj' ? '15%' : '40%') + ' 할인', s: decRow.disc ? '-' + won(decRow.disc) : '12월 31일까지 등록해야 적용돼요'}); }
     if(jan || feb || rows.some(function(r){ return r.y === 2027; })){
       var need = br === 'gj' ? '1월과 2월을 함께' : '1월과 2월을 함께';
-      benefits.push({on:!!preDisc, t:'윈터 선결제 할인', s: preDisc ? '-' + won(preDisc) + (mar ? ' · 3월까지 함께 결제해 10만원 추가 할인 포함' : ' · 3월까지 함께 결제하면 10만원 추가 할인') : (!canPre ? '12월 31일까지 결제해야 적용돼요' : need + ' 한 달 전체로 결제할 때 적용돼요')});
+      benefits.push({on:!!preDisc, t:'윈터 선결제 할인', s: preDisc ? '-' + won(preDisc) + (mar ? ' · 3월까지 함께 결제해 10만원 추가 할인 포함' : ' · 3월까지 함께 결제하면 10만원 추가 할인') : (!canPre ? '12월 31일까지 결제해야 적용돼요' : need + ' 전체로 결제할 때 적용돼요')});
     }
     ben.innerHTML = benefits.map(function(x){ return '<li' + (x.on ? '' : ' class="off"') + '><div>' + x.t + '<small>' + x.s + '</small></div></li>'; }).join('');
 
