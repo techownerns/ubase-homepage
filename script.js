@@ -935,3 +935,21 @@ document.addEventListener('keydown', function(e) {
   });
 })();
 
+
+// ===== 윈터스쿨 진입 팝업 =====
+(function(){
+  var pop = document.getElementById('winterPop');
+  if(!pop) return;
+  var KEY = 'ubaseWinterPopHide';
+  try { if(localStorage.getItem(KEY) === '1') return; } catch(e){}
+  function close(){ pop.hidden = true; document.removeEventListener('keydown', onKey); }
+  function onKey(e){ if(e.key === 'Escape') close(); }
+  pop.hidden = false;
+  document.addEventListener('keydown', onKey);
+  document.getElementById('winterPopClose').addEventListener('click', close);
+  document.getElementById('winterPopNever').addEventListener('click', function(){
+    try { localStorage.setItem(KEY, '1'); } catch(e){}
+    close();
+  });
+  pop.addEventListener('click', function(e){ if(e.target === pop) close(); });
+})();

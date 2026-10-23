@@ -722,3 +722,13 @@ img{max-width:100%;display:block}
 .nav-winter,.nav-winter:hover,.nav.scrolled .nav-links a.nav-winter{color:#ff7a1a!important;font-weight:700!important}
 .nav-winter-m{display:none!important;font-size:14px}
 @media(max-width:768px){.nav-winter-m{display:inline-block!important}}
+
+/* 윈터스쿨 진입 팝업 */
+.winter-pop{position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.winter-pop[hidden]{display:none}
+.winter-pop-box{width:100%;max-width:440px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.winter-pop-link,.winter-pop-link img{display:block;width:100%;height:auto}
+.winter-pop-btns{display:flex;border-top:1px solid #e5e7eb}
+.winter-pop-btns button{flex:1;padding:15px 0;font-size:15px;font-weight:600;color:#4b5563;background:#fff;border:0;cursor:pointer}
+.winter-pop-btns button+button{border-left:1px solid #e5e7eb;color:#111827}
+.winter-pop-btns button:hover{background:#f3f4f6}

@@ -7,7 +7,7 @@
   <meta name="description" content="의지는 소모됩니다. 환경은 남습니다. 안면인식 출결, 휴대폰 제출 검사, IT 관리 시스템으로 철저하게 관리합니다.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <link rel="stylesheet" href="style.css?v=20260305a">
+  <link rel="stylesheet" href="style.css?v=20261023a">
   <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=89ft0plwk0&submodules=geocoder"></script>
 </head>
 <body>
@@ -596,7 +596,17 @@
   </div>
   -->
 
-  <script src="script.js?v=20260305b"></script>
+  <!-- 윈터스쿨 진입 팝업 -->
+  <div class="winter-pop" id="winterPop" role="dialog" aria-modal="true" aria-label="유베이스 윈터스쿨 모집 안내" hidden>
+    <div class="winter-pop-box">
+      <a href="/winter/" class="winter-pop-link"><img src="winter/assets/popup-winter.png" alt="유베이스 윈터스쿨 모집 OPEN, 최대 50% 할인. 프리윈터 11월 19일~12월 31일, 정규윈터 1월 1일~2월 28일" width="1080" height="1080"></a>
+      <div class="winter-pop-btns">
+        <button type="button" id="winterPopNever">다시 열지 않기</button>
+        <button type="button" id="winterPopClose">닫기</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js?v=20261023a"></script>
 </body>
 </html>
 
