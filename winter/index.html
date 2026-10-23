@@ -752,6 +752,10 @@ form{margin-top:26px;display:grid;gap:20px}
   .br br{display:none}
   .br-links{margin-top:auto}
 }
+.done{display:grid;gap:10px;text-align:center;padding:30px 20px;border:1px solid #2b3a63;border-radius:16px;background:#111c34}
+.done-t{font-size:20px;font-weight:800;color:#ffd25e;margin:0}
+.done-l{font-size:15px;line-height:1.75;color:#e5e7eb;margin:0;word-break:keep-all}
+.done-s{font-size:14px;line-height:1.7;color:#9fb0d0;margin:0;word-break:keep-all}
 </style>
 <style data-archive-hide>.sample{display:none!important}</style></head>
 <body>
@@ -1205,9 +1209,11 @@ form{margin-top:26px;display:grid;gap:20px}
         <div class="field"><label for="nm">이름 <em>*</em></label><input class="text" id="nm" name="name" autocomplete="name"></div>
         <div class="field"><label for="ph">연락처 <em>*</em></label><input class="text" id="ph" name="phone" type="tel" inputmode="numeric" autocomplete="tel"></div>
         <label class="agree"><input type="checkbox" id="ag" name="agree" value="Y"><span>개인정보 수집·이용에 동의합니다 [개인정보 처리 안내]</span></label>
+        <input type="text" name="winter_hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn btn-orange" type="submit">혜택받고 예약하기</button>
         <p class="form-note">남긴 정보는 상담 연락에만 써요</p>
       </form>
+      <div id="done" class="done" role="status" tabindex="-1" hidden></div>
     </div>
   </section>
 
@@ -1325,12 +1331,6 @@ form{margin-top:26px;display:grid;gap:20px}
   });
   hio.observe(document.querySelector('.promo .ctas'));
   new IntersectionObserver(function(es){ applyIn = es[0].isIntersecting; upd(); }, {threshold:.05}).observe(document.getElementById('apply'));
-
-  // 초안: 접수 미연결
-  document.getElementById('form').addEventListener('submit', function(e){
-    e.preventDefault();
-    alert('초안입니다. 신청 접수는 아직 연결되지 않았습니다.');
-  });
 })();
 </script>
 <script>
@@ -1478,6 +1478,170 @@ form{margin-top:26px;display:grid;gap:20px}
   // 네이버 리뷰 더보기
   document.querySelectorAll('.nv-more').forEach(function(b){
     b.addEventListener('click', function(){ var p = b.previousElementSibling; var open = p.classList.toggle('clamp'); b.textContent = open ? '더보기' : '접기'; });
+  });
+})();
+</script>
+<script>
+/* 신청 접수 — 구글 접수함으로 보냄 (기록·지점 문자). 원본: apps/homepage/winter-intake/form-connect.js */
+(function () {
+  var INTAKE_URL = 'https://script.google.com/macros/s/AKfycbzy-IH3cvK0yL3HK6luIPl_OY84JbjRHUwD5mgmdq564meEzofXqlHkVO1eUCKnxsen/exec'; // 배포 후 /exec 주소로 교체
+  var TEL = { '광장점': '010-3420-6824', '강동점': '010-6526-6824' };
+  var CONFIGURED = /^https:\/\/script\.google\.com\/.+\/exec$/.test(INTAKE_URL);
+
+  var form = document.getElementById('form');
+  if (!form) return;
+  if (!CONFIGURED) console.error('winter-intake: 접수 주소가 교체되지 않았습니다. 접수가 기록되지 않습니다.');
+
+  var done = document.getElementById('done');
+  var btn = form.querySelector('button[type="submit"]');
+  var openedAt = Date.now();
+  var sending = false;
+
+  function val(name) {
+    var el = form.querySelector('[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function text(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+  function warn(msg, focusId) {
+    alert(msg);
+    var el = focusId && document.getElementById(focusId);
+    if (el) el.focus();
+  }
+  function telLine(branch) {
+    var t = TEL[branch];
+    return t ? '연락이 없으면 ' + branch + ' ' + t + ' 로 전화 주세요' : '';
+  }
+
+  function collect() {
+    return {
+      branch: val('branch'),
+      grade: val('grade'),
+      who: val('who'),
+      when: val('when') || '미정',
+      precall: document.getElementById('pc1') && document.getElementById('pc1').checked ? 'Y' : '',
+      name: text('nm'),
+      phone: text('ph').replace(/[^0-9]/g, ''),
+      agree: document.getElementById('ag') && document.getElementById('ag').checked ? 'Y' : '',
+      winter_hp: text('hp'),
+      elapsed: Date.now() - openedAt,
+      src: (location.search || '').slice(0, 40)
+    };
+  }
+
+  function check(d) {
+    if (!d.branch) return ['지점을 골라 주세요', null];
+    if (!d.grade) return ['학년을 골라 주세요', null];
+    if (!d.who) return ['신청하는 분을 골라 주세요', null];
+    if (d.name.length < 1) return ['이름을 적어 주세요', 'nm'];
+    if (!/^01[0-9]{8,9}$/.test(d.phone)) return ['연락처를 숫자만 정확히 적어 주세요', 'ph'];
+    if (d.agree !== 'Y') return ['개인정보 수집·이용 동의가 필요해요', null];
+    return null;
+  }
+
+  /** 응답을 못 읽는 환경을 위한 두 번째 길 — 보이지 않는 틀로 폼 전송 */
+  function sendByFrame(d) {
+    var name = 'intake_' + Date.now();
+    var frame = document.createElement('iframe');
+    frame.name = name;
+    frame.style.display = 'none';
+    document.body.appendChild(frame);
+
+    var f = document.createElement('form');
+    f.method = 'POST';
+    f.action = INTAKE_URL;
+    f.target = name;
+    Object.keys(d).forEach(function (k) {
+      var i = document.createElement('input');
+      i.type = 'hidden';
+      i.name = k;
+      i.value = d[k];
+      f.appendChild(i);
+    });
+    document.body.appendChild(f);
+    f.submit();
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function showDone(d, note) {
+    var line = [
+      d.branch,
+      d.grade,
+      d.who,
+      d.name + ' ' + d.phone.replace(/^(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3'),
+      '시작 ' + d.when,
+      d.precall ? '전화 상담 희망' : ''
+    ].filter(Boolean).join(' · ');
+
+    if (!done) { alert('신청이 접수되었습니다\n\n' + line); return; }
+
+    done.innerHTML =
+      '<p class="done-t">신청이 접수되었습니다</p>' +
+      '<p class="done-l">' + esc(line) + '</p>' +
+      '<p class="done-s">' + esc(note || ('선택하신 지점에서 연락드립니다 · ' + telLine(d.branch))) + '</p>';
+    done.hidden = false;
+    // hidden 속성은 display 를 가진 규칙에 밀린다. 직접 숨긴다.
+    form.style.display = 'none';
+    done.focus();
+    done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sending) return;
+
+    var d = collect();
+    var bad = check(d);
+    if (bad) { warn(bad[0], bad[1]); return; }
+
+    if (!CONFIGURED) {
+      warn('지금은 신청을 받을 수 없어요. ' + (TEL[d.branch] ? d.branch + ' ' + TEL[d.branch] + ' 로 전화 주세요.' : '지점으로 전화 주세요.'));
+      return;
+    }
+
+    sending = true;
+    var label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '보내는 중...'; }
+    var restore = function () {
+      sending = false;
+      if (btn) { btn.disabled = false; btn.textContent = label; }
+    };
+
+    fetch(INTAKE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(d)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('http ' + res.status);
+      return res.text();
+    }).then(function (body) {
+      var out = null;
+      try { out = JSON.parse(body); } catch (err) { /* 구글 로그인 안내 같은 HTML */ }
+      if (!out) {
+        // 응답이 JSON 이 아니다 = 접수함까지 안 갔을 수 있다. 성공으로 단정하지 않는다.
+        restore();
+        warn('접수 확인이 안 됩니다. ' + (TEL[d.branch] ? d.branch + ' ' + TEL[d.branch] + ' 로 전화 주세요.' : '지점으로 전화 주세요.'));
+        return;
+      }
+      if (out.ok === false) {
+        restore();
+        warn('접수에 실패했어요. 잠시 뒤 다시 시도하거나 ' + (TEL[d.branch] || '지점') + ' 으로 전화 주세요.');
+        return;
+      }
+      showDone(d);
+      restore();
+    }).catch(function () {
+      // 응답을 못 읽는 경우 — 전송은 됐을 수도 있다. 한 번 더 보내고(10분 중복은 접수함이 거름)
+      // 완료로 보여주되, 연락이 없을 때 쓸 번호를 함께 적는다.
+      try { sendByFrame(d); } catch (err) {}
+      showDone(d, '선택하신 지점에서 연락드립니다 · ' + telLine(d.branch));
+      restore();
+    });
   });
 })();
 </script>
