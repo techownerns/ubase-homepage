@@ -6,7 +6,7 @@
  * section 값 = "페이지/섹션" (예: main/about, winter/offer).
  */
 (function(){
-  var GA_ID = '';       // 예: 'G-XXXXXXXXXX'
+  var GA_ID = 'G-S7FJXKTDS3';
   var CLARITY_ID = '';  // 예: 'abcd1234ef'
 
   var BRANCH_BY_LINK = {
