@@ -7,7 +7,7 @@
  */
 (function(){
   var GA_ID = 'G-S7FJXKTDS3';
-  var CLARITY_ID = '';  // 예: 'abcd1234ef'
+  var CLARITY_ID = 'z21wd7tgjr';
 
   var BRANCH_BY_LINK = {
     'naver.me/xCtZ89pr': '강동',
@@ -16,7 +16,6 @@
   };
   var BRANCH_BY_TEL = {
     '01034206824': '광장',
-    '01034208249': '광장',
     '01065266824': '강동',
     '01033885429': '서현'
   };
