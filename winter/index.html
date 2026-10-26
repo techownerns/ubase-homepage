@@ -465,6 +465,9 @@ form{margin-top:26px;display:grid;gap:20px}
 .chips input:checked+label{background:var(--vivid);border-color:var(--vivid);color:#fff}
 .text{width:100%;font:inherit;font-size:16px;padding:14px;border-radius:12px;border:1.5px solid #334155;background:#1e293b;color:#fff}
 .text::placeholder{color:#8b9bb4}
+.text.date-dark{color-scheme:dark;min-height:52px}
+.field-note{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:13px;font-weight:800;color:#fbbf24}
+.field-note svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .agree{display:flex;gap:10px;align-items:center;min-height:44px;padding:6px 0;font-size:14px;color:#cbd5e1}
 .agree input{width:22px;height:22px;flex:0 0 22px;accent-color:var(--vivid)}
 .form-note{font-size:13px;color:#94a3b8;text-align:center}
@@ -508,6 +511,9 @@ form{margin-top:26px;display:grid;gap:20px}
 .rv figcaption span{display:block;margin-top:4px;font-size:12.5px;font-weight:600;color:var(--gray)}
 .rv-note{text-align:center;font-size:12.5px;color:var(--gray);margin-top:14px}
 .closing{background:radial-gradient(120% 90% at 50% 0%,#3d7bff 0%,var(--vivid) 55%,var(--vivid-deep) 100%);color:#fff;padding:72px 0 76px;text-align:center}
+.closing .c0{display:inline-block;margin-bottom:22px;font-size:14px;font-weight:800;color:#ffd9b0;background:rgba(10,30,120,.35);padding:8px 16px;border-radius:999px;line-height:1.5}
+.lead.brand-msg{font-weight:600}
+.lead.brand-msg b{color:var(--vivid);font-weight:900}
 .closing .c1{font-family:var(--display);font-weight:900;font-size:clamp(22px, 6.8vw, 27px);line-height:1.42;letter-spacing:-.8px}
 .closing .c2{margin-top:18px;font-size:17px;font-weight:600;line-height:1.6;color:#dbe6ff}
 .closing .c2 b{font-family:var(--latin);font-weight:400;font-size:1.25em;color:#ffb04a;letter-spacing:.5px}
@@ -660,6 +666,7 @@ form{margin-top:26px;display:grid;gap:20px}
 
   /* 마무리 문장 */
   .closing{padding:110px 0 116px}
+  .closing .c0{font-size:17px;padding:10px 22px;margin-bottom:28px}
   .closing .c1{font-size:46px;letter-spacing:-1.4px}
   .closing .c2{font-size:22px;margin-top:24px}
 
@@ -753,6 +760,7 @@ form{margin-top:26px;display:grid;gap:20px}
   .br-links{margin-top:auto}
 }
 .done{display:grid;gap:10px;text-align:center;padding:30px 20px;border:1px solid #2b3a63;border-radius:16px;background:#111c34}
+.done[hidden]{display:none}
 .done-t{font-size:20px;font-weight:800;color:#ffd25e;margin:0}
 .done-l{font-size:15px;line-height:1.75;color:#e5e7eb;margin:0;word-break:keep-all}
 .done-s{font-size:14px;line-height:1.7;color:#9fb0d0;margin:0;word-break:keep-all}
@@ -782,7 +790,7 @@ form{margin-top:26px;display:grid;gap:20px}
         <div class="v-off"><small>최대</small><b class="big" data-count="50">50</b><i>%</i><span class="o3">할인</span><a class="o4" href="#offer">지점별 상세 할인혜택 확인하기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>
         <div class="tiles">
           <div class="tile hl"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3.2 3-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/><path d="M15.5 6.5h5M15.5 10h5M17.5 13.5h3"/></svg><b>멘토링</b><strong>무료</strong></div>
-          <div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg><b>면학분위기</b><strong>철저한 관리 체계</strong></div>
+          <div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg><b>AI 기록 + 지도사 관리</b><strong>매 교시 세심하게</strong></div>
           <div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3.5v5.5c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6.5z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg><b>검증된 곳</b><strong>97%가 재등록</strong></div>
           <div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><b>학부모 보고</b><strong>학습·출입 리포트</strong></div>
         </div>
@@ -1042,7 +1050,7 @@ form{margin-top:26px;display:grid;gap:20px}
       <div class="center reveal">
         <span class="eyebrow">AI와 선생님</span>
         <h2 class="h2">빈틈은 <em>AI</em>가,<br>곁에는 <em>선생님</em>이</h2>
-        <p class="lead">선생님은 학생에게 더 집중해요</p>
+        <p class="lead brand-msg"><b>AI</b>가 누락 없이 기록하고,<br><b>자기주도학습지도사</b>가 매 교시 세심하게 관리합니다.</p>
       </div>
       <div class="media reveal">
         <video class="kb" id="aiVideo" muted loop playsinline preload="none" poster="assets/teacher-care-poster.webp" aria-label="얼굴인식 출입, 선생님의 학습 점검, 순찰 장면"><source src="assets/teacher-care.mp4" type="video/mp4"></video>
@@ -1053,7 +1061,7 @@ form{margin-top:26px;display:grid;gap:20px}
       <div class="steps">
         <div class="step reveal"><i>1</i><p>교시마다 출석 자동 확인</p></div>
         <div class="step reveal"><i>2</i><p>늦으면 선생님이 바로 연락</p></div>
-        <div class="step reveal"><i>3</i><p>선생님이 늘 자리를 돌아봐요</p></div>
+        <div class="step reveal"><i>3</i><p>자기주도학습지도사가 매 교시 자리를 돌아봐요</p></div>
       </div>
     </div>
   </section>
@@ -1196,12 +1204,8 @@ form{margin-top:26px;display:grid;gap:20px}
             <input type="radio" name="who" id="w1" value="학생 본인"><label for="w1">학생 본인</label>
             <input type="radio" name="who" id="w2" value="학부모"><label for="w2">학부모</label>
           </div></div>
-        <div class="field"><span class="lbl">시작 시기 <small class="opt">(선택)</small></span>
-          <div class="chips">
-            <input type="radio" name="when" id="s1" value="프리윈터"><label for="s1">프리윈터 (11/19~12/31)</label>
-            <input type="radio" name="when" id="s3" value="윈터"><label for="s3">윈터 (1월)</label>
-            <input type="radio" name="when" id="s4" value="미정"><label for="s4">아직 몰라요</label>
-          </div></div>
+        <div class="field"><label for="startDate">입실 희망일 <em>*</em></label><input class="text date-dark" id="startDate" name="start_date" type="date" min="2026-11-19" max="2027-03-31">
+          <p class="field-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 14h16M8 7V4h8v3"/></svg>입실일이 빠른 순으로 좌석이 지정되어요</p></div>
         <div class="field field-call"><span class="lbl">전화 상담 <small class="opt">(선택)</small></span>
           <div class="chips">
             <input type="checkbox" name="precall" id="pc1" value="Y"><label for="pc1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>사전에 전화로 상담이 필요해요</label>
@@ -1220,6 +1224,7 @@ form{margin-top:26px;display:grid;gap:20px}
   <!-- 11 마무리 -->
   <section class="closing">
     <div class="wrap">
+      <p class="c0 reveal">AI가 누락 없이 기록하고, 자기주도학습지도사가 매 교시 세심하게 관리합니다.</p>
       <p class="c1 reveal">입시는 변해도<br>공부의 기본기는 변하지 않습니다.</p>
       <p class="c2 reveal">유베이스는 여러분(<b>U</b>)의<br>공부의 기본(<b>BASE</b>)을 만드는 곳입니다.</p>
     </div>
@@ -1515,12 +1520,25 @@ form{margin-top:26px;display:grid;gap:20px}
     return t ? '연락이 없으면 ' + branch + ' ' + t + ' 로 전화 주세요' : '';
   }
 
+  /** 입실 희망일 → 접수함이 아는 구간 이름 (프리윈터 ~12/31, 윈터 1~2월, 그 밖 미정) */
+  function period(day) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return '미정';
+    if (day <= '2026-12-31') return '프리윈터';
+    if (day <= '2027-02-28') return '윈터';
+    return '미정';
+  }
+  function md(day) {
+    var m = /^\d{4}-(\d{2})-(\d{2})$/.exec(day || '');
+    return m ? (+m[1]) + '월 ' + (+m[2]) + '일' : '';
+  }
+
   function collect() {
     return {
       branch: val('branch'),
       grade: val('grade'),
       who: val('who'),
-      when: val('when') || '미정',
+      start_date: text('startDate'),
+      when: period(text('startDate')),
       precall: document.getElementById('pc1') && document.getElementById('pc1').checked ? 'Y' : '',
       name: text('nm'),
       phone: text('ph').replace(/[^0-9]/g, ''),
@@ -1535,6 +1553,7 @@ form{margin-top:26px;display:grid;gap:20px}
     if (!d.branch) return ['지점을 골라 주세요', null];
     if (!d.grade) return ['학년을 골라 주세요', null];
     if (!d.who) return ['신청하는 분을 골라 주세요', null];
+    if (!d.start_date) return ['입실 희망일을 골라 주세요', 'startDate'];
     if (d.name.length < 1) return ['이름을 적어 주세요', 'nm'];
     if (!/^01[0-9]{8,9}$/.test(d.phone)) return ['연락처를 숫자만 정확히 적어 주세요', 'ph'];
     if (d.agree !== 'Y') return ['개인정보 수집·이용 동의가 필요해요', null];
@@ -1574,7 +1593,7 @@ form{margin-top:26px;display:grid;gap:20px}
       d.grade,
       d.who,
       d.name + ' ' + d.phone.replace(/^(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3'),
-      '시작 ' + d.when,
+      '입실 ' + md(d.start_date),
       d.precall ? '전화 상담 희망' : ''
     ].filter(Boolean).join(' · ');
 
