@@ -286,6 +286,7 @@
       <div class="g-apply">
         <form class="g-form" id="gForm" novalidate>
           <h3>길음미아점 사전예약 신청</h3>
+          <input type="text" name="winter_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
           <label>성함 <em>*</em><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></label>
           <label>연락처 <em>*</em><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000"></label>
           <div class="g-row">
@@ -611,10 +612,10 @@
   </footer>
 
   <script>
-  // ===== 사전예약 접수 → 구글 스프레드시트 =====
-  // 스프레드시트에 붙인 Apps Script 웹앱 URL(…/exec)을 넣으면 접수 내용이 '길음점 사전예약' 시트에 한 줄씩 쌓입니다.
-  // 비워두면 전송 없이 "신청 완료" 메시지만 표시합니다(초안 확인용).
-  var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxwlY6gcXL5PQcnm1x8P193cAlaBo246NhzwM5nVO7LKdDvq4kEg4jJ2nSYCGmWECw9vQ/exec';
+  // ===== 사전예약 접수 → 윈터스쿨(광장·강동)과 같은 접수함: 구글 시트 기록 + 문자 =====
+  // 원본·운영 문서는 모노레포 apps/homepage/winter-intake/ (kind=preorder 로 구분)
+  var INTAKE_URL = 'https://script.google.com/macros/s/AKfycbzy-IH3cvK0yL3HK6luIPl_OY84JbjRHUwD5mgmdq564meEzofXqlHkVO1eUCKnxsen/exec';
+  var BRANCH = '길음미아점';
 
   (function(){
     // 네비 스크롤
@@ -647,6 +648,7 @@
       document.getElementById('gKeywordWrap').hidden = src.value !== '네이버 검색';
       document.getElementById('gEtcWrap').hidden = src.value !== '기타';
     });
+    var openedAt = Date.now();
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       var ok = true;
@@ -656,8 +658,15 @@
         el.classList.toggle('err', bad); if(bad) ok = false;
       });
       if(!ok){ msg.hidden = false; msg.className = 'g-msg bad'; msg.textContent = '필수 항목(*)을 확인해 주세요. 연락처는 010-0000-0000 형식으로 적어 주세요.'; return; }
-      var fd = new FormData(form), srcVal = fd.get('source');
-      if(srcVal === '기타' && fd.get('source_etc')) srcVal = '기타: ' + fd.get('source_etc');
+      var fd = new FormData(form);
+      var d = {
+        kind: 'preorder', branch: BRANCH,
+        name: String(fd.get('name') || '').trim(), phone: String(fd.get('phone') || '').replace(/[^0-9]/g, ''),
+        grade: fd.get('grade') || '', exam: fd.get('exam') || '', applicant: fd.get('applicant') || '',
+        source: fd.get('source') || '', source_etc: fd.get('source_etc') || '', keyword: fd.get('keyword') || '',
+        agree: 'Y', winter_hp: fd.get('winter_hp') || '', elapsed: Date.now() - openedAt,
+        src: (location.search || '').slice(0, 40)
+      };
       var btn = document.getElementById('gSubmit'); btn.disabled = true;
       function done(){
         btn.disabled = false; form.reset();
@@ -665,16 +674,27 @@
         msg.hidden = false; msg.className = 'g-msg';
         msg.textContent = '사전예약이 접수되었습니다. 무료체험 이용 방법과 오픈 일정을 문자로 안내드리겠습니다.';
       }
-      if(!SHEET_WEBAPP_URL){ setTimeout(done, 400); return; }
-      var body = new URLSearchParams();
-      body.append('name', fd.get('name')); body.append('phone', fd.get('phone'));
-      body.append('grade', fd.get('grade')); body.append('applicant', fd.get('applicant')); body.append('exam', fd.get('exam'));
-      body.append('source', srcVal); body.append('keyword', fd.get('keyword') || '');
-      body.append('page', location.href);
-      function fail(){ btn.disabled = false; msg.hidden = false; msg.className = 'g-msg bad'; msg.textContent = '전송에 실패했습니다. 카카오톡으로 문의해 주세요.'; }
-      fetch(SHEET_WEBAPP_URL, {method:'POST', body:body}).then(function(r){ return r.json(); }).then(function(j){
-        if(j && j.ok) done(); else fail();
-      }).catch(fail);
+      function fail(text){ btn.disabled = false; msg.hidden = false; msg.className = 'g-msg bad'; msg.textContent = text || '전송에 실패했습니다. 잠시 뒤 다시 시도해 주세요.'; }
+      // 응답을 못 읽는 환경을 위한 두 번째 길 — 보이지 않는 틀로 전송 (같은 번호 10분 중복은 접수함이 거름)
+      function byFrame(){
+        var name = 'intake_' + Date.now(), frame = document.createElement('iframe'), f = document.createElement('form');
+        frame.name = name; frame.style.display = 'none'; document.body.appendChild(frame);
+        f.method = 'POST'; f.action = INTAKE_URL; f.target = name;
+        Object.keys(d).forEach(function(k){ var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = d[k]; f.appendChild(i); });
+        document.body.appendChild(f); f.submit();
+      }
+      fetch(INTAKE_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(d)}).then(function(r){
+        if(!r.ok) throw new Error('http ' + r.status);
+        return r.text();
+      }).then(function(t){
+        var j = null; try { j = JSON.parse(t); } catch(e) { /* 구글 로그인 안내 같은 HTML */ }
+        if(!j){ fail('접수 확인이 안 됩니다. 잠시 뒤 다시 시도해 주세요.'); return; }
+        if(j.ok === false){
+          fail(j.error === 'name' ? '성함은 한글 또는 영문으로 적어 주세요.' : j.error === 'phone' ? '연락처를 010-0000-0000 형식으로 적어 주세요.' : '');
+          return;
+        }
+        done();
+      }).catch(function(){ try { byFrame(); } catch(e) {} done(); });
     });
 
   })();
