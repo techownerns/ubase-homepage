@@ -2,7 +2,7 @@
 
 GA4 + Microsoft Clarity. 모든 페이지 `<head>` 에서 `<script defer src="/analytics.js?v=...">` 로 로드.
 `analytics.js` 상단 `GA_ID` (현재 `G-S7FJXKTDS3`), `CLARITY_ID` (현재 `z21wd7tgjr`) 가 비어 있으면 해당 도구는 로드하지 않는다 (둘 다 비면 아무것도 안 함).
-analytics.js 를 고치면 5개 페이지의 `?v=` 값을 함께 올린다.
+analytics.js 를 고치면 6개 페이지(index·winter·guide·rules·support·gileum)의 `?v=` 값을 함께 올린다.
 
 ## GA4 설정
 

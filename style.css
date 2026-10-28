@@ -723,6 +723,12 @@ img{max-width:100%;display:block}
 .nav-winter-m{display:none!important;font-size:14px}
 @media(max-width:768px){.nav-winter-m{display:inline-block!important}}
 
+/* 길음 미아 사전예약 탭 (윈터스쿨 왼쪽). 어두운 첫 화면 위는 밝은 파랑, 흰 바탕에서는 기본 파랑 */
+.nav-links a.nav-gileum,.nav-gileum-m{color:#8fb0ff!important;font-weight:700!important}
+.nav.scrolled .nav-links a.nav-gileum,.nav.scrolled .nav-gileum-m,.mob-tab-bar a.nav-gileum{color:var(--accent)!important;font-weight:700!important}
+.nav-gileum-m{display:none!important;font-size:14px}
+@media(max-width:768px){.nav-gileum-m{display:inline-block!important;margin-left:auto;margin-right:14px}}
+
 /* 윈터스쿨 진입 팝업 */
 .winter-pop{position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px}
 .winter-pop[hidden]{display:none}

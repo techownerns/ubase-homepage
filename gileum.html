@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="/analytics.js?v=20261023c"></script>
+  <title>길음미아점 신규 오픈 사전예약 | 유베이스 관리형 독서실</title>
+  <meta name="description" content="유베이스 관리형 독서실 길음미아점 신규 오픈. 사전예약 시 오픈 특가와 좌석 우선 선택 혜택. 안면인식 출결, 휴대폰 완전 차단, 백분위 99% 담임멘토 1:1 관리.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="style.css?v=20261028a">
+  <style>
+    /* ===== 길음미아점 오픈 페이지 전용 (style.css 토큰 재사용) ===== */
+    :root{--ice:#EAF1FF;--ice-text:#2A4FB8;--warm:#FF7A59;--gold:#F5C56B}
+    .g-hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;color:#fff;
+      background:radial-gradient(900px 520px at 85% 0%,rgba(59,109,245,.45),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(245,197,107,.22),transparent 60%),var(--dark)}
+    .g-grid{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.35;
+      background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;
+      mask-image:radial-gradient(ellipse at 70% 40%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 20%,transparent 70%)}
+    .g-hero .container{position:relative;z-index:2;width:100%;padding-top:110px;padding-bottom:70px}
+    .g-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 16px;font-size:14px;font-weight:600}
+    .g-badge b{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(245,197,107,.25);animation:gpulse 1.6s ease-in-out infinite}
+    @keyframes gpulse{50%{box-shadow:0 0 0 8px rgba(245,197,107,.08)}}
+    .g-hero h1,.g-hero .sub,.section-title,.section-desc{word-break:keep-all}
+    .g-hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:800;line-height:1.18;letter-spacing:-.03em;margin:26px 0 20px}
+    .g-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .g-hero .sub{font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,.75);max-width:600px;line-height:1.8}
+    .g-hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+    .g-cd{margin-top:44px;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 18px}
+    .g-cd .lbl{font-size:14px;color:rgba(255,255,255,.7);margin-right:6px}
+    .g-cd .u{min-width:60px;text-align:center;background:rgba(255,255,255,.07);border-radius:10px;padding:6px 8px}
+    .g-cd .u strong{display:block;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.3}
+    .g-cd .u small{font-size:11px;color:rgba(255,255,255,.55)}
+    .g-cd .u.big{padding:10px 18px;text-align:left}
+    .g-cd .u.big strong{font-size:26px;color:var(--gold)}
+    .g-cd .u.big small{font-size:12px}
+    .g-seat{margin-top:18px;font-size:14px;color:rgba(255,255,255,.65)}
+    .g-seat strong{color:var(--gold);font-weight:800}
+
+    .g-label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2.5px;color:var(--accent);margin-bottom:12px}
+    .g-center{text-align:center}.g-center .section-desc{margin-left:auto;margin-right:auto}
+
+    /* 숫자 */
+    .g-stats-wrap{background:#fff;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
+    .g-stats{display:grid;grid-template-columns:repeat(5,1fr)}
+    .g-stat{padding:34px 12px 28px;text-align:center;border-right:1px solid var(--gray-100)}
+    .g-stat:last-child{border-right:0}
+    .g-stat strong{display:block;font-size:clamp(24px,2.8vw,34px);font-weight:800;color:var(--primary);letter-spacing:-.02em;line-height:1.2}
+    .g-stat strong small{font-size:13px;font-weight:700;color:var(--gray-400);display:block;margin-bottom:2px}
+    .g-stat strong sup{font-size:12px;color:var(--warm);margin-left:2px}
+    .g-stat.hl strong{color:var(--accent)}
+    .g-stat span{display:block;font-size:13.5px;color:var(--gray-600);margin-top:6px;line-height:1.5;word-break:keep-all}
+    .g-stats-note{font-size:12px;color:var(--gray-400);text-align:center;padding:0 16px 16px}
+
+    /* 혜택 */
+    .g-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .g-bcard{padding:30px 26px}
+    .g-bcard .no{font-size:12px;font-weight:700;color:var(--warm);letter-spacing:1px}
+    .g-bcard .ic{font-size:34px;margin:12px 0 10px}
+    .g-bcard h3{font-size:19px;font-weight:700;color:var(--primary);line-height:1.45}
+    .g-bcard p{font-size:15px;color:var(--gray-600);margin-top:8px;line-height:1.7}
+
+    /* 오픈 일정 */
+    .g-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+    .g-tl{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius);padding:28px 26px;position:relative}
+    .g-tl.now{border:2px solid var(--accent);box-shadow:0 12px 36px var(--accent-glow)}
+    .g-tl.now:after{content:'지금 진행 중';position:absolute;top:-13px;right:22px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+    .g-tl .n{font-size:32px;font-weight:800;color:transparent;-webkit-text-stroke:1.5px var(--accent);line-height:1}
+    .g-tl .date{font-size:13px;font-weight:700;color:var(--warm);margin-top:14px;letter-spacing:.5px}
+    .g-tl h3{font-size:20px;font-weight:700;color:var(--primary);margin-top:4px}
+    .g-tl p{font-size:15px;color:var(--gray-600);margin-top:8px;line-height:1.7}
+
+    /* 입지 */
+    .g-loc{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:stretch}
+    .g-map{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:var(--radius);min-height:360px;overflow:hidden}
+    .g-map iframe{width:100%;height:100%;min-height:360px;border:0;border-radius:var(--radius)}
+    .g-locinfo{display:grid;gap:12px;align-content:start}
+    .g-li{display:grid;grid-template-columns:44px 1fr;gap:14px;background:#fff;border:1px solid var(--gray-100);border-radius:14px;padding:18px 20px;align-items:start}
+    .g-li .ic{width:44px;height:44px;border-radius:12px;background:var(--ice);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .g-li b{display:block;font-size:16px;color:var(--primary)}
+    .g-li span{font-size:14px;color:var(--gray-600);line-height:1.7}
+    .g-li small{font-size:12.5px;color:var(--gray-400)}
+    .g-maplinks{display:flex;gap:10px;flex-wrap:wrap}
+    .g-maplinks .btn{flex:1;justify-content:center;color:var(--primary);border-color:var(--gray-200)}
+
+    /* 관리 시스템 */
+    .g-sys{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:4}
+    .g-scard{padding:30px 28px}
+    .g-scard .k{font-size:13px;font-weight:700;color:#8FB2FF;letter-spacing:1px}
+    .g-scard h3{font-size:22px;font-weight:700;margin:6px 0 16px;color:#fff}
+    .g-scard ul{display:grid;gap:10px}
+    .g-scard li{font-size:15px;color:rgba(255,255,255,.75);padding-left:22px;position:relative}
+    .g-scard li:before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:800}
+    .section-dark .container{position:relative;z-index:4}
+    .section-dark .section-desc{color:rgba(255,255,255,.6)}
+
+    /* 시설 */
+    .g-fac{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .g-fcard{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius);overflow:hidden}
+    .g-fcard .img{aspect-ratio:4/3;background:linear-gradient(135deg,var(--ice),#fff);display:flex;align-items:center;justify-content:center;color:var(--ice-text);font-size:13px;font-weight:600;position:relative}
+    .g-fcard .img:after{content:'타지점 예시';position:absolute;top:10px;left:10px;background:rgba(27,32,58,.72);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px}
+    .g-fcard .img img{width:100%;height:100%;object-fit:cover}
+    .g-fcard .txt{padding:18px 20px}
+    .g-fcard h3{font-size:17px;font-weight:700;color:var(--primary)}
+    .g-fcard p{font-size:14px;color:var(--gray-600);margin-top:4px;line-height:1.7}
+
+    /* 요금 */
+    .g-price{display:grid;grid-template-columns:repeat(3,minmax(0,360px));gap:20px}
+    .g-pcard{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius);padding:32px 30px;position:relative}
+    .g-pcard.best{border:2px solid var(--accent);box-shadow:0 12px 36px var(--accent-glow)}
+    .g-pcard.best:after{content:'추천';position:absolute;top:-13px;right:24px;background:var(--warm);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+    .g-pcard h3{font-size:20px;font-weight:700;color:var(--primary)}
+    .g-pcard .period{font-size:14px;color:var(--gray-400);margin-top:2px}
+    .g-off{display:inline-flex;align-items:center;gap:5px;margin-top:20px;background:#FFF1EC;color:#C8471F;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700}
+    .g-off b{font-size:20px;font-weight:900;letter-spacing:-.02em}
+    .g-pcard .was{font-size:15px;color:var(--gray-400);text-decoration:line-through;margin-top:14px}
+    .g-pcard .amt{font-size:38px;font-weight:900;color:var(--accent);margin-top:2px;letter-spacing:-.03em;line-height:1.15}
+    .g-pcard .amt small{font-size:15px;font-weight:500;color:var(--gray-400)}
+    .g-pcard .save{margin-top:8px;font-size:15px;font-weight:700;color:var(--primary)}
+    .g-pcard .save span{display:inline-block;background:var(--warm);color:#fff;border-radius:8px;padding:3px 10px;font-size:17px;font-weight:800;margin-right:4px}
+    .g-pcard ul{margin-top:18px;display:grid;gap:6px;font-size:15px;color:var(--gray-600)}
+    .g-price-note{font-size:14px;color:var(--gray-400);margin-top:16px}
+
+    /* FAQ */
+    .g-faq{display:grid;gap:12px;max-width:860px}
+    .g-faq details{background:#fff;border:1px solid var(--gray-100);border-radius:14px;padding:0 24px}
+    .g-faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:16px;color:var(--primary);display:flex;justify-content:space-between;gap:12px}
+    .g-faq summary::-webkit-details-marker{display:none}
+    .g-faq summary:after{content:'+';font-size:22px;line-height:1;color:var(--accent);transition:transform .2s}
+    .g-faq details[open] summary:after{transform:rotate(45deg)}
+    .g-faq details p{padding:0 0 20px;color:var(--gray-600);font-size:15px;line-height:1.8}
+
+    /* 사전예약 */
+    .g-apply{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;text-align:left;max-width:900px;margin-left:auto;margin-right:auto}
+    .g-ap{align-self:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;gap:8px}
+    .g-ap h3{font-size:21px;font-weight:700;color:#fff}
+    .g-ap p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
+    .g-ap a.tel{font-size:17px;color:#fff;font-weight:700}
+    .g-ap .btn{margin-top:auto;justify-content:center}
+    .g-ap.main{border-color:var(--gold);background:rgba(245,197,107,.08)}
+    .cta-section .g-label{color:#8FB2FF}
+    .cta-section .cta-desc{margin-bottom:28px}
+
+
+    /* 사전예약 폼 */
+    .g-form{background:#fff;border-radius:var(--radius);padding:28px 26px;display:grid;gap:14px;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .g-form h3{font-size:21px;font-weight:800;color:var(--primary);margin-bottom:4px}
+    .g-form [hidden]{display:none!important}
+    .g-form label{display:grid;gap:6px;font-size:14px;font-weight:700;color:var(--primary)}
+    .g-form label em{color:var(--warm);font-style:normal}
+    .g-form label small{font-weight:500;color:var(--gray-400)}
+    .g-form input:not([type=checkbox]),.g-form select{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--gray-200);border-radius:10px;background:#fff;color:var(--gray-800);transition:var(--transition)}
+    .g-form input:focus,.g-form select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+    .g-form input.err,.g-form select.err{border-color:var(--warm)}
+    .g-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .g-agree{display:flex!important;gap:10px;align-items:flex-start;font-weight:500!important;font-size:13px!important;color:var(--gray-600)!important;line-height:1.6}
+    .g-agree input{margin-top:3px;width:16px;height:16px;flex:0 0 auto}
+    .g-form .btn{width:100%;justify-content:center;margin-top:4px}
+    .g-form .btn[disabled]{opacity:.6;cursor:wait}
+    .g-msg{font-size:14px;line-height:1.7;padding:12px 14px;border-radius:10px;background:var(--ice);color:var(--ice-text);font-weight:600}
+    .g-msg.bad{background:#FFF1EC;color:#C8471F}
+
+
+    /* 이유 타일 */
+    .g-why{padding:36px 24px 44px}
+    .g-why-head{text-align:center;margin-bottom:26px}
+    .g-why-head .section-desc{margin:8px auto 0}
+    .g-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .g-why-i{background:var(--ice);border-radius:16px;padding:22px 18px;text-align:center}
+    .g-why-i b{display:block;font-size:13px;letter-spacing:2px;color:var(--ice-text);margin-bottom:8px}
+    .g-why-i span{font-size:17px;font-weight:700;color:var(--primary);line-height:1.5}
+    /* 4열 카드 */
+    .g-sys.g-four{grid-template-columns:repeat(4,1fr);gap:16px}
+    .g-four .g-scard{padding:26px 22px}
+    .g-four .g-scard h3{font-size:19px;line-height:1.4}
+    .g-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;position:relative;z-index:4}
+    .g-trust div{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px}
+    .g-trust b{display:block;color:#fff;font-size:16px;margin-bottom:4px}
+    .g-trust span{font-size:14px;color:rgba(255,255,255,.65)}
+    /* 학부모 */
+    .g-parent{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start}
+    .g-pcol{display:grid;gap:12px}
+    .g-chat{background:#fff;border:1px solid var(--gray-100);border-radius:22px;padding:18px;box-shadow:var(--shadow);max-width:420px;margin:0 auto;display:grid;gap:10px;font-size:14px}
+    .g-chat-head{font-weight:800;color:var(--primary);display:flex;justify-content:space-between;align-items:center}
+    .g-chat-head span{font-size:12px;background:#E6F7EE;color:#1B8A4C;border-radius:999px;padding:3px 10px;font-weight:700}
+    .g-chat-date{text-align:center;font-size:12px;color:var(--gray-400)}
+    .g-msgr{max-width:86%;line-height:1.6}
+    .g-msgr time{display:block;font-size:11px;color:var(--gray-400);margin-top:3px}
+    .g-msgr.me{margin-left:auto;background:var(--accent);color:#fff;border-radius:16px 16px 4px 16px;padding:11px 14px}
+    .g-msgr.me time{color:rgba(255,255,255,.7);text-align:right}
+    .g-msgr.them{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start}
+    .g-msgr.them i{width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;font-style:normal;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+    .g-msgr.them>div{background:var(--gray-50);border-radius:16px 16px 16px 4px;padding:11px 14px;color:var(--gray-800)}
+    .g-chat-input{border:1px solid var(--gray-200);border-radius:12px;padding:10px 12px;color:var(--gray-400);display:flex;justify-content:space-between;font-size:13px}
+    .g-chat-input b{color:var(--accent)}
+    /* 맞춤 관리 */
+    .g-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .g-chips span{font-size:13px;font-weight:700;background:var(--ice);color:var(--ice-text);border-radius:999px;padding:6px 14px}
+    .g-steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+    .g-steps4 .g-tl h3{font-size:18px;margin-top:12px}
+
+    /* 탭 활성 표시 */
+    .nav-links a.nav-active{color:var(--accent)!important;font-weight:700}
+    .mob-tab-bar a.active{color:var(--accent)}
+
+    @media(max-width:1024px){
+      .g-why-grid,.g-sys.g-four,.g-steps4{grid-template-columns:repeat(2,1fr)}
+      .g-trust{grid-template-columns:1fr}
+      .g-parent{grid-template-columns:1fr}
+      .g-benefits{grid-template-columns:repeat(2,1fr)}
+      .g-timeline{grid-template-columns:1fr}
+      .g-loc{grid-template-columns:1fr}
+      .g-sys{grid-template-columns:1fr}
+      .g-fac{grid-template-columns:repeat(2,1fr)}
+      .g-price{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .nav.tab-on{transform:translateY(-100%)}
+      .g-hero{min-height:auto}
+      .g-hero .container{padding-top:96px}
+      .g-stats{grid-template-columns:repeat(2,1fr)}
+      .g-stat:nth-child(2n){border-right:0}
+      .g-stat:nth-child(-n+4){border-bottom:1px solid var(--gray-100)}
+      .g-stat:last-child{grid-column:1/-1}
+      .g-price{grid-template-columns:1fr}
+      .g-apply{grid-template-columns:1fr}
+      .g-row{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .g-why-grid,.g-sys.g-four,.g-steps4{grid-template-columns:1fr}
+      .g-why{padding:28px 16px 36px}
+      .g-benefits{grid-template-columns:1fr}
+      .g-fac{grid-template-columns:1fr}
+      .g-hero .acts .btn{width:100%;justify-content:center}
+      .g-cd .u{min-width:52px}
+      .g-cd{display:flex}
+      .g-cd .lbl{width:100%;margin:0 0 4px}
+      .g-cd .u{flex:1}
+      .g-hero h1{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION (메인 메뉴 8개는 이 페이지에서 동작하지 않아 삭제, 2026-10-28) -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="https://storage.googleapis.com/download.ubaseai.com/homepage/logo/logo.png" alt="UBASE" class="nav-logo-img">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#contact" class="nav-cta">사전예약</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- MOBILE TAB BAR -->
+  <div class="mob-tab-bar" id="mobTabBar">
+    <a href="#contact" class="mob-tab-cta">사전예약</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="g-hero" id="hero">
+    <div class="g-grid" aria-hidden="true"></div>
+    <div class="container">
+      <span class="g-badge"><b></b>GRAND OPEN · 유베이스 길음미아점 사전예약 접수 중</span>
+      <h1>길음·미아에<br><em>관리형 독서실</em>이 옵니다</h1>
+      <p class="sub">AI가 누락 없이 기록하고, 자기주도학습지도사가 매 교시 세심하게 관리합니다. 입시는 변해도 공부의 기본기는 변하지 않습니다. 오픈 전 사전예약하시면 5일 무료체험과 첫 달 30% 할인, 좌석 우선 선택권을 드립니다.</p>
+      <div class="acts">
+        <a href="#contact" class="btn btn-primary">오픈 사전예약 신청</a>
+        <a href="#benefit" class="btn btn-outline">사전예약 혜택 보기</a>
+      </div>
+      <div class="g-cd g-open">
+        <span class="lbl">그랜드 오픈</span>
+        <div class="u big"><strong>2026년 12월 중순</strong><small>오픈 예정 · 확정일은 사전예약자께 먼저 안내</small></div>
+      </div>
+      <p class="g-seat"><strong>중3(예비고1)부터</strong> 다닐 수 있습니다 · 사전예약·입실 순서대로 좌석 선택 · 결제 없이 신청만</p>
+    </div>
+  </section>
+
+  <!-- 사전예약 -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <span class="g-label">PRE-ORDER</span>
+      <h2 class="section-title">좌석은 사전예약·입실 순서대로 배정됩니다</h2>
+      <p class="cta-desc">결제 없이 신청만 하시면 됩니다. 1분이면 끝납니다.</p>
+      <div class="g-apply">
+        <form class="g-form" id="gForm" novalidate>
+          <h3>길음미아점 사전예약 신청</h3>
+          <label>성함 <em>*</em><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></label>
+          <label>연락처 <em>*</em><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000"></label>
+          <div class="g-row">
+            <label>구분 <em>*</em>
+              <select name="grade" required>
+                <option value="" disabled selected>선택</option>
+                <option>예비고1</option>
+                <option>고1</option>
+                <option>고2</option>
+                <option>고3</option>
+                <option>재수/N수</option>
+                <option>일반성인</option>
+              </select>
+            </label>
+            <label>준비 중인 시험 <em>*</em>
+              <select name="exam" required>
+                <option value="" disabled selected>선택</option>
+                <option>대학수학능력시험</option>
+                <option>내신 (중3·고등 재학)</option>
+                <option>전문직 자격증 (회계사·변호사 등)</option>
+                <option>공무원 시험 (임용·경찰·국가직 등)</option>
+                <option>기타</option>
+              </select>
+            </label>
+          </div>
+          <label>어떤 경로로 알게 되셨나요? <em>*</em>
+            <select name="source" id="gSource" required>
+              <option value="" disabled selected>선택</option>
+              <option>현수막</option>
+              <option>1층 배너간판</option>
+              <option>네이버 검색</option>
+              <option>네이버 블로그</option>
+              <option>인스타그램 광고</option>
+              <option>전단지</option>
+              <option>지인 소개 (부모님·친구·선생님 등)</option>
+              <option>기타</option>
+            </select>
+          </label>
+          <label id="gKeywordWrap" hidden>네이버 검색어<input type="text" name="keyword" placeholder="예: 길음 관리형 독서실"></label>
+          <label id="gEtcWrap" hidden>기타 경로<input type="text" name="source_etc" placeholder="알게 된 경로를 적어 주세요"></label>
+          <label>신청하는 분 <em>*</em>
+            <select name="applicant" required>
+              <option value="" disabled selected>선택</option>
+              <option>학생 본인</option>
+              <option>학부모</option>
+            </select>
+          </label>
+          <label class="g-agree"><input type="checkbox" name="agree" required> <span>사전예약 안내를 위한 개인정보 수집·이용(성함·연락처·구분, 오픈 후 6개월 보관)에 동의합니다. <em>*</em></span></label>
+          <button type="submit" class="btn btn-primary" id="gSubmit">사전예약 신청하기</button>
+          <p class="g-msg" id="gMsg" hidden></p>
+        </form>
+        <div class="g-ap">
+          <h3>카카오톡 문의</h3>
+          <p>서울특별시 성북구 도봉로 11, 삼주빌딩 5층<br>4호선 미아사거리역 4번 출구 도보 5분</p>
+          <p>카카오톡채널 <b style="color:#fff">'유베이스 길음미아점'</b></p>
+          <a href="[카카오채널 링크]" target="_blank" rel="noopener" class="btn btn-kakao">카카오톡 문의</a>
+          <p style="margin-top:14px">※ 오픈 전 무료체험 이용 방법과 사전예약 이벤트는 문자로 안내드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사전예약 혜택 -->
+  <section class="section section-alt" id="benefit">
+    <div class="container">
+      <div class="g-center reveal-up">
+        <span class="g-label">OPENING BENEFIT</span>
+        <h2 class="section-title">사전예약 파격 혜택 4가지</h2>
+        <p class="section-desc">오픈 전에 예약하신 분께만 드리는 혜택입니다. 정식 오픈 후에는 적용되지 않습니다.</p>
+      </div>
+      <div class="g-benefits">
+        <div class="g-bcard glass-card reveal-up"><div class="no">혜택 1</div><div class="ic">🎟️</div><h3>5일 무료체험<br><small style="font-size:13px;color:var(--gray-400);font-weight:500">(10만원 상당)</small></h3><p>오픈 전 사전예약자에게 5일 무료체험을 드립니다. 관리 시스템을 직접 겪어보고 등록을 결정하십시오.</p></div>
+        <div class="g-bcard glass-card reveal-up" style="transition-delay:.06s"><div class="no">혜택 2</div><div class="ic">💸</div><h3>첫 달 이용권 30% 할인</h3><p>사전예약 후 이용권 구매 시 첫 달에 한해 적용됩니다. 정식 오픈 후에는 적용되지 않습니다.</p></div>
+        <div class="g-bcard glass-card reveal-up" style="transition-delay:.12s"><div class="no">혜택 3</div><div class="ic">🪑</div><h3>좌석 우선 지정 선택권</h3><p>사전예약 순서 및 입실 순서대로 원하는 자리를 먼저 고르실 수 있습니다. 창가·독립형 좌석은 빨리 마감됩니다.</p></div>
+        <div class="g-bcard glass-card reveal-up" style="transition-delay:.18s"><div class="no">혜택 4</div><div class="ic">🤝</div><h3>지인 소개 시 각각 2만원 할인</h3><p>지인 소개로 등록하시면 소개한 분과 소개받은 분 모두 익월 등록비에서 2만원씩 할인됩니다. 등록 시 소개해 주신 분을 말씀해 주세요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 숫자 (합격 성과: 광장점 2026학년도 대입 실적) -->
+  <div class="g-stats-wrap">
+    <div class="g-stats">
+      <div class="g-stat"><strong>500명+</strong><span>누적 대기자</span></div>
+      <div class="g-stat"><strong>97%</strong><span>재등록률</span></div>
+      <div class="g-stat hl"><strong>3관왕<sup>*</sup></strong><span>서울대 · 연세의대 · 계명의대<br>동시 합격</span></div>
+      <div class="g-stat hl"><strong><small>재원생</small> 약 10%<sup>*</sup></strong><span>의대 · 서울대 · 고려대 합격</span></div>
+      <div class="g-stat hl"><strong><small>재원생</small> 약 50%<sup>*</sup></strong><span>한양대 · 건대 · 홍대 등<br>서울 주요대학 합격</span></div>
+    </div>
+    <p class="g-stats-note">* 합격 성과는 유베이스 광장점 2026학년도 대입 실적 기준입니다.</p>
+    <div class="g-why container">
+      <div class="g-why-head"><h2 class="section-title">이 숫자에는 이유가 있습니다</h2><p class="section-desc">학생은 몰입하고, 부모님은 안심합니다.</p></div>
+      <div class="g-why-grid">
+        <div class="g-why-i"><b>분위기</b><span>모두 공부하니<br>나도 공부합니다</span></div>
+        <div class="g-why-i"><b>관리</b><span>흔들려도<br>다시 잡아 줍니다</span></div>
+        <div class="g-why-i"><b>습관</b><span>공부의 기본기가<br>잡힙니다</span></div>
+        <div class="g-why-i"><b>안심</b><span>자녀의 하루가<br>앱에 보입니다</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오픈 일정 -->
+  <section class="section" id="schedule">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">SCHEDULE</span>
+        <h2 class="section-title">오픈까지 3단계</h2>
+        <p class="section-desc">지금은 사전예약 단계입니다. 예약만 해두시면 이후 일정은 저희가 문자로 먼저 안내드립니다.</p>
+      </div>
+      <div class="g-timeline">
+        <div class="g-tl now reveal-up"><div class="n">01</div><div class="date">지금 접수 중</div><h3>사전예약 접수</h3><p>성함·연락처·구분만 남기시면 됩니다. 중3(예비고1)부터 신청 가능하며, 결제 없이 무료체험·할인·좌석 우선권이 확보됩니다.</p></div>
+        <div class="g-tl reveal-up" style="transition-delay:.08s"><div class="n">02</div><div class="date">오픈 전</div><h3>등록 안내 · 좌석 선택</h3><p>사전예약자께 무료체험 이용 방법과 등록 일정을 문자로 안내드립니다. 사전예약 순서 및 입실 순서대로 좌석을 고르신 뒤 등록하시면 됩니다.</p></div>
+        <div class="g-tl reveal-up" style="transition-delay:.16s"><div class="n">03</div><div class="date">12월 중순 그랜드 오픈 예정</div><h3>정식 운영 시작</h3><p>담임멘토 배정과 첫 진단 상담이 바로 시작됩니다. 오픈 첫 달은 특가가 적용됩니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 입지 -->
+  <section class="section section-alt" id="location">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">LOCATION</span>
+        <h2 class="section-title">길음미아점 위치</h2>
+        <p class="section-desc">4호선 미아사거리역 4번 출구에서 도보 5분. 길음뉴타운과 미아사거리 생활권 한가운데라 통학 동선 안에서 관리받는 공부가 가능합니다.</p>
+      </div>
+      <div class="g-loc reveal-up">
+        <div class="g-map">
+          <iframe title="유베이스 길음미아점 위치" src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EC%84%B1%EB%B6%81%EA%B5%AC+%EB%8F%84%EB%B4%89%EB%A1%9C+11&z=16&hl=ko&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="g-locinfo">
+          <div class="g-li"><div class="ic">📍</div><div><b>주소</b><span>서울특별시 성북구 도봉로 11, 삼주빌딩 5층<br><small>(지번) 길음동 25-7 · 1층 우리은행 미아사거리지점 건물</small></span></div></div>
+          <div class="g-li"><div class="ic">🚇</div><div><b>교통</b><span>4호선 미아사거리역 4번 출구 도보 5분 (255m)<br><small>도봉로 대로변 · 미아사거리 버스정류장 바로 앞</small></span></div></div>
+          <div class="g-li"><div class="ic">🏫</div><div><b>인근 학교</b><span>계성고 · 영훈고 · 창문여고 · 신일고 · 삼각산고<br><small>길음중 · 영훈국제중 · 미아중 통학권</small></span></div></div>
+          <div class="g-maplinks">
+            <a href="https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%B1%EB%B6%81%EA%B5%AC%20%EB%8F%84%EB%B4%89%EB%A1%9C%2011" target="_blank" rel="noopener" class="btn btn-outline">카카오맵에서 보기</a>
+            <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%B1%EB%B6%81%EA%B5%AC%20%EB%8F%84%EB%B4%89%EB%A1%9C%2011" target="_blank" rel="noopener" class="btn btn-outline">네이버지도에서 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 학생이 얻는 것 -->
+  <section class="section section-dark" id="student">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label" style="color:#8FB2FF">FOR STUDENTS</span>
+        <h2 class="section-title" style="color:#fff">학생이 얻는 것, 압도적 몰입</h2>
+        <p class="section-desc">하루 10시간 이상 공부하는 습관을 만듭니다. 혼자서는 어렵지만, 유베이스와 함께라면 가능합니다.</p>
+      </div>
+      <div class="g-sys g-four">
+        <div class="g-scard glass-card-dark reveal-up"><div class="k">01</div><h3>휴대폰은 들어올 때<br>보관함에</h3><ul><li>입실과 동시에 휴대폰 제출</li><li>매 교시 제출 여부 검사</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.06s"><div class="k">02</div><h3>교시 중엔 입실 금지,<br>늘 조용합니다</h3><ul><li>지각생은 쉬는 시간에만 입실</li><li>독서실 내 친목·대화 제한</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.12s"><div class="k">03</div><h3>졸면 선생님이<br>깨웁니다</h3><ul><li>자기주도학습지도사 25분 간격 순찰</li><li>자세·집중 상태 수시 점검</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.18s"><div class="k">04</div><h3>학습 외 사이트<br>접속 불가</h3><ul><li>게임 · SNS · 영상 전체 차단</li><li>인강·학습 사이트만 허용</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 학부모가 얻는 것 -->
+  <section class="section section-alt" id="parent">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">FOR PARENTS</span>
+        <h2 class="section-title">학부모가 얻는 것, 맡겨 두면 됩니다</h2>
+        <p class="section-desc">자녀의 하루를 앱으로 언제든 확인하실 수 있습니다. 요청은 앱으로, 답은 빠르게 드립니다.</p>
+      </div>
+      <div class="g-parent reveal-up">
+        <div class="g-pcol">
+          <div class="g-li"><div class="ic">👀</div><div><b>지금 '공부 중'인지 확인</b><span>교시별 출석과 순공시간이 실시간으로 앱에 표시됩니다.</span></div></div>
+          <div class="g-li"><div class="ic">🚪</div><div><b>들어오고 나갈 때 앱 알림</b><span>입·퇴실 순간 알림이 가고, 얼굴 사진으로 자녀 본인임을 확인합니다.</span></div></div>
+          <div class="g-li"><div class="ic">📊</div><div><b>공부 시간, 같은 학년과 비교</b><span>하루·주간 순공시간을 같은 학년 평균과 비교해 보여드립니다.</span></div></div>
+          <div class="g-li"><div class="ic">💬</div><div><b>요청은 앱으로, 답은 빠르게</b><span>조퇴·외출·물품 보관 등 요청을 앱으로 남기면 선생님이 바로 처리합니다.</span></div></div>
+        </div>
+        <div class="g-chat">
+          <div class="g-chat-head">요청사항 <span>완료</span></div>
+          <div class="g-chat-date">6월 19일 (금)</div>
+          <div class="g-msgr me">오늘 수학 교재를 사물함에 두고 갔어요. 데스크에 보관 부탁드립니다.<time>오후 4:12</time></div>
+          <div class="g-msgr them"><i>U</i><div>네, 데스크에 보관해 두었어요. 내일 입실 때 찾아가세요 😊<time>오후 4:20 · 선생님</time></div></div>
+          <div class="g-msgr me">다음 주 화요일(6/23) 오후 5시에 병원 진료가 있어 조퇴하려고 합니다.<time>오후 6:05</time></div>
+          <div class="g-msgr them"><i>U</i><div>확인했어요. 6/23 5시 조퇴로 일정 등록해 둘게요.<time>오후 6:07 · 선생님</time></div></div>
+          <div class="g-chat-input">요청 내용을 입력하세요<b>보내기</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 맞춤 관리 -->
+  <section class="section" id="custom">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">CUSTOM CARE</span>
+        <h2 class="section-title">나에게 맞춘 관리 4가지</h2>
+        <p class="section-desc">예비 고1 · 고등학생 · 재수생 · 성인 수험생. 학년과 목표가 달라도 관리는 각자에게 맞춥니다.</p>
+        <div class="g-chips"><span>예비 고1</span><span>고등학생</span><span>재수생</span><span>성인 수험생</span></div>
+      </div>
+      <div class="g-steps4">
+        <div class="g-tl reveal-up"><div class="n">01</div><h3>나에게 맞는 좌석 추천</h3><p>공부 스타일에 맞는 자리를 추천합니다. 오픈형 · 칸막이형 · 큐브형 중에서 고르실 수 있습니다.</p></div>
+        <div class="g-tl reveal-up" style="transition-delay:.06s"><div class="n">02</div><h3>멘토와 공부 방향 상담</h3><p>백분위 99% 멘토가 과목별 약점과 방향을 함께 잡습니다. 비용은 무료입니다.</p></div>
+        <div class="g-tl reveal-up" style="transition-delay:.12s"><div class="n">03</div><h3>플래너 설계와 이행 점검</h3><p>주차별 계획을 함께 세우고, 계획대로 했는지 매주 점검합니다. 원하는 학생만, 비용은 무료입니다.</p></div>
+        <div class="g-tl reveal-up" style="transition-delay:.18s"><div class="n">04</div><h3>모의고사로 실전 연습</h3><p>대성 더프 · 시대인재 서프 · 이감 모의고사로 실전 감각을 유지합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공통 관리 + AI -->
+  <section class="section section-dark" id="rules">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label" style="color:#8FB2FF">RULES & AI</span>
+        <h2 class="section-title" style="color:#fff">모두가 규칙을 지키며 공부합니다</h2>
+        <p class="section-desc">빈틈은 AI가, 곁에는 선생님이. AI가 누락 없이 기록하고, 자기주도학습지도사가 매 교시 세심하게 관리합니다.</p>
+      </div>
+      <div class="g-sys g-four">
+        <div class="g-scard glass-card-dark reveal-up"><div class="k">교시제</div><h3>평일 8교시 14시간<br>토요일 6교시 10시간</h3><ul><li>수능 시간표에 맞춘 교시 운영</li><li>쉬는 시간까지 정해진 하루</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.06s"><div class="k">출입</div><h3>모든 출입은<br>얼굴인식으로 기록</h3><ul><li>1교시마다 출석 자동 확인</li><li>늦으면 선생님이 바로 연락</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.12s"><div class="k">벌점</div><h3>벌점이 쌓이면<br>일요일에도 나옵니다</h3><ul><li>규칙 위반 시 벌점 누적</li><li>단계별 조치로 흐트러짐 방지</li></ul></div>
+        <div class="g-scard glass-card-dark reveal-up" style="transition-delay:.18s"><div class="k">장학금</div><h3>매주 공부 시간 1등은<br>장학금 지급</h3><ul><li>순공시간 주간 순위 공개</li><li>매주 동기부여</li></ul></div>
+      </div>
+      <div class="g-trust reveal-up">
+        <div><b>본사 직영</b><span>어느 지점이든 똑같은 기준으로 철저히 관리</span></div>
+        <div><b>글로벌 투자 유치</b><span>AI 기술력을 인정받았습니다</span></div>
+        <div><b>명문대 출신 경영진</b><span>공부에 가장 필요한 것만 설계</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 좌석 · 시설 -->
+  <section class="section section-alt" id="facility">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">SEATS & FACILITY</span>
+        <h2 class="section-title">좌석도 나에게 맞게</h2>
+        <p class="section-desc">공부 스타일에 맞는 자리를 추천합니다. 오픈 지점이라 모든 좌석과 설비가 새것입니다. 아래 사진은 다른 지점의 예시이며, 길음미아점의 모습은 완성되는 대로 공개합니다.</p>
+      </div>
+      <div class="g-fac reveal-up">
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/seat-open.webp" alt="오픈형 좌석" loading="lazy"></div><div class="txt"><h3>오픈형</h3><p>탁 트인 자리. 개방감 속에서 집중하는 학생에게 맞습니다.</p></div></div>
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/seat-partition.webp" alt="칸막이형 좌석" loading="lazy"></div><div class="txt"><h3>칸막이형</h3><p>옆 시선이 가려진 자리. 주변 움직임에 예민한 학생에게 맞습니다.</p></div></div>
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/seat-cube.webp" alt="큐브형 좌석" loading="lazy"></div><div class="txt"><h3>큐브형</h3><p>유리문이 달린 1인 공간. 완전히 분리된 환경이 필요한 학생에게 맞습니다.</p></div></div>
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/phone-locker.webp" alt="잠금장치가 달린 휴대폰 보관함" loading="lazy"></div><div class="txt"><h3>휴대폰 보관함</h3><p>입실하면 휴대폰은 잠금 보관함에. 매 교시 제출 여부를 검사합니다.</p></div></div>
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/quiet-room.webp" alt="교시 중 조용한 독서실 내부" loading="lazy"></div><div class="txt"><h3>교시 중 학습 공간</h3><p>교시 중엔 입실 금지. 늘 조용한 분위기가 유지됩니다.</p></div></div>
+        <div class="g-fcard"><div class="img"><img src="assets/gileum/teacher-patrol.webp" alt="자리를 돌아보며 학생을 살피는 선생님" loading="lazy"></div><div class="txt"><h3>선생님 순찰</h3><p>자기주도학습지도사가 25분 간격으로 자리를 돌아보며 살핍니다.</p></div></div>
+      </div>
+      <p class="g-price-note">※ 사진은 유베이스 다른 지점의 예시 사진입니다. 길음미아점의 실제 좌석·시설 모습은 달라질 수 있으며, 완성되는 대로 이 페이지에 공개합니다.</p>
+    </div>
+  </section>
+
+  <!-- 요금 -->
+  <section class="section section-alt" id="price">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">PRICE</span>
+        <h2 class="section-title">좌석 타입별 이용료</h2>
+      </div>
+      <div class="g-price">
+        <div class="g-pcard reveal-up">
+          <h3>오픈형</h3>
+          <div class="period">탁 트인 자리</div>
+          <div class="g-off">첫 달 <b>30%</b> 할인</div>
+          <div class="was">정가 월 490,000원</div>
+          <div class="amt">343,000<small> 원 / 첫 달</small></div>
+          <div class="save"><span>147,000원</span> 할인</div>
+          <ul><li>· 멘토 상담 · 플래너 점검 무료</li><li>· 학부모 앱 알림 · 순공 리포트</li><li>· 모의고사 응시</li></ul>
+        </div>
+        <div class="g-pcard best reveal-up" style="transition-delay:.08s">
+          <h3>칸막이형</h3>
+          <div class="period">옆 시선이 가려진 자리</div>
+          <div class="g-off">첫 달 <b>30%</b> 할인</div>
+          <div class="was">정가 월 490,000원</div>
+          <div class="amt">343,000<small> 원 / 첫 달</small></div>
+          <div class="save"><span>147,000원</span> 할인</div>
+          <ul><li>· 오픈형 혜택 전부 포함</li><li>· 가장 많이 선택하는 좌석</li></ul>
+        </div>
+        <div class="g-pcard reveal-up" style="transition-delay:.16s">
+          <h3>큐브형</h3>
+          <div class="period">유리문이 달린 1인 공간</div>
+          <div class="g-off">첫 달 <b>30%</b> 할인</div>
+          <div class="was">정가 월 520,000원</div>
+          <div class="amt">364,000<small> 원 / 첫 달</small></div>
+          <div class="save"><span>156,000원</span> 할인</div>
+          <ul><li>· 오픈형 혜택 전부 포함</li><li>· 완전 분리형 1인실</li></ul>
+        </div>
+      </div>
+      <p class="g-price-note">※ 30% 할인은 사전예약자의 첫 달 이용권에 한해 적용되며, 둘째 달부터는 정가가 적용됩니다. 지인 소개 할인(각 2만원)은 익월 등록비에서 적용됩니다. 정확한 금액은 상담 시 안내드립니다.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="reveal-up">
+        <span class="g-label">FAQ</span>
+        <h2 class="section-title">자주 묻는 질문</h2>
+      </div>
+      <div class="g-faq reveal-up">
+        <details><summary>사전예약하면 바로 결제해야 하나요?</summary><p>아닙니다. 사전예약은 성함·연락처·구분만 남기는 무료 신청입니다. 5일 무료체험을 해보신 뒤 등록을 결정하셔도 됩니다.</p></details>
+        <details><summary>사전예약했다가 취소해도 되나요?</summary><p>네, 결제 전이므로 언제든 취소 가능합니다. 다만 좌석 우선권 순번은 다음 예약자에게 넘어갑니다.</p></details>
+        <details><summary>무료체험은 어떻게 이용하나요?</summary><p>오픈 전 사전예약자께 무료체험 이용 방법을 문자로 안내드립니다. 5일간 실제 관리 시스템을 경험하실 수 있습니다.</p></details>
+        <details><summary>누가 등록할 수 있나요?</summary><p>중3(예비고1)부터 고3·N수생까지 등록 가능합니다. 학년과 목표에 맞춰 담임멘토를 배정합니다.</p></details>
+        <details><summary>오픈 전에 시설을 볼 수 있나요?</summary><p>오픈 전에는 공사 중이라 방문이 어렵습니다. 완성된 좌석과 시설 사진은 이 페이지와 블로그에 먼저 공개하고, 사전예약자께는 문자로 안내드립니다.</p></details>
+        <details><summary>학부모도 아이 상황을 알 수 있나요?</summary><p>네, 입·퇴실 알림과 순공시간, 멘토 상담 리포트를 학부모님께 알림톡으로 보내드립니다. 묻지 않아도 아실 수 있습니다.</p></details>
+        <details><summary>학원·과외와 병행할 수 있나요?</summary><p>가능합니다. 외출 일정을 미리 등록하시면 해당 시간을 제외하고 계획을 설계하고, 외출·복귀도 출결 기록과 학부모 알림에 반영됩니다.</p></details>
+        <details><summary>하루 일과는 어떻게 되나요?</summary><p>평일 8교시(14시간), 토요일 6교시(10시간) 교시제로 운영합니다. 벌점이 쌓이면 일요일에도 등원합니다. 세부 시간표는 오픈 전 안내드립니다.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <a href="#contact" class="btn btn-primary">사전예약 신청</a>
+      <a href="[카카오채널 링크]" target="_blank" rel="noopener" class="btn btn-kakao">카카오톡 문의</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:center;align-items:center;gap:20px;padding:20px 0;font-size:13px;color:rgba(255,255,255,.6)">
+      <span>유베이스 길음미아점 · 서울특별시 성북구 도봉로 11, 삼주빌딩 5층</span>
+      <a href="https://blog.naver.com/ubasegangdong" target="_blank" style="color:rgba(255,255,255,.6)">블로그</a>
+      <a href="/guide.html" style="color:rgba(255,255,255,.6)">앱 사용설명서</a>
+      <span>© 2026 UBASE</span>
+    </div>
+  </footer>
+
+  <script>
+  // ===== 사전예약 접수 → 구글 스프레드시트 =====
+  // 스프레드시트에 붙인 Apps Script 웹앱 URL(…/exec)을 넣으면 접수 내용이 '길음점 사전예약' 시트에 한 줄씩 쌓입니다.
+  // 비워두면 전송 없이 "신청 완료" 메시지만 표시합니다(초안 확인용).
+  var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxwlY6gcXL5PQcnm1x8P193cAlaBo246NhzwM5nVO7LKdDvq4kEg4jJ2nSYCGmWECw9vQ/exec';
+
+  (function(){
+    // 네비 스크롤
+    var nav = document.getElementById('nav');
+    function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 50); }
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    // 모바일 상단 탭바 + 하단 CTA (히어로 지나면 표시, 메인과 동일)
+    var sticky = document.getElementById('stickyCta'), tabBar = document.getElementById('mobTabBar');
+    function onScroll2(){
+      var past = window.scrollY > window.innerHeight * 0.6;
+      sticky.classList.toggle('visible', past);
+      tabBar.classList.toggle('visible', past);
+      nav.classList.toggle('tab-on', past);
+    }
+    window.addEventListener('scroll', onScroll2, {passive:true}); onScroll2();
+    var act = tabBar.querySelector('a.active');
+    if(act) tabBar.scrollLeft = act.offsetLeft - 120;
+
+    // 스크롤 등장 효과
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal-up').forEach(function(el){ io.observe(el); });
+
+
+    // 사전예약 폼
+    var form = document.getElementById('gForm'), msg = document.getElementById('gMsg'), src = document.getElementById('gSource');
+    src.addEventListener('change', function(){
+      document.getElementById('gKeywordWrap').hidden = src.value !== '네이버 검색';
+      document.getElementById('gEtcWrap').hidden = src.value !== '기타';
+    });
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var ok = true;
+      form.querySelectorAll('[required]').forEach(function(el){
+        var bad = el.type === 'checkbox' ? !el.checked : !el.value.trim();
+        if(el.name === 'phone' && !/^01[016789]-?\d{3,4}-?\d{4}$/.test(el.value.trim())) bad = true;
+        el.classList.toggle('err', bad); if(bad) ok = false;
+      });
+      if(!ok){ msg.hidden = false; msg.className = 'g-msg bad'; msg.textContent = '필수 항목(*)을 확인해 주세요. 연락처는 010-0000-0000 형식으로 적어 주세요.'; return; }
+      var fd = new FormData(form), srcVal = fd.get('source');
+      if(srcVal === '기타' && fd.get('source_etc')) srcVal = '기타: ' + fd.get('source_etc');
+      var btn = document.getElementById('gSubmit'); btn.disabled = true;
+      function done(){
+        btn.disabled = false; form.reset();
+        document.getElementById('gKeywordWrap').hidden = document.getElementById('gEtcWrap').hidden = true;
+        msg.hidden = false; msg.className = 'g-msg';
+        msg.textContent = '사전예약이 접수되었습니다. 무료체험 이용 방법과 오픈 일정을 문자로 안내드리겠습니다.';
+      }
+      if(!SHEET_WEBAPP_URL){ setTimeout(done, 400); return; }
+      var body = new URLSearchParams();
+      body.append('name', fd.get('name')); body.append('phone', fd.get('phone'));
+      body.append('grade', fd.get('grade')); body.append('applicant', fd.get('applicant')); body.append('exam', fd.get('exam'));
+      body.append('source', srcVal); body.append('keyword', fd.get('keyword') || '');
+      body.append('page', location.href);
+      function fail(){ btn.disabled = false; msg.hidden = false; msg.className = 'g-msg bad'; msg.textContent = '전송에 실패했습니다. 카카오톡으로 문의해 주세요.'; }
+      fetch(SHEET_WEBAPP_URL, {method:'POST', body:body}).then(function(r){ return r.json(); }).then(function(j){
+        if(j && j.ok) done(); else fail();
+      }).catch(fail);
+    });
+
+  })();
+  </script>
+</body>
+</html>
