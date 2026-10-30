@@ -469,6 +469,20 @@ section[role="tabpanel"]:focus { outline: none; }
 .qz-say { margin: 0; padding: 12px 16px; border-radius: 14px; background: var(--omr-tint); font-size: 15px; line-height: 1.6; word-break: keep-all; }
 .qz-who > div { border-color: var(--card-line); border-radius: 14px; }
 @media (max-width: 560px) { .qz-notes { grid-template-columns: minmax(0, 1fr); } .qz-fig img { border-radius: 14px; } }
+
+/* 평가지 소개: 정사각 카드 세 장. 넓은 화면은 세 칸, 좁은 화면은 옆으로 넘기는 카드 */
+.pi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 4px 0 22px; padding: 4px 2px 10px; }
+.pi:focus-visible { outline: 2px solid var(--omr); outline-offset: 2px; border-radius: 18px; }
+.pi-card { position: relative; display: grid; gap: 10px; align-content: start; min-width: 0; margin: 0; }
+.pi-card img { display: block; width: 100%; height: auto; border-radius: 18px; background: #F4F6F3; box-shadow: var(--shadow-card); }
+.pi-notes { list-style: none; margin: 0; padding: 12px 14px; display: grid; gap: 6px; border-radius: 14px; background: var(--sheet); box-shadow: var(--shadow-card); }
+.pi-notes li { position: relative; padding-left: 14px; font-size: 14px; line-height: 1.55; color: var(--ink-2); word-break: keep-all; }
+.pi-notes li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--omr); }
+@media (max-width: 899px) {
+  .pi { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .pi-card { flex: 0 0 min(84%, 340px); scroll-snap-align: start; }
+  .pi-card img { border-radius: 14px; }
+}
 @media (max-width: 760px) {
   .qz { padding: 18px 14px 22px; gap: 28px; }
   .qz-flow { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -741,6 +755,32 @@ section[role="tabpanel"]:focus { outline: none; }
       <h2>학습 성향 평가지</h2>
       <p class="lede">자기주도학습 연구를 바탕으로, 혼자 공부할 때 실제로 하는 일을 횟수로 묻는 평가지입니다.</p>
     </header>
+    <section class="pi" tabindex="0" aria-label="평가지 소개, 좁은 화면에서는 옆으로 넘겨 볼 수 있음">
+  <article class="pi-card" aria-labelledby="pi-h1">
+    <h3 class="sr" id="pi-h1">무엇을 보나요</h3>
+    <img src="assets/consult/intro-1-what.jpg" width="1080" height="1080" loading="lazy" alt="무엇을 보나요. 습관 다섯 가지를 공부 단계로 나눈 그림. 시작하기 전은 계획, 하는 동안은 집중 관리와 끈기, 끝난 뒤는 떠올리기 공부법과 점검·되짚기. 맨 아래 학습 자신감은 습관과 따로 봅니다.">
+    <ul class="pi-notes">
+      <li>공부를 시작하기 전, 하는 동안, 끝난 뒤에 스스로 하는 습관 다섯 가지를 봅니다.</li>
+      <li>'해낼 수 있겠다'는 생각이 먼저 드는 횟수는 습관과 섞지 않고 따로 봅니다.</li>
+    </ul>
+  </article>
+  <article class="pi-card" aria-labelledby="pi-h2">
+    <h3 class="sr" id="pi-h2">어떻게 만들었나요</h3>
+    <img src="assets/consult/intro-2-made.jpg" width="1080" height="1080" loading="lazy" alt="어떻게 만들었나요. 연구 124편을 분석해 35문항을 만들었다는 그림. 124편에는 종합 연구 47편과 한국 고등학생 연구가 들어 있고, 시각형·청각형 학습 스타일을 비롯한 28가지는 넣지 않았습니다.">
+    <ul class="pi-notes">
+      <li>자기주도학습과 공부법, 공부 자신감, 평가지를 바르게 만드는 방법에 관한 연구 124편을 분석해 질문 문장과 답하는 칸, 결과 읽는 규칙을 정했습니다.</li>
+      <li>흔히 쓰이지만 근거가 약한 것을 포함해 28가지는 이유를 정리해 두고 넣지 않았습니다.</li>
+    </ul>
+  </article>
+  <article class="pi-card" aria-labelledby="pi-h3">
+    <h3 class="sr" id="pi-h3">어떻게 묻나요</h3>
+    <img src="assets/consult/intro-3-ask.jpg" width="1080" height="1080" loading="lazy" alt="어떻게 묻나요. '나는 계획적이다' 같은 질문은 하지 않고, 최근 평소 4주 동안 실제로 한 횟수를 묻습니다. 규칙 때문에 한 것은 빼고 스스로 한 것만 셉니다.">
+    <ul class="pi-notes">
+      <li>'나는 계획적이다' 같은 자기 평가 대신, 최근 평소 4주와 최근 본 시험 두세 번에 실제로 한 횟수를 묻습니다.</li>
+      <li>독서실·학교·학원 규칙 때문에 한 것은 빼고, 스스로 한 것만 셉니다.</li>
+    </ul>
+  </article>
+</section>
     <div class="toolbar" id="sheet-note">
       <p id="sheet-note-text"></p>
       <div class="btns">
